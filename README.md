@@ -43,8 +43,10 @@ List<ExternalTaskInfo> allTasks = await camunda.ExternalTasks.Query().List();
 #### Load typed variables
 ```cs
 // load all variables of specified execution
-var allVariables = await camunda.Executions["290a7fa2-8bc9-11e6-ab5b-ac87a31e24fd"]
+Dictionary<string, VariableValue> allVariables = await camunda.Executions["290a7fa2-8bc9-11e6-ab5b-ac87a31e24fd"]
     .LocalVariables.GetAll();
+// obtain strongly typed variable with name Var1
+int myVar1 = allVariables["Var1"].GetValue<int>();
 ```
 #### Save content of variable to file
 ```cs
