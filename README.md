@@ -16,7 +16,7 @@ Each listed domain is fully covered according to https://docs.camunda.org/manual
 - [x] Variable Instance
 
 ## Install
-The Camunda REST API Client is available on nuget.org
+The Camunda REST API Client is available on [nuget.org](https://www.nuget.org/packages/Camunda.Api.Client)
 
 To install Camunda REST API Client, run the following command in the Package Manager Console
 ```
