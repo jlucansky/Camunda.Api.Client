@@ -1,4 +1,4 @@
-# Camunda REST API Client
+# Camunda REST API Client [![Build status](https://ci.appveyor.com/api/projects/status/l2ct8th9hwuwlqvf?svg=true)](https://ci.appveyor.com/project/jlucansky/camunda-api-client) [![NuGet](https://img.shields.io/nuget/v/Camunda.Api.Client.svg)](https://www.nuget.org/packages/Camunda.Api.Client)
 Camunda REST API Client for .NET platform
 
 ## Covered API
