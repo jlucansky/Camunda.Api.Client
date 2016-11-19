@@ -2,7 +2,7 @@
 Camunda REST API Client for .NET platform
 
 ## Covered API
-Each listed part below is fully covered according to https://docs.camunda.org/manual/7.5/reference/rest specification.
+Each part listed below is fully covered according to https://docs.camunda.org/manual/7.5/reference/rest specification.
 - [x] [Deployment](https://docs.camunda.org/manual/7.5/reference/rest/deployment/)
 - [x] [Execution](https://docs.camunda.org/manual/7.5/reference/rest/execution/)
 - [x] [External Task](https://docs.camunda.org/manual/7.5/reference/rest/external-task/)
