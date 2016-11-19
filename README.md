@@ -2,18 +2,18 @@
 Camunda REST API Client for .NET platform
 
 ## Covered API
-Each listed domain is fully covered according to https://docs.camunda.org/manual/7.5/reference/rest specification.
-- [x] Deployment
-- [x] Execution
-- [x] External Task
-- [x] Incident
-- [X] Job
-- [x] Job Definition
-- [x] Message
-- [x] Process Definition
-- [x] Process Instance
-- [x] Task
-- [x] Variable Instance
+Each listed part below is fully covered according to https://docs.camunda.org/manual/7.5/reference/rest specification.
+- [x] [Deployment](https://docs.camunda.org/manual/7.5/reference/rest/deployment/)
+- [x] [Execution](https://docs.camunda.org/manual/7.5/reference/rest/execution/)
+- [x] [External Task](https://docs.camunda.org/manual/7.5/reference/rest/external-task/)
+- [x] [Incident](https://docs.camunda.org/manual/7.5/reference/rest/incident/)
+- [X] [Job](https://docs.camunda.org/manual/7.5/reference/rest/job/)
+- [x] [Job Definition](https://docs.camunda.org/manual/7.5/reference/rest/job-definition/)
+- [x] [Message](https://docs.camunda.org/manual/7.5/reference/rest/message/)
+- [x] [Process Definition](https://docs.camunda.org/manual/7.5/reference/rest/process-definition/)
+- [x] [Process Instance](https://docs.camunda.org/manual/7.5/reference/rest/process-instance/)
+- [x] [Task](https://docs.camunda.org/manual/7.5/reference/rest/task/)
+- [x] [Variable Instance](https://docs.camunda.org/manual/7.5/reference/rest/variable-instance/)
 
 ## Install
 The Camunda REST API Client is available on [nuget.org](https://www.nuget.org/packages/Camunda.Api.Client)
@@ -47,23 +47,37 @@ List<ExternalTaskInfo> tasks = await camunda.ExternalTasks.Query(externalTaskQue
 // get all external tasks without specifying query
 List<ExternalTaskInfo> allTasks = await camunda.ExternalTasks.Query().List();
 ```
+#### Set process variable
+```cs
+VariableResource vars = camunda.ProcessInstances["0ea218e8-9cfa-11e6-90a6-ac87a31e24fd"].Variables;
+
+// set integer variable
+await vars.Set("Var1", VariableValue.FromObject(123));
+
+// set content of binary variable from file
+await vars.SetBinary("DocVar", new BinaryDataContent(File.OpenRead("document.doc")), BinaryVariableType.Bytes);
+```
 #### Load typed variables
 ```cs
+var executionId = "290a7fa2-8bc9-11e6-ab5b-ac87a31e24fd";
 // load all variables of specified execution
-Dictionary<string, VariableValue> allVariables = await camunda.Executions["290a7fa2-8bc9-11e6-ab5b-ac87a31e24fd"]
+Dictionary<string, VariableValue> allVariables = await camunda.Executions[executionId]
     .LocalVariables.GetAll();
+
 // obtain strongly typed variable with name Var1
 int myVar1 = allVariables["Var1"].GetValue<int>();
 ```
 #### Save content of variable to file
 ```cs
-HttpContent fileContent = await camunda.Executions["290a7fa2-8bc9-11e6-ab5b-ac87a31e24fd"]
+HttpContent fileContent = await camunda.Executions[executionId]
     .LocalVariables.GetBinary("file1");
 
 using (fileContent)
-using (var outStream = File.OpenWrite("file1.doc"))
 {
-    (await fileContent.ReadAsStreamAsync()).CopyTo(outStream);
+    using (var outStream = File.OpenWrite("file1.doc"))
+    {
+        (await fileContent.ReadAsStreamAsync()).CopyTo(outStream);
+    }
 }
 ```
 #### Message correlation
@@ -71,7 +85,7 @@ using (var outStream = File.OpenWrite("file1.doc"))
 var msg = new CorrelationMessage() { All = true, MessageName = "TestMsg" };
 
 msg.ProcessVariables
-    .Set("Date", DateTime.Now)
+    .Set("Date", DateTime.Today)
     .Set("ComplexVar", new { abc = "xyz", num = 123});
 
 // correlate message with process variables
@@ -90,7 +104,7 @@ await camunda.Deployments.Create("My Deployment 1",
 var jobQuery = new JobQuery() { ProcessDefinitionKey = "Process_1" };
 jobQuery.DueDates.Add(new ConditionQueryParameter() 
 {
-    Operator = ConditionOperator.GreaterThan, Value = DateTime.Now.Date
+    Operator = ConditionOperator.GreaterThan, Value = DateTime.Now
 });
 
 var jobs = await camunda.Jobs.Query(jobQuery).List();
