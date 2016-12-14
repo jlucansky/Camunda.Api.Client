@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiException.cs" />
+    <Compile Include="Batch\BatchInfo.cs" />
     <Compile Include="CamundaClient.cs" />
     <Compile Include="ConditionQueryParameter.cs" />
     <Compile Include="CountResult.cs" />
@@ -104,9 +105,11 @@
     <Compile Include="Job\JobInfo.cs" />
     <Compile Include="Job\JobQuery.cs" />
     <Compile Include="Job\JobResource.cs" />
+    <Compile Include="Job\JobRetries.cs" />
     <Compile Include="Job\JobService.cs" />
     <Compile Include="Job\JobSuspensionState.cs" />
     <Compile Include="Message\CorrelationMessage.cs" />
+    <Compile Include="Message\CorrelationResult.cs" />
     <Compile Include="Message\IMessageRestService.cs" />
     <Compile Include="Message\MessageService.cs" />
     <Compile Include="ProcessDefinition\FormInfo.cs" />
@@ -125,6 +128,7 @@
     <Compile Include="ProcessDefinition\SubmitStartForm.cs" />
     <Compile Include="ProcessDefinition\StartProcessInstance.cs" />
     <Compile Include="ProcessDefinition\StatisticsResult.cs" />
+    <Compile Include="ProcessInstance\ProcessInstanceWithVariables.cs" />
     <Compile Include="QueryExtensions.cs" />
     <Compile Include="RestError.cs" />
     <Compile Include="SortableQuery.cs" />
@@ -162,6 +166,7 @@
     <Compile Include="UserTask\IdentityLink.cs" />
     <Compile Include="UserTask\IUserTaskRestService.cs" />
     <Compile Include="UserTask\TaskAttachmentResource.cs" />
+    <Compile Include="UserTask\TaskCountByCandidateGroupResult.cs" />
     <Compile Include="UserTask\TaskIdentityLinkResource.cs" />
     <Compile Include="UserTask\TaskCommentResource.cs" />
     <Compile Include="UserTask\UserTask.cs" />

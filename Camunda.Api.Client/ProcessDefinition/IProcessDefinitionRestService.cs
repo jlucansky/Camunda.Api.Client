@@ -17,6 +17,8 @@ namespace Camunda.Api.Client.ProcessDefinition
         [Get("/process-definition/statistics")]
         Task<List<ProcessDefinitionStatisticsResult>> GetProcessInstanceStatistics(bool failedJobs, bool? incidents, string incidentsForType);
 
+        [Delete("/process-definition/{id}")]
+        Task Delete(string id, bool cascade, bool skipCustomListeners);
 
         [Put("/process-definition/{id}/suspended")]
         Task UpdateSuspensionStateById(string id, [Body] ProcessDefinitionSuspensionState state);
@@ -91,10 +93,10 @@ namespace Camunda.Api.Client.ProcessDefinition
 
 
         [Post("/process-definition/{id}/start")]
-        Task<ProcessInstanceInfo> StartProcessInstanceById(string id, [Body] StartProcessInstance parameters);
+        Task<ProcessInstanceWithVariables> StartProcessInstanceById(string id, [Body] StartProcessInstance parameters);
         [Post("/process-definition/key/{key}/start")]
-        Task<ProcessInstanceInfo> StartProcessInstanceByKey(string key, [Body] StartProcessInstance parameters);
+        Task<ProcessInstanceWithVariables> StartProcessInstanceByKey(string key, [Body] StartProcessInstance parameters);
         [Post("/process-definition/key/{key}/tenant-id/{tenantId}/start")]
-        Task<ProcessInstanceInfo> StartProcessInstanceByKeyAndTenantId(string key, string tenantId, [Body] StartProcessInstance parameters);
+        Task<ProcessInstanceWithVariables> StartProcessInstanceByKeyAndTenantId(string key, string tenantId, [Body] StartProcessInstance parameters);
     }
 }

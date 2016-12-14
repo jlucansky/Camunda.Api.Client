@@ -41,6 +41,12 @@ namespace Camunda.Api.Client.Message
         /// If the value is set to true the message will be correlated to multiple executions and a process definition that can be instantiated by this message in one go.
         /// </summary>
         public bool All = false;
+        /// <summary>
+        /// A Boolean value that indicates whether the result of the correlation should be returned or not.
+        /// If this property is set to true, there will be returned a list of message correlation result objects.
+        /// Depending on the all property, there will be either one ore more returned results in the list.
+        /// </summary>
+        public bool ResultEnabled;
 
         public CorrelationMessage SetVariable(string name, object value)
         {

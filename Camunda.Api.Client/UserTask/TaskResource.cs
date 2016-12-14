@@ -21,7 +21,6 @@ namespace Camunda.Api.Client.UserTask
         public VariableResource Variables => new VariableResource(_api, _taskId);
         public LocalVariableResource LocalVariables => new LocalVariableResource(_api, _taskId);
 
-
         /// <summary>
         /// Retrieves a single task by its id.
         /// </summary>

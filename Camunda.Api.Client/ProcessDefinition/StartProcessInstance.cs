@@ -32,6 +32,11 @@ namespace Camunda.Api.Client.ProcessDefinition
         /// </summary>
         public List<ProcessInstanceModificationInstruction> StartInstructions;
 
+        /// <summary>
+        /// Indicates if the variables, which was used by the process instance during execution, should be returned.
+        /// </summary>
+        public bool WithVariablesInReturn;
+
         public new StartProcessInstance SetVariable(string name, object value)
         {
             base.SetVariable(name, value);

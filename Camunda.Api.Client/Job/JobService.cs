@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Camunda.Api.Client.Batch;
+using System.Threading.Tasks;
 
 namespace Camunda.Api.Client.Job
 {
@@ -21,5 +22,10 @@ namespace Camunda.Api.Client.Job
         /// Activate or suspend jobs with the given job definition id, process definition id, process definition key or process instance id.
         /// </summary>
         public Task UpdateSuspensionState(JobSuspensionState state) => _api.UpdateSuspensionState(state);
+
+        /// <summary>
+        /// Create a batch to set retries of jobs asynchronously.
+        /// </summary>
+        public Task<BatchInfo> SetJobRetries(JobRetries retries) => _api.SetJobRetriesAsync(retries);
     }
 }

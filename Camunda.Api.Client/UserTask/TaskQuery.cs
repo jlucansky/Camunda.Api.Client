@@ -156,6 +156,10 @@ namespace Camunda.Api.Client.UserTask
         /// </summary>
         public bool Unassigned;
         /// <summary>
+        /// If set to true, restricts the query to all tasks that are assigned.
+        /// </summary>
+        public bool Assigned;
+        /// <summary>
         /// Only include active tasks. Value may only be true, as false is the default behavior.
         /// </summary>
         public bool Active;
@@ -310,6 +314,15 @@ namespace Camunda.Api.Client.UserTask
         /// Only include tasks that belong to case instances that have variables with certain values.
         /// </summary>
         public List<VariableQueryParameter> CaseInstanceVariables = new List<VariableQueryParameter>();
+
+        /// <summary>
+        /// Only include tasks which have a candidate group.
+        /// </summary>
+        public bool WithCandidateGroups;
+        /// <summary>
+        /// Only include tasks which have no candidate group.
+        /// </summary>
+        public bool WithoutCandidateGroups;
 
         /// <summary>
         /// Array of criteria to sort the result by. The position in the array identifies the rank of an ordering, i.e. whether it is primary, secondary, etc.

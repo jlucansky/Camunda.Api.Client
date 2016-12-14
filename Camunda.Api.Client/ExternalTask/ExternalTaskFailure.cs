@@ -14,6 +14,11 @@ namespace Camunda.Api.Client.ExternalTask
         public string ErrorMessage;
 
         /// <summary>
+        /// A detailed error description.
+        /// </summary>
+        public string ErrorDetails;
+
+        /// <summary>
         /// A timeout in milliseconds before the external task becomes available again for fetching. Must be >= 0.
         /// </summary>
         public long RetryTimeout;

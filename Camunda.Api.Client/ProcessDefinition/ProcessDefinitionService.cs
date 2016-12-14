@@ -43,5 +43,13 @@ namespace Camunda.Api.Client.ProcessDefinition
         /// <remarks>This does not include historic data.</remarks>
         public Task<List<ProcessDefinitionStatisticsResult>> GetStatistics(bool includeFailedJobs) => GetStatistics(includeFailedJobs, false);
 
+        /// <summary>
+        /// Deletes a process definition from a deployment by id.
+        /// </summary>
+        /// <param name="processDefinitionId"></param>
+        /// <param name="cascade"><c>true</c>, if all process instances, historic process instances and jobs for this process definition should be deleted.</param>
+        /// <param name="skipCustomListeners"><c>true</c>, if only the built-in ExecutionListeners should be notified with the end event.</param>
+        /// <returns></returns>
+        public Task Delete(string processDefinitionId, bool cascade, bool skipCustomListeners) => _api.Delete(processDefinitionId, cascade, skipCustomListeners);
     }
 }

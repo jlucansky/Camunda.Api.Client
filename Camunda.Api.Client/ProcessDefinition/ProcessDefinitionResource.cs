@@ -26,7 +26,7 @@ namespace Camunda.Api.Client.ProcessDefinition
         /// <summary>
         /// Instantiates a given process definition. Process variables and business key may be supplied in the request body.
         /// </summary>
-        public abstract Task<ProcessInstanceInfo> StartProcessInstance(StartProcessInstance parameters);
+        public abstract Task<ProcessInstanceWithVariables> StartProcessInstance(StartProcessInstance parameters);
 
         /// <summary>
         /// Start a process instance using a set of process variables and the business key. 

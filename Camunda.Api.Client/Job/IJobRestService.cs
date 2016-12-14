@@ -1,4 +1,5 @@
-﻿using Refit;
+﻿using Camunda.Api.Client.Batch;
+using Refit;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -39,5 +40,8 @@ namespace Camunda.Api.Client.Job
 
         [Delete("/job/{jobId}")]
         Task DeleteJob(string jobId);
+
+        [Post("/job/retries")]
+        Task<BatchInfo> SetJobRetriesAsync([Body] JobRetries retries);
     }
 }

@@ -3,7 +3,6 @@ using Camunda.Api.Client.ProcessInstance;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System;
 
 namespace Camunda.Api.Client.ProcessDefinition
 {
@@ -24,7 +23,7 @@ namespace Camunda.Api.Client.ProcessDefinition
 
         public override async Task<HttpContent> GetDiagram() => (await _api.GetDiagramById(_processDefinitionId)).Content;
 
-        public override Task<ProcessInstanceInfo> StartProcessInstance(StartProcessInstance parameters) => _api.StartProcessInstanceById(_processDefinitionId, parameters);
+        public override Task<ProcessInstanceWithVariables> StartProcessInstance(StartProcessInstance parameters) => _api.StartProcessInstanceById(_processDefinitionId, parameters);
 
         public override Task<ProcessInstanceInfo> SubmitForm(SubmitStartForm parameters) => _api.SubmitStartFormById(_processDefinitionId, parameters);
 

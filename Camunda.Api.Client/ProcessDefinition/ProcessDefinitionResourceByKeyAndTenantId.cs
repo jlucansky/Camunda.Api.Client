@@ -25,7 +25,7 @@ namespace Camunda.Api.Client.ProcessDefinition
 
         public override async Task<HttpContent> GetDiagram() => (await _api.GetDiagramByKeyAndTenantId(_processDefinitionKey, _tenantId)).Content;
 
-        public override Task<ProcessInstanceInfo> StartProcessInstance(StartProcessInstance parameters) => _api.StartProcessInstanceByKeyAndTenantId(_processDefinitionKey, _tenantId, parameters);
+        public override Task<ProcessInstanceWithVariables> StartProcessInstance(StartProcessInstance parameters) => _api.StartProcessInstanceByKeyAndTenantId(_processDefinitionKey, _tenantId, parameters);
 
         public override Task<ProcessInstanceInfo> SubmitForm(SubmitStartForm parameters) => _api.SubmitStartFormByKeyAndTenantId(_processDefinitionKey, _tenantId, parameters);
 

@@ -146,5 +146,11 @@ namespace Camunda.Api.Client.UserTask
 
         #endregion
 
+        #region Report
+
+        [Get("/task/report/candidate-group-count")]
+        Task<List<TaskCountByCandidateGroupResult>> GetTaskCountByCandidateGroup();
+
+        #endregion
     }
 }
