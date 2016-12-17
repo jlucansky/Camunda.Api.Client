@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Reflection;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Camunda.Api.Client.Deployment
 {
@@ -33,7 +31,7 @@ namespace Camunda.Api.Client.Deployment
                     new PlainTextContent("deployment-name", deploymentName),
                     new PlainTextContent("enable-duplicate-filtering", duplicateFiltering.ToString().ToLower()),
                     new PlainTextContent("deploy-changed-only", changedOnly.ToString().ToLower()),
-                    new PlainTextContent("deployment-source", deploymentSource ?? Path.GetFileName(Assembly.GetEntryAssembly().GetName().CodeBase)),
+                    new PlainTextContent("deployment-source", deploymentSource ?? "undefined"),
                     tenantId == null ? null : new PlainTextContent("tenant-id", tenantId), resources);
 
         /// <summary>
