@@ -2,18 +2,18 @@
 Camunda REST API Client for .NET platform
 
 ## Covered API
-Each part listed below is fully covered according to https://docs.camunda.org/manual/7.5/reference/rest specification.
-- [x] [Deployment](https://docs.camunda.org/manual/7.5/reference/rest/deployment/)
-- [x] [Execution](https://docs.camunda.org/manual/7.5/reference/rest/execution/)
-- [x] [External Task](https://docs.camunda.org/manual/7.5/reference/rest/external-task/)
-- [x] [Incident](https://docs.camunda.org/manual/7.5/reference/rest/incident/)
-- [X] [Job](https://docs.camunda.org/manual/7.5/reference/rest/job/)
-- [x] [Job Definition](https://docs.camunda.org/manual/7.5/reference/rest/job-definition/)
-- [x] [Message](https://docs.camunda.org/manual/7.5/reference/rest/message/)
-- [x] [Process Definition](https://docs.camunda.org/manual/7.5/reference/rest/process-definition/)
-- [x] [Process Instance](https://docs.camunda.org/manual/7.5/reference/rest/process-instance/)
-- [x] [Task](https://docs.camunda.org/manual/7.5/reference/rest/task/)
-- [x] [Variable Instance](https://docs.camunda.org/manual/7.5/reference/rest/variable-instance/)
+Each part listed below is fully covered according to https://docs.camunda.org/manual/7.6/reference/rest specification.
+- [x] [Deployment](https://docs.camunda.org/manual/7.6/reference/rest/deployment/)
+- [x] [Execution](https://docs.camunda.org/manual/7.6/reference/rest/execution/)
+- [x] [External Task](https://docs.camunda.org/manual/7.6/reference/rest/external-task/)
+- [x] [Incident](https://docs.camunda.org/manual/7.6/reference/rest/incident/)
+- [X] [Job](https://docs.camunda.org/manual/7.6/reference/rest/job/)
+- [x] [Job Definition](https://docs.camunda.org/manual/7.6/reference/rest/job-definition/)
+- [x] [Message](https://docs.camunda.org/manual/7.6/reference/rest/message/)
+- [x] [Process Definition](https://docs.camunda.org/manual/7.6/reference/rest/process-definition/)
+- [x] [Process Instance](https://docs.camunda.org/manual/7.6/reference/rest/process-instance/)
+- [x] [Task](https://docs.camunda.org/manual/7.6/reference/rest/task/)
+- [x] [Variable Instance](https://docs.camunda.org/manual/7.6/reference/rest/variable-instance/)
 
 ## Install
 The Camunda REST API Client is available on [nuget.org](https://www.nuget.org/packages/Camunda.Api.Client)
