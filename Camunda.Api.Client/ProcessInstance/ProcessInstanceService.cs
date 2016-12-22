@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Camunda.Api.Client.Batch;
+using System.Threading.Tasks;
 
 namespace Camunda.Api.Client.ProcessInstance
 {
@@ -18,5 +19,15 @@ namespace Camunda.Api.Client.ProcessInstance
         /// Activate or suspend process instances with the given process definition id or process definition key.
         /// </summary>
         public Task UpdateSuspensionState(ProcessInstanceSuspensionState state) => _api.UpdateSuspensionState(state);
+
+        /// <summary>
+        /// Deletes multiple process instances asynchronously (batch).
+        /// </summary>
+        public Task<BatchInfo> Delete(DeleteProcessInstances deleteProcessInstances) => _api.DeleteProcessInstanceAsync(deleteProcessInstances);
+
+        /// <summary>
+        /// Create a batch to set retries of jobs associated with given processes asynchronously.
+        /// </summary>
+        public Task<BatchInfo> SetRetriesByProcess(JobRetriesByProcess setJobRetries) => _api.SetRetriesByProcess(setJobRetries);
     }
 }

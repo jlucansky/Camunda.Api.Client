@@ -1,4 +1,5 @@
-﻿using Refit;
+﻿using Camunda.Api.Client.Batch;
+using Refit;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -30,6 +31,12 @@ namespace Camunda.Api.Client.ProcessInstance
 
         [Post("/process-instance/{processInstanceId}/modification")]
         Task ModifyProcessInstance(string processInstanceId, [Body] ProcessInstanceModification modification);
+
+        [Post("/process-instance/job-retries")]
+        Task<BatchInfo> SetRetriesByProcess([Body] JobRetriesByProcess retries);
+
+        [Post("/process-instance/delete")]
+        Task<BatchInfo> DeleteProcessInstanceAsync([Body] DeleteProcessInstances deleteProcessInstances);
 
         #region Variables
 

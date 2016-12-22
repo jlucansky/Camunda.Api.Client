@@ -128,6 +128,8 @@
     <Compile Include="ProcessDefinition\SubmitStartForm.cs" />
     <Compile Include="ProcessDefinition\StartProcessInstance.cs" />
     <Compile Include="ProcessDefinition\StatisticsResult.cs" />
+    <Compile Include="ProcessInstance\DeleteProcessInstances.cs" />
+    <Compile Include="ProcessInstance\JobRetriesByProcess.cs" />
     <Compile Include="ProcessInstance\ProcessInstanceWithVariables.cs" />
     <Compile Include="QueryExtensions.cs" />
     <Compile Include="RestError.cs" />

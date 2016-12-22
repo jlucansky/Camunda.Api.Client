@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Camunda.Api.Client</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <title>Camunda REST API Client</title>
     <authors>Jan Lucansky</authors>
     <licenseUrl>https://github.com/jlucansky/Camunda.Api.Client/blob/master/LICENSE</licenseUrl>
@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Camunda REST API Client for .NET platform</description>
     <summary>Camunda REST API Client for .NET platform</summary>
-    <releaseNotes>Compatibility with Camunda 7.6</releaseNotes>
+    <releaseNotes></releaseNotes>
     <tags>camunda rest refit bpmn bpm</tags>
     <dependencies>
       <dependency id="Camunda.Refit" version="2.4.1" />
