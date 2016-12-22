@@ -87,37 +87,37 @@ namespace Camunda.Api.Client
             return new CamundaClient(hostUrl);
         }
 
-        /// <see href="https://docs.camunda.org/manual/7.5/reference/rest/external-task/"/>
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/external-task/"/>
         public ExternalTaskService ExternalTasks => new ExternalTaskService(_externalTaskApi.Value);
 
-        /// <see href="https://docs.camunda.org/manual/7.5/reference/rest/process-instance/"/>
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/process-instance/"/>
         public ProcessInstanceService ProcessInstances => new ProcessInstanceService(_processInstanceApi.Value);
 
-        /// <see href="https://docs.camunda.org/manual/7.5/reference/rest/variable-instance/"/>
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/variable-instance/"/>
         public VariableInstanceService VariableInstances => new VariableInstanceService(_variableInstanceApi.Value);
 
-        /// <see href="https://docs.camunda.org/manual/7.5/reference/rest/process-definition/"/>
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/process-definition/"/>
         public ProcessDefinitionService ProcessDefinitions => new ProcessDefinitionService(_processDefinitionApi.Value);
 
-        /// <see href="https://docs.camunda.org/manual/7.5/reference/rest/deployment/"/>
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/deployment/"/>
         public DeploymentService Deployments => new DeploymentService(_deploymentApi.Value);
 
-        /// <see href="https://docs.camunda.org/manual/7.5/reference/rest/task/"/>
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/task/"/>
         public UserTaskService UserTasks => new UserTaskService(_userTaskApi.Value);
 
-        /// <see href="https://docs.camunda.org/manual/7.5/reference/rest/execution/"/>
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/execution/"/>
         public ExecutionService Executions => new ExecutionService(_executionApi.Value);
 
-        /// <see href="https://docs.camunda.org/manual/7.5/reference/rest/message/"/>
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/message/"/>
         public MessageService Messages => new MessageService(_messageApi.Value);
 
-        /// <see href="https://docs.camunda.org/manual/7.5/reference/rest/job-definition/"/>
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/job-definition/"/>
         public JobDefinitionService JobDefinitions => new JobDefinitionService(_jobDefinitionApi.Value);
 
-        /// <see href="https://docs.camunda.org/manual/7.5/reference/rest/job/"/>
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/job/"/>
         public JobService Jobs => new JobService(_jobApi.Value);
 
-        /// <see href="https://docs.camunda.org/manual/7.5/reference/rest/incident/"/>
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/incident/"/>
         public IncidentService Incidents => new IncidentService(_incidentApi.Value);
     }
 }
