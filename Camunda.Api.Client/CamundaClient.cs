@@ -15,6 +15,7 @@ using Camunda.Api.Client.Message;
 using Camunda.Api.Client.JobDefinition;
 using Camunda.Api.Client.Job;
 using Camunda.Api.Client.Incident;
+using Camunda.Api.Client.History;
 
 namespace Camunda.Api.Client
 {
@@ -32,6 +33,8 @@ namespace Camunda.Api.Client
         private Lazy<IJobRestService> _jobApi;
         private Lazy<IIncidentRestService> _incidentApi;
 
+        private HistoricApi _historicApi;
+
         private string _hostUrl;
 
         private static readonly RefitSettings _refitSettings;
@@ -39,6 +42,15 @@ namespace Camunda.Api.Client
         private static readonly ErrorMessageHandler _errorMessageHandler;
 
         internal static JsonSerializerSettings JsonSerializerSettings => _jsonSerializerSettings;
+
+        internal class HistoricApi
+        {
+            public Lazy<IHistoricProcessInstanceRestService> ProcessInstanceApi;
+            public Lazy<IHistoricActivityInstanceRestService> ActivityInstanceApi;
+            public Lazy<IHistoricJobLogRestService> JobLogApi;
+            public Lazy<IHistoricIncidentRestService> IncidentApi;
+            public Lazy<IHistoricVariableInstanceRestService> VariableInstanceApi;
+        }
 
         static CamundaClient()
         {
@@ -75,6 +87,15 @@ namespace Camunda.Api.Client
             _jobDefinitionApi = CreateService<IJobDefinitionRestService>();
             _jobApi = CreateService<IJobRestService>();
             _incidentApi = CreateService<IIncidentRestService>();
+
+            _historicApi = new HistoricApi()
+            {
+                ProcessInstanceApi = CreateService<IHistoricProcessInstanceRestService>(),
+                ActivityInstanceApi = CreateService<IHistoricActivityInstanceRestService>(),
+                JobLogApi = CreateService<IHistoricJobLogRestService>(),
+                IncidentApi = CreateService<IHistoricIncidentRestService>(),
+                VariableInstanceApi = CreateService<IHistoricVariableInstanceRestService>(),
+            };
         }
 
         private Lazy<I> CreateService<I>()
@@ -119,5 +140,8 @@ namespace Camunda.Api.Client
 
         /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/incident/"/>
         public IncidentService Incidents => new IncidentService(_incidentApi.Value);
+
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/history/"/>
+        public HistoryService History => new HistoryService(_historicApi);
     }
 }

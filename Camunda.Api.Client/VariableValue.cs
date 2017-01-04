@@ -140,7 +140,7 @@ namespace Camunda.Api.Client
                             }
                             else if (target.Type == VariableType.Bytes || target.Type == VariableType.File)
                             {
-                                rawValue = Convert.FromBase64String(reader.ReadAsString());
+                                rawValue = Convert.FromBase64String(reader.ReadAsString() ?? "");
                             }
                             else
                             {

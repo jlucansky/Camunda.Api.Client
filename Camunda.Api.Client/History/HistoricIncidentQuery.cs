@@ -2,16 +2,16 @@
 using Refit;
 using System.Collections.Generic;
 
-namespace Camunda.Api.Client.Incident
+namespace Camunda.Api.Client.History
 {
-    public class IncidentQuery : IQueryParameters
+    public class HistoricIncidentQuery : IQueryParameters
     {
         /// <summary>
         /// Restricts to incidents that have the given id.
         /// </summary>
         public string IncidentId;
         /// <summary>
-        /// Restricts to incidents that belong to the given incident type.
+        /// Restricts to incidents that belong to the given incident type. See the User Guide for a list of incident types.
         /// </summary>
         public string IncidentType;
         /// <summary>
@@ -47,19 +47,31 @@ namespace Camunda.Api.Client.Incident
         /// </summary>
         public string Configuration;
         /// <summary>
-        /// Restricts to incidents that have one of the given tenant ids.
+        /// Restricts to incidents that are open.
+        /// </summary>
+        public bool Open;
+        /// <summary>
+        /// Restricts to incidents that are resolved.
+        /// </summary>
+        public bool Resolved;
+        /// <summary>
+        /// Restricts to incidents that are deleted.
+        /// </summary>
+        public bool Deleted;
+        /// <summary>
+        /// Restricts to incidents that have one of the given comma-separated tenant ids.
         /// </summary>
         [JsonProperty("tenantIdIn")]
-        public List<string> TenantIds = new List<string>();
+        public List<string> TenantIds;
         /// <summary>
-        /// Restricts to incidents that have one of the given job definition ids.
+        /// Restricts to incidents that have one of the given comma-separated job definition ids.
         /// </summary>
         [JsonProperty("jobDefinitionIdIn")]
-        public List<string> JobDefinitionIds = new List<string>();
+        public List<string> JobDefinitionIds;
         /// <summary>
         /// Sort the results lexicographically by a given criterion. Must be used in conjunction with the <see cref="SortBy"/>.
         /// </summary>
-        public IncidentSorting SortBy;
+        public HistoricIncidentQuerySorting SortBy;
         /// <summary>
         /// Sort the results in a given order. Must be used in conjunction with the <see cref="SortBy"/>.
         /// </summary>
@@ -68,10 +80,11 @@ namespace Camunda.Api.Client.Incident
         IDictionary<string, string> IQueryParameters.GetParameters() => this.CreateQueryParameters();
     }
 
-    public enum IncidentSorting
+    public enum HistoricIncidentQuerySorting
     {
         IncidentId,
-        IncidentTimestamp,
+        CreateTime,
+        EndTime,
         IncidentType,
         ExecutionId,
         ActivityId,
@@ -82,5 +95,4 @@ namespace Camunda.Api.Client.Incident
         Configuration,
         TenantId
     }
-
 }

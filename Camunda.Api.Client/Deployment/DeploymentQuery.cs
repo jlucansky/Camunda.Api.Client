@@ -57,10 +57,7 @@ namespace Camunda.Api.Client.Deployment
         /// </summary>
         public SortOrder SortOrder;
 
-        IDictionary<string, string> IQueryParameters.GetParameters()
-        {
-            return this.CreateQueryParameters();
-        }
+        IDictionary<string, string> IQueryParameters.GetParameters() => this.CreateQueryParameters();
     }
 
     public enum DeploymentSorting
