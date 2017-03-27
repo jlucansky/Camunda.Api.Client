@@ -34,6 +34,15 @@ PM> Install-Package Camunda.Api.Client
 ```cs
 CamundaClient camunda = CamundaClient.Create("http://localhost:8080/engine-rest");
 ```
+
+#### Basic Authentication
+```cs
+HttpClient httpClient = new HttpClient();
+httpClient.BaseAddress = new Uri("http://localhost:8080/engine-rest");
+httpClient.DefaultRequestHeaders.Add("Authorization", "Basic ZGVtbzpkZW1v");
+CamundaClient camunda = CamundaClient.Create(httpClient);
+```
+
 #### Filter external tasks
 ```cs
 // build query

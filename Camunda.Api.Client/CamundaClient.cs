@@ -16,6 +16,7 @@ using Camunda.Api.Client.JobDefinition;
 using Camunda.Api.Client.Job;
 using Camunda.Api.Client.Incident;
 using Camunda.Api.Client.History;
+using System.Net.Http;
 
 namespace Camunda.Api.Client
 {
@@ -36,6 +37,7 @@ namespace Camunda.Api.Client
         private HistoricApi _historicApi;
 
         private string _hostUrl;
+        private HttpClient _httpClient;
 
         private static readonly RefitSettings _refitSettings;
         private static readonly JsonSerializerSettings _jsonSerializerSettings;
@@ -75,7 +77,17 @@ namespace Camunda.Api.Client
         private CamundaClient(string hostUrl)
         {
             _hostUrl = hostUrl;
+            CreateServices();
+        }
 
+        private CamundaClient(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+            CreateServices();
+        }
+
+        private void CreateServices()
+        {
             _externalTaskApi = CreateService<IExternalTaskRestService>();
             _processInstanceApi = CreateService<IProcessInstanceRestService>();
             _variableInstanceApi = CreateService<IVariableInstanceRestService>();
@@ -100,12 +112,20 @@ namespace Camunda.Api.Client
 
         private Lazy<I> CreateService<I>()
         {
-            return new Lazy<I>(() => RestService.For<I>(_hostUrl, _refitSettings));
+            if(_httpClient != null)
+                return new Lazy<I>(() => RestService.For<I>(_httpClient, _refitSettings));
+            else
+                return new Lazy<I>(() => RestService.For<I>(_hostUrl, _refitSettings));
         }
 
         public static CamundaClient Create(string hostUrl)
         {
             return new CamundaClient(hostUrl);
+        }
+
+        public static CamundaClient Create(HttpClient httpClient)
+        {
+            return new CamundaClient(httpClient);
         }
 
         /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/external-task/"/>
