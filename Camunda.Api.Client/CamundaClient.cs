@@ -16,6 +16,8 @@ using Camunda.Api.Client.JobDefinition;
 using Camunda.Api.Client.Job;
 using Camunda.Api.Client.Incident;
 using Camunda.Api.Client.History;
+using Camunda.Api.Client.User;
+
 using System.Net.Http;
 
 namespace Camunda.Api.Client
@@ -33,6 +35,7 @@ namespace Camunda.Api.Client
         private Lazy<IJobDefinitionRestService> _jobDefinitionApi;
         private Lazy<IJobRestService> _jobApi;
         private Lazy<IIncidentRestService> _incidentApi;
+        private Lazy<IUserRestService> _userApi;
 
         private HistoricApi _historicApi;
 
@@ -88,6 +91,7 @@ namespace Camunda.Api.Client
 
         private void CreateServices()
         {
+            _userApi = CreateService<IUserRestService>();
             _externalTaskApi = CreateService<IExternalTaskRestService>();
             _processInstanceApi = CreateService<IProcessInstanceRestService>();
             _variableInstanceApi = CreateService<IVariableInstanceRestService>();
@@ -127,6 +131,10 @@ namespace Camunda.Api.Client
         {
             return new CamundaClient(httpClient);
         }
+
+
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/external-task/"/>
+        public UserService Users => new UserService(_userApi.Value);
 
         /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/external-task/"/>
         public ExternalTaskService ExternalTasks => new ExternalTaskService(_externalTaskApi.Value);
