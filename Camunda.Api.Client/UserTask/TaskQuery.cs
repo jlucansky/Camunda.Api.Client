@@ -89,7 +89,7 @@ namespace Camunda.Api.Client.UserTask
         /// <summary>
         /// Also include tasks that are assigned to users in candidate queries. Default is to only include tasks that are not assigned to any user if you query by candidate user or group(s).
         /// </summary>
-        public bool IncludeAssignedTasks;
+        public bool? IncludeAssignedTasks;
         /// <summary>
         /// Restrict to tasks that have the given key.
         /// </summary>
@@ -154,19 +154,19 @@ namespace Camunda.Api.Client.UserTask
         /// <summary>
         /// If set to true, restricts the query to all tasks that are unassigned.
         /// </summary>
-        public bool Unassigned;
+        public bool? Unassigned;
         /// <summary>
         /// If set to true, restricts the query to all tasks that are assigned.
         /// </summary>
-        public bool Assigned;
+        public bool? Assigned;
         /// <summary>
         /// Only include active tasks. Value may only be true, as false is the default behavior.
         /// </summary>
-        public bool Active;
+        public bool? Active;
         /// <summary>
         /// Only include suspended tasks. Value may only be true, as false is the default behavior.
         /// </summary>
-        public bool Suspended;
+        public bool? Suspended;
         /// <summary>
         /// Restrict to tasks that belong to a case definition with the given key.
         /// </summary>
@@ -291,7 +291,7 @@ namespace Camunda.Api.Client.UserTask
         /// <summary>
         /// Only include tasks which belongs to no tenant. Value may only be true, as false is the default behavior.
         /// </summary>
-        public bool WithoutTenantId;
+        public bool? WithoutTenantId;
 
         /// <summary>
         /// Restrict to tasks that are offered to any of the given candidate groups.
@@ -318,11 +318,11 @@ namespace Camunda.Api.Client.UserTask
         /// <summary>
         /// Only include tasks which have a candidate group.
         /// </summary>
-        public bool WithCandidateGroups;
+        public bool? WithCandidateGroups;
         /// <summary>
         /// Only include tasks which have no candidate group.
         /// </summary>
-        public bool WithoutCandidateGroups;
+        public bool? WithoutCandidateGroups;
 
         /// <summary>
         /// Array of criteria to sort the result by. The position in the array identifies the rank of an ordering, i.e. whether it is primary, secondary, etc.
