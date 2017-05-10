@@ -1,5 +1,4 @@
-﻿using Refit;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -95,12 +94,12 @@ namespace Camunda.Api.Client.UserTask
         /// <summary>
         /// Adds an identity link to a task by id. Can be used to link any user or group to a task and specify a relation.
         /// </summary>
-        public Task AddIdentityLink(string id, [Body] IdentityLink identityLink) => _api.AddIdentityLink(id, identityLink);
+        public Task AddIdentityLink(string id, IdentityLink identityLink) => _api.AddIdentityLink(id, identityLink);
 
         /// <summary>
         /// Removes an identity link from a task by id.
         /// </summary>
-        public Task DeleteIdentityLink(string id, [Body] IdentityLink identityLink) => _api.DeleteIdentityLink(id, identityLink);
+        public Task DeleteIdentityLink(string id, IdentityLink identityLink) => _api.DeleteIdentityLink(id, identityLink);
 
         #endregion
 
@@ -150,7 +149,7 @@ namespace Camunda.Api.Client.UserTask
         /// See documentation on visiblity of variables. If a variable visible from the task with the given name already exists, 
         /// it is overwritten. Otherwise, the variable is created in the top-most scope visible from the task.
         /// </summary>
-        public Task PutVariable(string id, string varName, [Body] VariableValue variable) => _api.PutVariable(id, varName, variable);
+        public Task PutVariable(string id, string varName, VariableValue variable) => _api.PutVariable(id, varName, variable);
 
         #endregion
 
@@ -189,7 +188,7 @@ namespace Camunda.Api.Client.UserTask
         /// <summary>
         /// Sets a variable in the context of a given task.
         /// </summary>
-        public Task PutLocalVariable(string id, string varName, [Body] VariableValue variable) => _api.PutLocalVariable(id, varName, variable);
+        public Task PutLocalVariable(string id, string varName, VariableValue variable) => _api.PutLocalVariable(id, varName, variable);
 
         #endregion
 
