@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Refit;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Camunda.Api.Client.UserTask
@@ -134,7 +136,7 @@ namespace Camunda.Api.Client.UserTask
         /// A variable is visible from the task if it is a local task variable or declared in a parent scope of the task. 
         /// See documentation on visiblity of variables.
         /// </summary>
-        public Task SetBinaryVariable(string id, string varName, BinaryDataContent data, ValueTypeContent valueType) => _api.SetBinaryVariable(id, varName, data, valueType);
+        //public Task SetBinaryVariable(string id, string varName, BinaryDataContent data, ValueTypeContent valueType) => _api.SetBinaryVariable(id, varName, data, valueType);
 
         /// <summary>
         /// Updates or deletes the variables visible from the task. Updates precede deletions. So, if a variable is updated AND deleted, 
@@ -177,7 +179,7 @@ namespace Camunda.Api.Client.UserTask
         /// <summary>
         /// Sets the serialized value for a binary variable or the binary value for a file variable.
         /// </summary>
-        public Task SetBinaryLocalVariable(string id, string varName, BinaryDataContent data, ValueTypeContent valueType) => _api.SetBinaryLocalVariable(id, varName, data, valueType);
+        //public Task SetBinaryLocalVariable(string id, string varName, BinaryDataContent data, ValueTypeContent valueType) => _api.SetBinaryLocalVariable(id, varName, data, valueType);
 
         /// <summary>
         /// Updates or deletes the variables in the context of a task. Updates precede deletions. So, if a variable is updated AND deleted, the deletion overrides the update.
@@ -187,7 +189,7 @@ namespace Camunda.Api.Client.UserTask
         /// <summary>
         /// Sets a variable in the context of a given task.
         /// </summary>
-        public Task PutLocalVariable(string id, string varName, [Body] VariableValue variable) => _api.PutLocalVariable(id, varName,variable);
+        public Task PutLocalVariable(string id, string varName, [Body] VariableValue variable) => _api.PutLocalVariable(id, varName, variable);
 
         #endregion
 
