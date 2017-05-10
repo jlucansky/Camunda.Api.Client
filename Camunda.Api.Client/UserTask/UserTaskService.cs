@@ -14,11 +14,6 @@ namespace Camunda.Api.Client.UserTask
 
         public TaskResource this[string taskId] => new TaskResource(_api, taskId);
 
-        /// <summary>
-        /// Retrieves the number of tasks for each candidate group.
-        /// </summary>
-        public Task<List<TaskCountByCandidateGroupResult>> GetTaskCountByCandidateGroup() => _api.GetTaskCountByCandidateGroup();
-
         public QueryResource<TaskQuery, UserTaskInfo> Query(TaskQuery query = null)
             => new QueryResource<TaskQuery, UserTaskInfo>(_api, query);
 
@@ -86,6 +81,125 @@ namespace Camunda.Api.Client.UserTask
         /// Updates a task.
         /// </summary>
         public Task Update(string id, UserTask task) => _api.UpdateTask(id, task);
+
+
+        #region Identity Link
+
+        /// <summary>
+        /// Gets the identity links for a task by id, which are the users and groups that are in some relation to it (including assignee and owner).
+        /// </summary>
+        public Task<List<IdentityLink>> GetIdentityLinks(string id, string type) => _api.GetIdentityLinks(id, type);
+
+        /// <summary>
+        /// Adds an identity link to a task by id. Can be used to link any user or group to a task and specify a relation.
+        /// </summary>
+        public Task AddIdentityLink(string id, [Body] IdentityLink identityLink) => _api.AddIdentityLink(id, identityLink);
+
+        /// <summary>
+        /// Removes an identity link from a task by id.
+        /// </summary>
+        public Task DeleteIdentityLink(string id, [Body] IdentityLink identityLink) => _api.DeleteIdentityLink(id, identityLink);
+
+        #endregion
+
+        #region Variables
+
+        /// <summary>
+        /// Removes a variable that is visible to a task. A variable is visible to a task if it is a local task variable or declared in a parent scope of the task. 
+        /// See documentation on visiblity of variables.
+        /// </summary>
+        public Task DeleteVariable(string id, string varName) => _api.DeleteVariable(id, varName);
+
+        /// <summary>
+        /// Retrieves a variable from the context of a given task. The variable must be visible from the task. 
+        /// It is visible from the task if it is a local task variable or declared in a parent scope of the task. 
+        /// See documentation on visiblity of variables.
+        /// </summary>
+        public Task<VariableValue> GetVariable(string id, string varName, bool deserializeValue = true) => _api.GetVariable(id, varName, deserializeValue = true);
+
+        /// <summary>
+        /// Retrieves all variables visible from the task. A variable is visible from the task if it is a local task variable
+        /// or declared in a parent scope of the task. See documentation on visiblity of variables.
+        /// </summary>
+        public Task<Dictionary<string, VariableValue>> GetVariables(string id, bool deserializeValues = true) => _api.GetVariables(id, deserializeValues = true);
+
+        /// <summary>
+        /// Retrieves a binary variable from the context of a given task. Applicable for byte array and file variables. The variable must be visible from the task. 
+        /// It is visible from the task if it is a local task variable or declared in a parent scope of the task. See documentation on visiblity of variables
+        /// </summary>
+        public Task<HttpResponseMessage> GetBinaryVariable(string id, string varName) => _api.GetBinaryVariable(id, varName);
+
+        /// <summary>
+        /// Sets the serialized value for a binary variable or the binary value for a file variable visible from the task. 
+        /// A variable is visible from the task if it is a local task variable or declared in a parent scope of the task. 
+        /// See documentation on visiblity of variables.
+        /// </summary>
+        public Task SetBinaryVariable(string id, string varName, BinaryDataContent data, ValueTypeContent valueType) => _api.SetBinaryVariable(id, varName, data, valueType);
+
+        /// <summary>
+        /// Updates or deletes the variables visible from the task. Updates precede deletions. So, if a variable is updated AND deleted, 
+        /// the deletion overrides the update. A variable is visible from the task if it is a local task variable or declared in a parent scope of the task. 
+        /// See documentation on visiblity of variables.
+        /// </summary>
+        public Task ModifyVariables(string id, PatchVariables patch) => _api.ModifyVariables(id, patch);
+
+        /// <summary>
+        /// Sets a visible from the task. A variable is visible from the task if it is a local task variable or declared in a parent scope of the task. 
+        /// See documentation on visiblity of variables. If a variable visible from the task with the given name already exists, 
+        /// it is overwritten. Otherwise, the variable is created in the top-most scope visible from the task.
+        /// </summary>
+        public Task PutVariable(string id, string varName, [Body] VariableValue variable) => _api.PutVariable(id, varName, variable);
+
+        #endregion
+
+        #region Local Variables
+
+        /// <summary>
+        /// Removes a local variable from a task by id.
+        /// </summary>
+        public Task DeleteLocalVariable(string id, string varName) => _api.DeleteLocalVariable(id, varName);
+
+        /// <summary>
+        /// Retrieves a variable from the context of a given task by id.
+        /// </summary>
+        public Task<VariableValue> GetLocalVariable(string id, string varName, bool deserializeValue = true) => _api.GetLocalVariable(id, varName, deserializeValue);
+
+        /// <summary>
+        /// Retrieves all variables of a given task by id.
+        /// </summary>
+        public Task<Dictionary<string, VariableValue>> GetLocalVariables(string id, bool deserializeValues = true) => _api.GetLocalVariables(id, deserializeValues);
+
+        /// <summary>
+        /// Retrieves a binary variable from the context of a given task by id. Applicable for byte array and file variables.
+        /// </summary>
+        public Task<HttpResponseMessage> GetBinaryLocalVariable(string id, string varName) => _api.GetBinaryLocalVariable(id, varName);
+
+        /// <summary>
+        /// Sets the serialized value for a binary variable or the binary value for a file variable.
+        /// </summary>
+        public Task SetBinaryLocalVariable(string id, string varName, BinaryDataContent data, ValueTypeContent valueType) => _api.SetBinaryLocalVariable(id, varName, data, valueType);
+
+        /// <summary>
+        /// Updates or deletes the variables in the context of a task. Updates precede deletions. So, if a variable is updated AND deleted, the deletion overrides the update.
+        /// </summary>
+        public Task ModifyLocalVariables(string id, PatchVariables patch) => _api.ModifyLocalVariables(id, patch);
+
+        /// <summary>
+        /// Sets a variable in the context of a given task.
+        /// </summary>
+        public Task PutLocalVariable(string id, string varName, [Body] VariableValue variable) => _api.PutLocalVariable(id, varName,variable);
+
+        #endregion
+
+        #region Report
+
+        /// <summary>
+        /// Retrieves the number of tasks for each candidate group.
+        /// </summary>
+        public Task<List<TaskCountByCandidateGroupResult>> GetTaskCountByCandidateGroup() => _api.GetTaskCountByCandidateGroup();
+
+        #endregion
+
 
     }
 }
