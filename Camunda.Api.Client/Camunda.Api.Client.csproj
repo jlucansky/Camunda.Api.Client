@@ -209,6 +209,11 @@
     <Compile Include="UserTask\UserTaskService.cs" />
     <Compile Include="UserTask\LocalVariableResource.cs" />
     <Compile Include="UserTask\VariableResource.cs" />
+    <Compile Include="User\IUserRestService.cs" />
+    <Compile Include="User\UserInfo.cs" />
+    <Compile Include="User\UserQuery.cs" />
+    <Compile Include="User\UserResource.cs" />
+    <Compile Include="User\UserService.cs" />
     <Compile Include="ValueTypeContent.cs" />
     <Compile Include="VariableInstance\IVariableInstanceRestService.cs" />
     <Compile Include="VariableInstance\VariableInstanceInfo.cs" />
