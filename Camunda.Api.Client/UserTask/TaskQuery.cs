@@ -349,7 +349,7 @@ namespace Camunda.Api.Client.UserTask
 
             bool isVariableSorting = variableSorting.Contains(sortBy);
 
-            if (isVariableSorting ^ variable != null) // ak je sortovacia premenna, musi byt uvedeny VariableOrder
+            if (isVariableSorting ^ variable != null)
                 throw new ArgumentException("Variable is mandatory when sortBy is either processVariable, executionVariable, taskVariable, caseExecutionVariable or caseInstanceVariable.", nameof(variable));
 
             if (variable != null) {

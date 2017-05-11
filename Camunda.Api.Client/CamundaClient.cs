@@ -133,7 +133,7 @@ namespace Camunda.Api.Client
         }
 
 
-        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/external-task/"/>
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/user/"/>
         public UserService Users => new UserService(_userApi.Value);
 
         /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/external-task/"/>
