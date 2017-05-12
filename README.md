@@ -18,6 +18,7 @@ Each part listed below is fully covered according to https://docs.camunda.org/ma
 - [x] [Process Definition](https://docs.camunda.org/manual/7.6/reference/rest/process-definition/)
 - [x] [Process Instance](https://docs.camunda.org/manual/7.6/reference/rest/process-instance/)
 - [x] [Task](https://docs.camunda.org/manual/7.6/reference/rest/task/)
+- [x] [User](https://docs.camunda.org/manual/7.6/reference/rest/user/)
 - [x] [Variable Instance](https://docs.camunda.org/manual/7.6/reference/rest/variable-instance/)
 
 ## Install
