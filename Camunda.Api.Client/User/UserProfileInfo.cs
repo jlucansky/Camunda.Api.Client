@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Camunda.Api.Client.User
+﻿namespace Camunda.Api.Client.User
 {
-    public class UserInfo
+    public class UserProfileInfo
     {
         /// <summary>
         /// The id of the user.

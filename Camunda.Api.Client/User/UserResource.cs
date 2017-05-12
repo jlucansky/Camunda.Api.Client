@@ -20,7 +20,7 @@ namespace Camunda.Api.Client.User
         /// <summary>
         /// Retrieves a single user according to the User interface in the engine.
         /// </summary>
-        public Task<UserInfo> Get() => _api.Get(_userId);
+        public Task<UserProfileInfo> Get() => _api.Get(_userId);
 
         public override string ToString() => _userId;
     }
