@@ -1,6 +1,9 @@
-﻿namespace Camunda.Api.Client.User
+﻿using Refit;
+using System.Collections.Generic;
+
+namespace Camunda.Api.Client.User
 {
-    public class UserQuery : SortableQuery<UserSorting, UserQuery>
+    public class UserQuery : IQueryParameters
     {
         /// <summary>
         /// Filter by the id of the user.
@@ -38,6 +41,17 @@
         /// Filter for users which are members of the given tenant.
         /// </summary>
         public string MemberOfTenant;
+
+        /// <summary>
+        /// Sort the results lexicographically by a given criterion. Must be used in conjunction with the <see cref="SortOrder"/>.
+        /// </summary>
+        public UserSorting SortBy;
+        /// <summary>
+        /// Sort the results in a given order. Must be used in conjunction with the <see cref="SortBy"/>.
+        /// </summary>
+        public SortOrder SortOrder;
+
+        IDictionary<string, string> IQueryParameters.GetParameters() => this.CreateQueryParameters();
     }
 
     public enum UserSorting

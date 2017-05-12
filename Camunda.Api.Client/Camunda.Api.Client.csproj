@@ -210,6 +210,8 @@
     <Compile Include="UserTask\LocalVariableResource.cs" />
     <Compile Include="UserTask\VariableResource.cs" />
     <Compile Include="User\IUserRestService.cs" />
+    <Compile Include="User\UserCredentialsInfo.cs" />
+    <Compile Include="User\CreateUser.cs" />
     <Compile Include="User\UserProfileInfo.cs" />
     <Compile Include="User\UserQuery.cs" />
     <Compile Include="User\UserResource.cs" />
