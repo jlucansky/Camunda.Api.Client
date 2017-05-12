@@ -49,11 +49,11 @@ namespace Camunda.Api.Client.Deployment
         /// </summary>
         public bool IncludeDeploymentsWithoutTenantId;
         /// <summary>
-        /// Sort the results lexicographically by a given criterion. Must be used in conjunction with the sortOrder parameter.
+        /// Sort the results lexicographically by a given criterion. Must be used in conjunction with the <see cref="SortOrder"/> parameter.
         /// </summary>
         public DeploymentSorting SortBy;
         /// <summary>
-        /// Sort the results in a given order. Must be used in conjunction with the sortBy parameter.
+        /// Sort the results in a given order. Must be used in conjunction with the <see cref="SortBy"/> parameter.
         /// </summary>
         public SortOrder SortOrder;
 

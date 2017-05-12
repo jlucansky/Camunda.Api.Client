@@ -69,7 +69,7 @@ namespace Camunda.Api.Client.History
         [JsonProperty("jobDefinitionIdIn")]
         public List<string> JobDefinitionIds;
         /// <summary>
-        /// Sort the results lexicographically by a given criterion. Must be used in conjunction with the <see cref="SortBy"/>.
+        /// Sort the results lexicographically by a given criterion. Must be used in conjunction with the <see cref="SortOrder"/>.
         /// </summary>
         public HistoricIncidentQuerySorting SortBy;
         /// <summary>

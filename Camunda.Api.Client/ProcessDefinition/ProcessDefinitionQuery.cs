@@ -102,11 +102,11 @@ namespace Camunda.Api.Client.ProcessDefinition
         /// </summary>
         public string VersionTagLike;
         /// <summary>
-        /// Sort the results lexicographically by a given criterion. Must be used in conjunction with the sortOrder parameter. Note: Sorting by versionTag is string based. The version will not be interpreted. As an example, the sorting could return v0.1.0, v0.10.0, v0.2.0.
+        /// Sort the results lexicographically by a given criterion. Must be used in conjunction with the <see cref="SortOrder"/> parameter. Note: Sorting by <see cref="VersionTag"/> is string based. The version will not be interpreted. As an example, the sorting could return v0.1.0, v0.10.0, v0.2.0.
         /// </summary>
         public ProcessDefinitionSorting SortBy;
         /// <summary>
-        /// Sort the results in a given order. Must be used in conjunction with the sortBy parameter.
+        /// Sort the results in a given order. Must be used in conjunction with the <see cref="SortBy"/> parameter.
         /// </summary>
         public SortOrder SortOrder;
 

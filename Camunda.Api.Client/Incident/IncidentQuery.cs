@@ -57,7 +57,7 @@ namespace Camunda.Api.Client.Incident
         [JsonProperty("jobDefinitionIdIn")]
         public List<string> JobDefinitionIds = new List<string>();
         /// <summary>
-        /// Sort the results lexicographically by a given criterion. Must be used in conjunction with the <see cref="SortBy"/>.
+        /// Sort the results lexicographically by a given criterion. Must be used in conjunction with the <see cref="SortOrder"/>.
         /// </summary>
         public IncidentSorting SortBy;
         /// <summary>
