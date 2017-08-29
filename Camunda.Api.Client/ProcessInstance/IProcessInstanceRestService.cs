@@ -23,11 +23,11 @@ namespace Camunda.Api.Client.ProcessInstance
         [Delete("/process-instance/{processInstanceId}")]
         Task DeleteProcessInstance(string processInstanceId);
 
-        [Put("/process-instance/suspended"), UniqueName("UpdateSuspensionState")]
+        [Put("/process-instance/suspended")]
         Task UpdateSuspensionState([Body] ProcessInstanceSuspensionState state);
 
-        [Put("/process-instance/{processInstanceId}/suspended"), UniqueName("UpdateSuspensionStateForId")]
-        Task UpdateSuspensionState(string processInstanceId, [Body] SuspensionState state);
+        [Put("/process-instance/{processInstanceId}/suspended")]
+        Task UpdateSuspensionStateForId(string processInstanceId, [Body] SuspensionState state);
 
         [Post("/process-instance/{processInstanceId}/modification")]
         Task ModifyProcessInstance(string processInstanceId, [Body] ProcessInstanceModification modification);

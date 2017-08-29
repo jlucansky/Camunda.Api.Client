@@ -26,8 +26,8 @@ namespace Camunda.Api.Client.Job
         [Put("/job/{jobId}/duedate")]
         Task SetJobDuedate(string jobId, [Body] JobDuedateInfo duedate);
 
-        [Put("/job/{jobId}/suspended"), UniqueName("UpdateSuspensionStateForId")]
-        Task UpdateSuspensionState(string jobId, [Body] SuspensionState state);
+        [Put("/job/{jobId}/suspended")]
+        Task UpdateSuspensionStateForId(string jobId, [Body] SuspensionState state);
 
         [Put("/job/suspended")]
         Task UpdateSuspensionState([Body] JobSuspensionState state);

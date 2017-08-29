@@ -28,7 +28,7 @@ namespace Camunda.Api.Client.ProcessInstance
         /// </summary>
         public Task<ActivityInstanceInfo> GetActivityInstance() => _api.GetActivityInstanceTree(_processInstanceId);
 
-        public Task UpdateSuspensionState(bool suspended) => _api.UpdateSuspensionState(_processInstanceId, new SuspensionState() { Suspended = suspended });
+        public Task UpdateSuspensionState(bool suspended) => _api.UpdateSuspensionStateForId(_processInstanceId, new SuspensionState() { Suspended = suspended });
 
         /// <summary>
         /// Submits a list of modification instructions to change a process instance's execution state.
