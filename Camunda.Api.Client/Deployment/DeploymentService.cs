@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 
 namespace Camunda.Api.Client.Deployment
 {
@@ -28,11 +29,13 @@ namespace Camunda.Api.Client.Deployment
         /// <param name="tenantId">The tenant id for the deployment to be created.</param>
         public Task<DeploymentInfo> Create(string deploymentName, bool duplicateFiltering, bool changedOnly, string deploymentSource, string tenantId = null,
             params ResourceDataContent[] resources) => _api.Create(
-                    new PlainTextContent("deployment-name", deploymentName),
-                    new PlainTextContent("enable-duplicate-filtering", duplicateFiltering.ToString().ToLower()),
-                    new PlainTextContent("deploy-changed-only", changedOnly.ToString().ToLower()),
-                    new PlainTextContent("deployment-source", deploymentSource ?? "undefined"),
-                    tenantId == null ? null : new PlainTextContent("tenant-id", tenantId), resources);
+                new HttpContentMultipartItem<PlainTextContent>(new PlainTextContent("deployment-name", deploymentName)),
+                new HttpContentMultipartItem<PlainTextContent>(new PlainTextContent("enable-duplicate-filtering", duplicateFiltering.ToString().ToLower())),
+                new HttpContentMultipartItem<PlainTextContent>(new PlainTextContent("deploy-changed-only", changedOnly.ToString().ToLower())),
+                new HttpContentMultipartItem<PlainTextContent>(new PlainTextContent("deployment-source", deploymentSource ?? "undefined")),
+                tenantId == null ? null : new HttpContentMultipartItem<PlainTextContent>(new PlainTextContent("tenant-id", tenantId)),
+                resources.Select(r => new HttpContentMultipartItem<ResourceDataContent>(r)).ToArray());
+
 
         /// <summary>
         /// Create a deployment.
