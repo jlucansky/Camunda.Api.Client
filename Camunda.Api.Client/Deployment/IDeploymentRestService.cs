@@ -32,8 +32,10 @@ namespace Camunda.Api.Client.Deployment
         Task<HttpResponseMessage> GetDeploymentResourceData(string deploymentId, string resourceId);
 
         [Post("/deployment/create"), Multipart]
-        Task<DeploymentInfo> Create(PlainTextContent deploymentName, PlainTextContent enableDuplicateFiltering,
-            PlainTextContent deployChangedOnly, PlainTextContent deploymentSource, PlainTextContent tenantId, IEnumerable<ResourceDataContent> resources);
+        Task<DeploymentInfo> Create(HttpContentMultipartItem<PlainTextContent> deploymentName, HttpContentMultipartItem<PlainTextContent> enableDuplicateFiltering,
+            HttpContentMultipartItem<PlainTextContent> deployChangedOnly, HttpContentMultipartItem<PlainTextContent> deploymentSource,
+            HttpContentMultipartItem<PlainTextContent> tenantId, params HttpContentMultipartItem<ResourceDataContent>[] resources);
+
 
     }
 }
