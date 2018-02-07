@@ -42,9 +42,9 @@ namespace Camunda.Api.Client
         private string _hostUrl;
         private HttpClient _httpClient;
 
-        private static readonly RefitSettings _refitSettings;
-        private static readonly JsonSerializerSettings _jsonSerializerSettings;
-        private static readonly ErrorMessageHandler _errorMessageHandler;
+        private RefitSettings _refitSettings;
+        private static JsonSerializerSettings _jsonSerializerSettings;
+        private HttpMessageHandler _httpMessageHandler;
 
         internal static JsonSerializerSettings JsonSerializerSettings => _jsonSerializerSettings;
 
@@ -57,18 +57,25 @@ namespace Camunda.Api.Client
             public Lazy<IHistoricVariableInstanceRestService> VariableInstanceApi;
         }
 
-        static CamundaClient()
-        {
-            _errorMessageHandler = new ErrorMessageHandler();
+        static CamundaClient() {
 
-            _jsonSerializerSettings = new JsonSerializerSettings
+            _jsonSerializerSettings = _jsonSerializerSettings ?? new JsonSerializerSettings
             {
                 ContractResolver = new CustomCamelCasePropertyNamesContractResolver(),
                 NullValueHandling = NullValueHandling.Ignore, // not send empty fields
             };
+
             _jsonSerializerSettings.Converters.Add(new StringEnumConverter());
 
-            _refitSettings = new RefitSettings { JsonSerializerSettings = _jsonSerializerSettings, HttpMessageHandlerFactory = () => _errorMessageHandler };
+        }
+
+        private void Initialize()
+        {
+            _httpMessageHandler = _httpMessageHandler ?? new ErrorMessageHandler();
+
+           
+
+            _refitSettings = _refitSettings ?? new RefitSettings { JsonSerializerSettings = _jsonSerializerSettings, HttpMessageHandlerFactory = () => _httpMessageHandler };
         }
 
         private class CustomCamelCasePropertyNamesContractResolver : CamelCasePropertyNamesContractResolver
@@ -80,12 +87,21 @@ namespace Camunda.Api.Client
         private CamundaClient(string hostUrl)
         {
             _hostUrl = hostUrl;
+            Initialize();
             CreateServices();
         }
 
         private CamundaClient(HttpClient httpClient)
         {
             _httpClient = httpClient;
+            Initialize();
+            CreateServices();
+        }
+
+        private CamundaClient(string hostUrl, HttpMessageHandler httpMessageHandler) {
+            _hostUrl = hostUrl;
+            _httpMessageHandler = httpMessageHandler;
+            Initialize();
             CreateServices();
         }
 
@@ -125,6 +141,11 @@ namespace Camunda.Api.Client
         public static CamundaClient Create(string hostUrl)
         {
             return new CamundaClient(hostUrl);
+        }
+
+        public static CamundaClient Create(string hostUrl, HttpMessageHandler httpMessageHandler)
+        {
+            return new CamundaClient(hostUrl, httpMessageHandler);
         }
 
         public static CamundaClient Create(HttpClient httpClient)
