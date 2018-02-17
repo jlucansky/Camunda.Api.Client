@@ -13,6 +13,7 @@
     <PackageIconUrl>https://avatars3.githubusercontent.com/u/2443838?s=230</PackageIconUrl>
     <Description>Camunda REST API Client for .NET platform</Description>
     <PackageTags>camunda rest refit bpmn bpm</PackageTags>
+    <PackageReleaseNotes>Support for .NET Standard 2.0</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
