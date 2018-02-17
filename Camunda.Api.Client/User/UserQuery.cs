@@ -1,9 +1,6 @@
-﻿using Refit;
-using System.Collections.Generic;
-
-namespace Camunda.Api.Client.User
+﻿namespace Camunda.Api.Client.User
 {
-    public class UserQuery : IQueryParameters
+    public class UserQuery : QueryParameters
     {
         /// <summary>
         /// Filter by the id of the user.
@@ -50,8 +47,6 @@ namespace Camunda.Api.Client.User
         /// Sort the results in a given order. Must be used in conjunction with the <see cref="SortBy"/>.
         /// </summary>
         public SortOrder SortOrder;
-
-        IDictionary<string, string> IQueryParameters.GetParameters() => this.CreateQueryParameters();
     }
 
     public enum UserSorting

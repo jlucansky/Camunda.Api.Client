@@ -8,10 +8,10 @@ namespace Camunda.Api.Client.Deployment
     internal interface IDeploymentRestService
     {
         [Get("/deployment")]
-        Task<List<DeploymentInfo>> GetList(DeploymentQuery query, int? firstResult, int? maxResults);
+        Task<List<DeploymentInfo>> GetList(QueryDictionary query, int? firstResult, int? maxResults);
 
         [Get("/deployment/count")]
-        Task<CountResult> GetListCount(DeploymentQuery query);
+        Task<CountResult> GetListCount(QueryDictionary query);
 
         [Get("/deployment/{id}")]
         Task<DeploymentInfo> Get(string id);

@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
-using Refit;
 using System.Collections.Generic;
 
 namespace Camunda.Api.Client.History
 {
-    public class HistoricIncidentQuery : IQueryParameters
+    public class HistoricIncidentQuery : QueryParameters
     {
         /// <summary>
         /// Restricts to incidents that have the given id.
@@ -76,8 +75,6 @@ namespace Camunda.Api.Client.History
         /// Sort the results in a given order. Must be used in conjunction with the <see cref="SortBy"/>.
         /// </summary>
         public SortOrder SortOrder;
-
-        IDictionary<string, string> IQueryParameters.GetParameters() => this.CreateQueryParameters();
     }
 
     public enum HistoricIncidentQuerySorting

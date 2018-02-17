@@ -7,10 +7,10 @@ namespace Camunda.Api.Client.User
     internal interface IUserRestService
     {
         [Get("/user")]
-        Task<List<UserProfileInfo>> GetList(UserQuery query, int? firstResult, int? maxResults);
+        Task<List<UserProfileInfo>> GetList(QueryDictionary query, int? firstResult, int? maxResults);
 
         [Get("/user/count")]
-        Task<CountResult> GetListCount(UserQuery query);
+        Task<CountResult> GetListCount(QueryDictionary query);
 
         [Get("/user/{id}/profile")]
         Task<UserProfileInfo> GetProfile(string id);
