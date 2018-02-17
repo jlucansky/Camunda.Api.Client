@@ -1,28 +1,38 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Refit;
 using System.Collections.Generic;
 
 namespace Camunda.Api.Client
 {
-    internal static class QueryExtensions
+    public abstract class QueryParameters
     {
-        public static IDictionary<string, string> CreateQueryParameters(this IQueryParameters query)
+        public static implicit operator QueryDictionary(QueryParameters query)
         {
-            Dictionary<string, string> result = new Dictionary<string, string>();
+            QueryDictionary result = new QueryDictionary();
             var json = JsonConvert.DeserializeObject<Dictionary<string, JToken>>(JsonConvert.SerializeObject(query, CamundaClient.JsonSerializerSettings), CamundaClient.JsonSerializerSettings);
 
             foreach (var item in json)
             {
+                string value;
+
                 if (item.Value is JArray) // separate array items by comma
-                    result.Add(item.Key, string.Join(",", item.Value.ToObject<string[]>()));
+                    value = string.Join(",", item.Value.ToObject<string[]>());
                 else if (item.Value.Type == JTokenType.Boolean) // True/False convert to lowercase
-                    result.Add(item.Key, item.Value.ToObject<string>().ToLower());
+                    value = item.Value.ToObject<string>().ToLower();
                 else
-                    result.Add(item.Key, item.Value.ToObject<string>());
+                    value = item.Value.ToObject<string>();
+
+                if (!string.IsNullOrEmpty(value))
+                    result.Add(item.Key, value);
             }
 
             return result;
         }
+        
+    }
+
+    public class QueryDictionary : Dictionary<string, string>
+    {
+
     }
 }

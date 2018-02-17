@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
-using Refit;
 using System.Collections.Generic;
 
 namespace Camunda.Api.Client.Incident
 {
-    public class IncidentQuery : IQueryParameters
+    public class IncidentQuery : QueryParameters
     {
         /// <summary>
         /// Restricts to incidents that have the given id.
@@ -64,8 +63,6 @@ namespace Camunda.Api.Client.Incident
         /// Sort the results in a given order. Must be used in conjunction with the <see cref="SortBy"/>.
         /// </summary>
         public SortOrder SortOrder;
-
-        IDictionary<string, string> IQueryParameters.GetParameters() => this.CreateQueryParameters();
     }
 
     public enum IncidentSorting

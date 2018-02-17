@@ -37,7 +37,7 @@ namespace Camunda.Api.Client.Job
         /// <summary>
         /// Activate or suspend a given job by id.
         /// </summary>
-        public Task UpdateSuspensionState(bool suspended) => _api.UpdateSuspensionState(_jobId, new SuspensionState() { Suspended = suspended });
+        public Task UpdateSuspensionState(bool suspended) => _api.UpdateSuspensionStateForId(_jobId, new SuspensionState() { Suspended = suspended });
 
         /// <summary>
         /// Sets the execution priority of a job.

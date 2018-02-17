@@ -8,10 +8,10 @@ namespace Camunda.Api.Client.Deployment
     internal interface IDeploymentRestService
     {
         [Get("/deployment")]
-        Task<List<DeploymentInfo>> GetList(DeploymentQuery query, int? firstResult, int? maxResults);
+        Task<List<DeploymentInfo>> GetList(QueryDictionary query, int? firstResult, int? maxResults);
 
         [Get("/deployment/count")]
-        Task<CountResult> GetListCount(DeploymentQuery query);
+        Task<CountResult> GetListCount(QueryDictionary query);
 
         [Get("/deployment/{id}")]
         Task<DeploymentInfo> Get(string id);
@@ -32,8 +32,10 @@ namespace Camunda.Api.Client.Deployment
         Task<HttpResponseMessage> GetDeploymentResourceData(string deploymentId, string resourceId);
 
         [Post("/deployment/create"), Multipart]
-        Task<DeploymentInfo> Create(PlainTextContent deploymentName, PlainTextContent enableDuplicateFiltering,
-            PlainTextContent deployChangedOnly, PlainTextContent deploymentSource, PlainTextContent tenantId, IEnumerable<ResourceDataContent> resources);
+        Task<DeploymentInfo> Create(HttpContentMultipartItem<PlainTextContent> deploymentName, HttpContentMultipartItem<PlainTextContent> enableDuplicateFiltering,
+            HttpContentMultipartItem<PlainTextContent> deployChangedOnly, HttpContentMultipartItem<PlainTextContent> deploymentSource,
+            HttpContentMultipartItem<PlainTextContent> tenantId, params HttpContentMultipartItem<ResourceDataContent>[] resources);
+
 
     }
 }

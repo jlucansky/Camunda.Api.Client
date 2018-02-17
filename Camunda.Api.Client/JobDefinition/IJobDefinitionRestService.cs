@@ -18,8 +18,8 @@ namespace Camunda.Api.Client.JobDefinition
         [Put("/job-definition/suspended")]
         Task UpdateSuspensionState(JobDefinitionSuspensionState state);
 
-        [Put("/job-definition/{jobDefinitionId}/suspended"), UniqueName("UpdateSuspensionStateForId")]
-        Task UpdateSuspensionState(string jobDefinitionId, [Body] SuspensionState suspensionState);
+        [Put("/job-definition/{jobDefinitionId}/suspended")]
+        Task UpdateSuspensionStateForId(string jobDefinitionId, [Body] SuspensionState suspensionState);
 
         [Put("/job-definition/{jobDefinitionId}/retries")]
         Task SetJobRetries(string jobDefinitionId, [Body] RetriesInfo retries);

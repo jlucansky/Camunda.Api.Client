@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Refit;
 using System;
 using System.Collections.Generic;
 
 namespace Camunda.Api.Client.Deployment
 {
-    public class DeploymentQuery : IQueryParameters
+    public class DeploymentQuery : QueryParameters
     {
         /// <summary>
         /// Filter by deployment id.
@@ -56,8 +55,6 @@ namespace Camunda.Api.Client.Deployment
         /// Sort the results in a given order. Must be used in conjunction with the <see cref="SortBy"/> parameter.
         /// </summary>
         public SortOrder SortOrder;
-
-        IDictionary<string, string> IQueryParameters.GetParameters() => this.CreateQueryParameters();
     }
 
     public enum DeploymentSorting

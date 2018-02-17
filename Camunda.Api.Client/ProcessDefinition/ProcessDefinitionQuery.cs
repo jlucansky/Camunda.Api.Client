@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
-using Refit;
 using System.Collections.Generic;
 
 namespace Camunda.Api.Client.ProcessDefinition
 {
-    public class ProcessDefinitionQuery : IQueryParameters
+    public class ProcessDefinitionQuery : QueryParameters
     {
         /// <summary>
         /// Filter by process definition id.
@@ -109,11 +108,6 @@ namespace Camunda.Api.Client.ProcessDefinition
         /// Sort the results in a given order. Must be used in conjunction with the <see cref="SortBy"/> parameter.
         /// </summary>
         public SortOrder SortOrder;
-
-        IDictionary<string, string> IQueryParameters.GetParameters()
-        {
-            return this.CreateQueryParameters();
-        }
     }
 
     public enum ProcessDefinitionSorting

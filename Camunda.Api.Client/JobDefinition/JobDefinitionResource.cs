@@ -21,7 +21,7 @@ namespace Camunda.Api.Client.JobDefinition
         /// <summary>
         /// Activate or suspend a given job definition by id.
         /// </summary>
-        public Task UpdateSuspensionState(bool suspended) => _api.UpdateSuspensionState(_jobDefinitionId, new SuspensionState() { Suspended = suspended });
+        public Task UpdateSuspensionState(bool suspended) => _api.UpdateSuspensionStateForId(_jobDefinitionId, new SuspensionState() { Suspended = suspended });
 
         /// <summary>
         /// Set the number of retries of all failed jobs associated with the given job definition id.

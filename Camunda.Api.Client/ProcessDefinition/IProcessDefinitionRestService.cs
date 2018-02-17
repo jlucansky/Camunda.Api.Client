@@ -9,10 +9,10 @@ namespace Camunda.Api.Client.ProcessDefinition
     internal interface IProcessDefinitionRestService
     {
         [Get("/process-definition")]
-        Task<List<ProcessDefinitionInfo>> GetList(ProcessDefinitionQuery query, int? firstResult, int? maxResults);
+        Task<List<ProcessDefinitionInfo>> GetList(QueryDictionary query, int? firstResult, int? maxResults);
 
         [Get("/process-definition/count")]
-        Task<CountResult> GetListCount(ProcessDefinitionQuery query);
+        Task<CountResult> GetListCount(QueryDictionary query);
 
         [Get("/process-definition/statistics")]
         Task<List<ProcessDefinitionStatisticsResult>> GetProcessInstanceStatistics(bool failedJobs, bool? incidents, string incidentsForType);

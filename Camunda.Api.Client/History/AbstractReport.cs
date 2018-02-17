@@ -1,10 +1,8 @@
-﻿using Refit;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace Camunda.Api.Client.History
 {
-    public abstract class AbstractReport : IQueryParameters
+    public abstract class AbstractReport : QueryParameters
     {
         /// <summary>
         /// Specifies the granularity of the report.
@@ -14,8 +12,6 @@ namespace Camunda.Api.Client.History
         /// Specifies the type of the report to retrieve.
         /// </summary>
         public ReportType ReportType;
-
-        IDictionary<string, string> IQueryParameters.GetParameters() => this.CreateQueryParameters();
     }
 
     public enum PeriodUnit
