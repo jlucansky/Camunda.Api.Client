@@ -32,7 +32,11 @@ namespace Camunda.Api.Client.Deployment
         /// <summary>
         /// // Deletes a deployment.
         /// </summary>
-        public Task Delete() => _api.Delete(_deploymentId);
+        /// <param name="cascade">true, if all process instances, historic process instances and jobs for this deployment should be deleted.</param>
+        /// <param name="skipCustomListeners">true, if only the built-in ExecutionListeners should be notified with the end event.</param>
+        /// <param name="skipIoMappings">true, if all input/output mappings should not be invoked.</param>
+        public Task Delete(bool cascade = false, bool skipCustomListeners = false, bool skipIoMappings = false) => _api.Delete(_deploymentId, 
+            cascade, skipCustomListeners, skipIoMappings);
 
         public override string ToString() => _deploymentId;
     }

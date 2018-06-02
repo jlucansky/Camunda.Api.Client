@@ -20,7 +20,7 @@ namespace Camunda.Api.Client.Deployment
         Task<DeploymentInfo> Redeploy(string id, [Body] RedeploymentInfo redeployment);
 
         [Delete("/deployment/{id}")]
-        Task Delete(string id);
+        Task Delete(string id, bool cascade, bool skipCustomListeners, bool skipIoMappings);
 
         [Get("/deployment/{deploymentId}/resources")]
         Task<List<DeploymentResourceInfo>> GetDeploymentResources(string deploymentId);
