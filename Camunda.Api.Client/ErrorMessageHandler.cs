@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Camunda.Api.Client
 {
-    internal sealed class ErrorMessageHandler : HttpClientHandler
+    public class ErrorMessageHandler : HttpClientHandler
     {
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
