@@ -22,6 +22,7 @@ Each part listed below is fully covered according to https://docs.camunda.org/ma
 - [x] [Task](https://docs.camunda.org/manual/7.6/reference/rest/task/)
 - [x] [User](https://docs.camunda.org/manual/7.6/reference/rest/user/)
 - [x] [Variable Instance](https://docs.camunda.org/manual/7.6/reference/rest/variable-instance/)
+- [x] [Group](https://docs.camunda.org/manual/7.6/reference/rest/group/)
 
 ## Install
 The Camunda REST API Client is available on [nuget.org](https://www.nuget.org/packages/Camunda.Api.Client)
