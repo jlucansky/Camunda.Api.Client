@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Camunda.Api.Client.Group
+﻿namespace Camunda.Api.Client.Group
 {
-	public class GroupInfo
+    public class GroupInfo
 	{
 		/// <summary>
 		/// The id of the group

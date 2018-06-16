@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Camunda.Api.Client.Group
+﻿namespace Camunda.Api.Client.Group
 {
     public class GroupQuery: QueryParameters
 	{
