@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
     <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>    
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.0.1</Version>
+    <Version>2.0.2</Version>
     <Product>Camunda REST API Client</Product>
     <Company />
     <Authors>Jan Lucansky</Authors>
@@ -14,8 +14,8 @@
     <Description>Camunda REST API Client for .NET platform</Description>
     <PackageTags>camunda rest refit bpmn bpm</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <AssemblyVersion>2.0.1.0</AssemblyVersion>
-    <FileVersion>2.0.1.0</FileVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
     <RepositoryType></RepositoryType>
   </PropertyGroup>
 
