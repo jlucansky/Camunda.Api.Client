@@ -8,6 +8,7 @@ Each part listed below is fully covered according to https://docs.camunda.org/ma
 - [x] [Deployment](https://docs.camunda.org/manual/7.6/reference/rest/deployment/)
 - [x] [Execution](https://docs.camunda.org/manual/7.6/reference/rest/execution/)
 - [x] [External Task](https://docs.camunda.org/manual/7.6/reference/rest/external-task/)
+- [x] [Group](https://docs.camunda.org/manual/7.6/reference/rest/group/)
 - [x] [History / Activity Instance](https://docs.camunda.org/manual/7.6/reference/rest/history/activity-instance/)
 - [x] [History / Incident](https://docs.camunda.org/manual/7.6/reference/rest/history/incident/)
 - [x] [History / Job Log](https://docs.camunda.org/manual/7.6/reference/rest/history/job-log/)
@@ -22,7 +23,6 @@ Each part listed below is fully covered according to https://docs.camunda.org/ma
 - [x] [Task](https://docs.camunda.org/manual/7.6/reference/rest/task/)
 - [x] [User](https://docs.camunda.org/manual/7.6/reference/rest/user/)
 - [x] [Variable Instance](https://docs.camunda.org/manual/7.6/reference/rest/variable-instance/)
-- [x] [Group](https://docs.camunda.org/manual/7.6/reference/rest/group/)
 
 ## Install
 The Camunda REST API Client is available on [nuget.org](https://www.nuget.org/packages/Camunda.Api.Client)
