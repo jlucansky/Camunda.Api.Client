@@ -8,6 +8,7 @@ Each part listed below is fully covered according to https://docs.camunda.org/ma
 - [x] [Deployment](https://docs.camunda.org/manual/7.6/reference/rest/deployment/)
 - [x] [Execution](https://docs.camunda.org/manual/7.6/reference/rest/execution/)
 - [x] [External Task](https://docs.camunda.org/manual/7.6/reference/rest/external-task/)
+- [x] [Group](https://docs.camunda.org/manual/7.6/reference/rest/group/)
 - [x] [History / Activity Instance](https://docs.camunda.org/manual/7.6/reference/rest/history/activity-instance/)
 - [x] [History / Detail](https://docs.camunda.org/manual/7.6/reference/rest/history/detail/)
 - [x] [History / Incident](https://docs.camunda.org/manual/7.6/reference/rest/history/incident/)

@@ -17,6 +17,7 @@ using Camunda.Api.Client.Job;
 using Camunda.Api.Client.Incident;
 using Camunda.Api.Client.History;
 using Camunda.Api.Client.User;
+using Camunda.Api.Client.Group;
 
 using System.Net.Http;
 
@@ -36,8 +37,9 @@ namespace Camunda.Api.Client
         private Lazy<IJobRestService> _jobApi;
         private Lazy<IIncidentRestService> _incidentApi;
         private Lazy<IUserRestService> _userApi;
+		private Lazy<IGroupRestService> _groupApi;
 
-        private HistoricApi _historicApi;
+		private HistoricApi _historicApi;
 
         private string _hostUrl;
         private HttpClient _httpClient;
@@ -122,8 +124,9 @@ namespace Camunda.Api.Client
             _jobDefinitionApi = CreateService<IJobDefinitionRestService>();
             _jobApi = CreateService<IJobRestService>();
             _incidentApi = CreateService<IIncidentRestService>();
+			_groupApi = CreateService<IGroupRestService>();
 
-            _historicApi = new HistoricApi()
+			_historicApi = new HistoricApi()
             {
                 ProcessInstanceApi = CreateService<IHistoricProcessInstanceRestService>(),
                 ActivityInstanceApi = CreateService<IHistoricActivityInstanceRestService>(),
@@ -196,5 +199,8 @@ namespace Camunda.Api.Client
 
         /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/history/"/>
         public HistoryService History => new HistoryService(_historicApi);
-    }
+
+		/// <see href="https://docs.camunda.org/manual/7.6/reference/rest/group/"/>
+		public GroupService Group => new GroupService(_groupApi.Value);
+	}
 }
