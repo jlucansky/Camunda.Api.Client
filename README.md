@@ -9,6 +9,7 @@ Each part listed below is fully covered according to https://docs.camunda.org/ma
 - [x] [Execution](https://docs.camunda.org/manual/7.6/reference/rest/execution/)
 - [x] [External Task](https://docs.camunda.org/manual/7.6/reference/rest/external-task/)
 - [x] [History / Activity Instance](https://docs.camunda.org/manual/7.6/reference/rest/history/activity-instance/)
+- [x] [History / Detail](https://docs.camunda.org/manual/7.6/reference/rest/history/detail/)
 - [x] [History / Incident](https://docs.camunda.org/manual/7.6/reference/rest/history/incident/)
 - [x] [History / Job Log](https://docs.camunda.org/manual/7.6/reference/rest/history/job-log/)
 - [x] [History / Process Instance](https://docs.camunda.org/manual/7.6/reference/rest/history/process-instance/)
