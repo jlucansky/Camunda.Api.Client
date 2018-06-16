@@ -44,7 +44,7 @@ namespace Camunda.Api.Client.History
         /// <summary>
         /// Case instance id
         /// </summary>
-       public string CaseInstanceId;
+        public string CaseInstanceId;
         /// <summary>
         /// Case execution id
         /// </summary>
@@ -64,7 +64,7 @@ namespace Camunda.Api.Client.History
         /// <summary>
         /// Time
         /// </summary>
-        public string Time;
+        public DateTime Time;
         /// <summary>
         /// Variable name
         /// </summary>
@@ -84,15 +84,24 @@ namespace Camunda.Api.Client.History
         /// <summary>
         /// Revision
         /// </summary>
-        public string revision;
+        public string Revision;
         /// <summary>
         /// Error message
         /// </summary>
-          public string errorMessage;
+        public string ErrorMessage;
         /// <summary>
         /// Value info
         /// </summary>
-        public Dictionary<string, object> ValueInfo; 
+        public Dictionary<string, object> ValueInfo;
+        /// <summary>
+        /// The id of the form field.
+        /// </summary>
+        public string FieldId;
+        /// <summary>
+        /// The submitted value.
+        /// </summary>
+        public object FieldValue;
+
         /// <summary>
         /// To string implementation
         /// </summary>
