@@ -1,4 +1,6 @@
-﻿namespace Camunda.Api.Client.History
+﻿using System.Runtime.Serialization;
+
+namespace Camunda.Api.Client.History
 {
     public class HistoricVariableInstance : VariableValue
     {
@@ -58,7 +60,20 @@
         /// An error message in case a Java Serialized Object could not be de-serialized.
         /// </summary>
         public string TenantId;
+        /// <summary>
+        /// State property.
+        /// </summary>
+        public HistoricVariableInstanceState State;
 
         public override string ToString() => $"{Name} = {base.ToString()}";
+    }
+
+    public enum HistoricVariableInstanceState
+    {
+        /// <summary>
+        /// Created
+        /// </summary>
+        [EnumMember(Value = "CREATED")]
+        Created,
     }
 }
