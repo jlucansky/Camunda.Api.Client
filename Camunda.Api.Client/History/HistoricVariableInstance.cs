@@ -61,7 +61,7 @@ namespace Camunda.Api.Client.History
         /// </summary>
         public string TenantId;
         /// <summary>
-        /// State property.
+        /// The current state of the variable. 
         /// </summary>
         public HistoricVariableInstanceState State;
 
@@ -75,5 +75,11 @@ namespace Camunda.Api.Client.History
         /// </summary>
         [EnumMember(Value = "CREATED")]
         Created,
+
+        /// <summary>
+        /// Deleted
+        /// </summary>
+        [EnumMember(Value = "DELETED")]
+        Deleted,
     }
 }
