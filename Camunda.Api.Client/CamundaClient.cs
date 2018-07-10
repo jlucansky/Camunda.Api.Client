@@ -1,8 +1,11 @@
-﻿
+﻿using System;
+using System.Net.Http;
+using System.Reflection;
+using System.Globalization;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Refit;
-using System;
 
 using Camunda.Api.Client.Deployment;
 using Camunda.Api.Client.Execution;
@@ -18,8 +21,6 @@ using Camunda.Api.Client.Incident;
 using Camunda.Api.Client.History;
 using Camunda.Api.Client.User;
 using Camunda.Api.Client.Group;
-
-using System.Net.Http;
 
 namespace Camunda.Api.Client
 {
@@ -77,9 +78,23 @@ namespace Camunda.Api.Client
         {
             _httpMessageHandler = _httpMessageHandler ?? new ErrorMessageHandler();
 
+            _refitSettings = _refitSettings ?? new RefitSettings
+            {
+                JsonSerializerSettings = _jsonSerializerSettings,
+                UrlParameterFormatter = new CustomUrlParameterFormatter(),
+                HttpMessageHandlerFactory = () => _httpMessageHandler
+            };
+        }
 
-
-            _refitSettings = _refitSettings ?? new RefitSettings { JsonSerializerSettings = _jsonSerializerSettings, HttpMessageHandlerFactory = () => _httpMessageHandler };
+        private class CustomUrlParameterFormatter : DefaultUrlParameterFormatter
+        {
+            public override string Format(object parameterValue, ParameterInfo parameterInfo)
+            {
+                if (parameterValue is bool)
+                    return string.Format(CultureInfo.InvariantCulture, "{0}", parameterValue).ToLower();
+                else
+                    return base.Format(parameterValue, parameterInfo);
+            }
         }
 
         private class CustomCamelCasePropertyNamesContractResolver : CamelCasePropertyNamesContractResolver
