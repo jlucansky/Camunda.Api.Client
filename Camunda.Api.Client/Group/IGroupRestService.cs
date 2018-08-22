@@ -23,5 +23,11 @@ namespace Camunda.Api.Client.Group
 
 		[Delete("/group/{id}")]
 		Task Delete(string id);
-	}
+
+        [Put("/group/{id}/members/{userId}")]
+        Task AddMember(string id, string userId);
+
+        [Delete("/group/{id}/members/{userId}")]
+        Task RemoveMember(string id, string userId);
+    }
 }
