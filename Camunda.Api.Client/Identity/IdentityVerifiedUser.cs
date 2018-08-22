@@ -13,7 +13,7 @@ namespace Camunda.Api.Client.Identity
         /// <summary>
         /// Verification successful or not
         /// </summary>
-        public bool IsAuthenticated;
+        public bool Authenticated;
 
     }
 }
