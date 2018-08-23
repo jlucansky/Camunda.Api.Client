@@ -14,12 +14,12 @@ namespace Camunda.Api.Client.Identity
         /// List of groups the user is a member of
         /// </summary>
         [JsonProperty("groups")]
-        List<IdentityGroup> Groups { get; set; }
+        public List<IdentityGroup> Groups { get; set; }
         /// <summary>
         /// List of users who are members of any of the groups 
         /// </summary>
         [JsonProperty("groupUsers")]
-        List<IdentityUser> GroupUsers { get; set; }
+        public List<IdentityUser> GroupUsers { get; set; }
     }
 
     public class IdentityGroup
