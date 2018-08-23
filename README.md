@@ -15,7 +15,7 @@ Each part listed below is fully covered according to https://docs.camunda.org/ma
 - [x] [History / Job Log](https://docs.camunda.org/manual/7.6/reference/rest/history/job-log/)
 - [x] [History / Process Instance](https://docs.camunda.org/manual/7.6/reference/rest/history/process-instance/)
 - [x] [History / Variable Instance](https://docs.camunda.org/manual/7.6/reference/rest/history/variable-instance/)
-- [x] [Identity](https://docs.camunda.org/manual/7.7/reference/rest/identity/)
+- [x] [Identity](https://docs.camunda.org/manual/7.7/reference/rest/identity/) (Camunda 7.7 and later)
 - [x] [Incident](https://docs.camunda.org/manual/7.6/reference/rest/incident/)
 - [X] [Job](https://docs.camunda.org/manual/7.6/reference/rest/job/)
 - [x] [Job Definition](https://docs.camunda.org/manual/7.6/reference/rest/job-definition/)
