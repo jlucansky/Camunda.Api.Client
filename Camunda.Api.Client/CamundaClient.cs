@@ -7,6 +7,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Refit;
 
+using Camunda.Api.Client.CaseDefinition;
+using Camunda.Api.Client.CaseExecution;
+using Camunda.Api.Client.DecisionDefinition;
 using Camunda.Api.Client.Deployment;
 using Camunda.Api.Client.Execution;
 using Camunda.Api.Client.ExternalTask;
@@ -20,12 +23,18 @@ using Camunda.Api.Client.Job;
 using Camunda.Api.Client.Incident;
 using Camunda.Api.Client.History;
 using Camunda.Api.Client.User;
-using Camunda.Api.Client.Group;
+using Camunda.Api.Client.Tenant;
+
+using System.Net.Http;
+using System.Reflection;
 
 namespace Camunda.Api.Client
 {
     public class CamundaClient
     {
+        private Lazy<ICaseDefinitionRestService> _caseDefinitionRestService;
+        private Lazy<ICaseExecutionRestService> _caseExecutionRestService;
+        private Lazy<IDecisionDefinitionRestService> _decisionDefinitionRestService;
         private Lazy<IExternalTaskRestService> _externalTaskApi;
         private Lazy<IProcessInstanceRestService> _processInstanceApi;
         private Lazy<IVariableInstanceRestService> _variableInstanceApi;
@@ -37,6 +46,7 @@ namespace Camunda.Api.Client
         private Lazy<IJobDefinitionRestService> _jobDefinitionApi;
         private Lazy<IJobRestService> _jobApi;
         private Lazy<IIncidentRestService> _incidentApi;
+        private Lazy<ITenantRestService> _tenantApi;
         private Lazy<IUserRestService> _userApi;
 		private Lazy<IGroupRestService> _groupApi;
 
@@ -53,6 +63,10 @@ namespace Camunda.Api.Client
 
         internal class HistoricApi
         {
+            public Lazy<IHistoricCaseDefinitionRestService> CaseDefinitionApi;
+            public Lazy<IHistoricCaseInstanceRestService> CaseInstanceApi;
+            public Lazy<IHistoricCaseActivityInstanceRestService> CaseActivityInstanceApi;
+            public Lazy<IHistoricDecisionInstanceRestService> DecisionInstanceApi;
             public Lazy<IHistoricProcessInstanceRestService> ProcessInstanceApi;
             public Lazy<IHistoricActivityInstanceRestService> ActivityInstanceApi;
             public Lazy<IHistoricJobLogRestService> JobLogApi;
@@ -71,7 +85,6 @@ namespace Camunda.Api.Client
             };
 
             _jsonSerializerSettings.Converters.Add(new StringEnumConverter());
-
         }
 
         private void Initialize()
@@ -81,8 +94,8 @@ namespace Camunda.Api.Client
             _refitSettings = _refitSettings ?? new RefitSettings
             {
                 JsonSerializerSettings = _jsonSerializerSettings,
+                HttpMessageHandlerFactory = () => _httpMessageHandler,
                 UrlParameterFormatter = new CustomUrlParameterFormatter(),
-                HttpMessageHandlerFactory = () => _httpMessageHandler
             };
         }
 
@@ -101,6 +114,17 @@ namespace Camunda.Api.Client
         {
             // preserve exact dictionary key
             protected override string ResolveDictionaryKey(string dictionaryKey) => dictionaryKey;
+        }
+
+        private class CustomUrlParameterFormatter : DefaultUrlParameterFormatter
+        {
+            public override string Format(object value, ParameterInfo parameterInfo)
+            {
+                // Lower-case booleans
+                if (value != null && value is bool asBool) return value.ToString().ToLower();
+
+                return base.Format(value, parameterInfo);
+            }
         }
 
         private CamundaClient(string hostUrl)
@@ -127,12 +151,16 @@ namespace Camunda.Api.Client
 
         private void CreateServices()
         {
+            _caseDefinitionRestService = CreateService<ICaseDefinitionRestService>();
+            _caseExecutionRestService = CreateService<ICaseExecutionRestService>();
+            _decisionDefinitionRestService = CreateService<IDecisionDefinitionRestService>();
             _userApi = CreateService<IUserRestService>();
             _externalTaskApi = CreateService<IExternalTaskRestService>();
             _processInstanceApi = CreateService<IProcessInstanceRestService>();
             _variableInstanceApi = CreateService<IVariableInstanceRestService>();
             _processDefinitionApi = CreateService<IProcessDefinitionRestService>();
             _deploymentApi = CreateService<IDeploymentRestService>();
+            _tenantApi = CreateService<ITenantRestService>();
             _userTaskApi = CreateService<IUserTaskRestService>();
             _executionApi = CreateService<IExecutionRestService>();
             _messageApi = CreateService<IMessageRestService>();
@@ -143,6 +171,10 @@ namespace Camunda.Api.Client
 
 			_historicApi = new HistoricApi()
             {
+                CaseDefinitionApi = CreateService<IHistoricCaseDefinitionRestService>(),
+                CaseInstanceApi = CreateService<IHistoricCaseInstanceRestService>(),
+                CaseActivityInstanceApi = CreateService<IHistoricCaseActivityInstanceRestService>(),
+                DecisionInstanceApi = CreateService<IHistoricDecisionInstanceRestService>(),
                 ProcessInstanceApi = CreateService<IHistoricProcessInstanceRestService>(),
                 ActivityInstanceApi = CreateService<IHistoricActivityInstanceRestService>(),
                 JobLogApi = CreateService<IHistoricJobLogRestService>(),
@@ -178,6 +210,15 @@ namespace Camunda.Api.Client
 
         /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/user/"/>
         public UserService Users => new UserService(_userApi.Value);
+
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/case-definition/"/>
+        public CaseDefinitionService CaseDefinitions => new CaseDefinitionService(_caseDefinitionRestService.Value);
+
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/case-execution/"/>
+        public CaseExecutionService CaseExecutions => new CaseExecutionService(_caseExecutionRestService.Value);
+
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/decision-definition/"/>
+        public DecisionDefinitionService DecisionDefinitions => new DecisionDefinitionService(_decisionDefinitionRestService.Value);
 
         /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/external-task/"/>
         public ExternalTaskService ExternalTasks => new ExternalTaskService(_externalTaskApi.Value);
@@ -217,5 +258,8 @@ namespace Camunda.Api.Client
 
 		/// <see href="https://docs.camunda.org/manual/7.6/reference/rest/group/"/>
 		public GroupService Group => new GroupService(_groupApi.Value);
-	}
+
+        /// <see href="https://docs.camunda.org/manual/7.6/reference/rest/tenant/"/>
+        public TenantService Tenants => new TenantService(_tenantApi.Value);
+    }
 }

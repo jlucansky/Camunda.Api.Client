@@ -10,6 +10,26 @@
         }
 
         /// <summary>
+        /// Case Definition
+        /// </summary>
+        public HistoricCaseDefinitionService CaseDefinitions => new HistoricCaseDefinitionService(_api.CaseDefinitionApi.Value);
+
+        /// <summary>
+        /// Case Instance
+        /// </summary>
+        public HistoricCaseInstanceService CaseInstances => new HistoricCaseInstanceService(_api.CaseInstanceApi.Value);
+
+        /// <summary>
+        /// Case Activity Instance
+        /// </summary>
+        public HistoricCaseActivityInstanceService CaseActivityInstances => new HistoricCaseActivityInstanceService(_api.CaseActivityInstanceApi.Value);
+
+        /// <summary>
+        /// Decision Instance
+        /// </summary>
+        public HistoricDecisionInstanceService DecisionInstances => new HistoricDecisionInstanceService(_api.DecisionInstanceApi.Value);
+
+        /// <summary>
         /// Process Instance
         /// </summary>
         public HistoricProcessInstanceService ProcessInstances => new HistoricProcessInstanceService(_api.ProcessInstanceApi.Value);

@@ -30,7 +30,7 @@ namespace Camunda.Api.Client.Deployment
         public Task<DeploymentInfo> Redeploy(RedeploymentInfo redeployment) => _api.Redeploy(_deploymentId, redeployment);
 
         /// <summary>
-        /// // Deletes a deployment.
+        /// Deletes a deployment.
         /// </summary>
         /// <param name="cascade">true, if all process instances, historic process instances and jobs for this deployment should be deleted.</param>
         /// <param name="skipCustomListeners">true, if only the built-in ExecutionListeners should be notified with the end event.</param>
