@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Camunda.Api.Client.Identity
+﻿namespace Camunda.Api.Client.Identity
 {
     internal class IdentityUserCredentials
     {
