@@ -29,12 +29,12 @@ namespace Camunda.Api.Client.Group
 		public Task Delete() => _api.Delete(_groupId);
 
         /// <summary>
-        /// Add a member to a group.
+        /// Adds a member to a group.
         /// </summary>
         public Task AddMember(string userId) => _api.AddMember(_groupId, userId);
 
         /// <summary>
-        /// Remove a member to a group.
+        /// Removes a member from a group.
         /// </summary>
         public Task RemoveMember(string userId) => _api.RemoveMember(_groupId, userId);
 

@@ -220,6 +220,7 @@ namespace Camunda.Api.Client
 
 		/// <see href="https://docs.camunda.org/manual/7.6/reference/rest/group/"/>
 		public GroupService Group => new GroupService(_groupApi.Value);
+
         /// <see href="https://docs.camunda.org/manual/7.8/reference/rest/identity/"/>
         public IdentityService Identity => new IdentityService(_identityApi.Value);
     }

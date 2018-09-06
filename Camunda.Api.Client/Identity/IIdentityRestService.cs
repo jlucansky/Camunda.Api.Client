@@ -1,10 +1,9 @@
 ﻿using Refit;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Camunda.Api.Client.Identity
 {
-	internal interface IIdentityRestService
+    internal interface IIdentityRestService
 	{
 		[Get("/identity/groups")]
 		Task<IdentityGroupMembership> GetMembership(QueryDictionary query);
