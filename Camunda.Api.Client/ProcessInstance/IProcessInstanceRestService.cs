@@ -21,7 +21,7 @@ namespace Camunda.Api.Client.ProcessInstance
         Task<ActivityInstanceInfo> GetActivityInstanceTree(string processInstanceId);
 
         [Delete("/process-instance/{processInstanceId}")]
-        Task DeleteProcessInstance(string processInstanceId);
+        Task DeleteProcessInstance(string processInstanceId, bool skipCustomListeners, bool skipIoMappings, bool skipSubprocesses);
 
         [Put("/process-instance/suspended")]
         Task UpdateSuspensionState([Body] ProcessInstanceSuspensionState state);

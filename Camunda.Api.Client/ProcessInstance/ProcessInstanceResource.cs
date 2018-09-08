@@ -21,7 +21,10 @@ namespace Camunda.Api.Client.ProcessInstance
         /// <summary>
         /// Deletes a running process instance.
         /// </summary>
-        public Task Delete() => _api.DeleteProcessInstance(_processInstanceId);
+        /// <param name="skipCustomListeners">If set to true, the custom listeners will be skipped.</param>
+        /// <param name="skipIoMappings">If set to true, the input/output mappings will be skipped.</param>
+        /// <param name="skipSubprocesses">If set to true, subprocesses related to deleted processes will be skipped.</param>
+        public Task Delete(bool skipCustomListeners = false, bool skipIoMappings = false, bool skipSubprocesses = false) => _api.DeleteProcessInstance(_processInstanceId, skipCustomListeners, skipIoMappings, skipSubprocesses);
 
         /// <summary>
         /// Retrieves an Activity Instance (Tree) for a given process instance.
