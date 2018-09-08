@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Camunda.Api.Client.History
@@ -28,9 +26,6 @@ namespace Camunda.Api.Client.History
         /// <param name="maxResults">Pagination of results. Specifies the maximum number of results to return. Will return less results if there are no more results left.</param>
         public Task<List<HistoricCaseActivityInstance>> List(int firstResult, int maxResults) => _api.GetList(_query.CaseInstanceId, firstResult, maxResults);
 
-        /// <summary>
-        /// Get number of variable instances that fulfill given parameters.
-        /// </summary>
-        //public async Task<int> Count() => (await _api.GetListCount(_query)).Count;
+        // TODO: Count
     }
 }

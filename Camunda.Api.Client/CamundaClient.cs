@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Reflection;
+using System.Globalization;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -55,9 +56,9 @@ namespace Camunda.Api.Client
         private HttpClient _httpClient;
 
         private RefitSettings _refitSettings;
+        private static JsonSerializerSettings _jsonSerializerSettings;
         private HttpMessageHandler _httpMessageHandler;
-
-        internal static JsonSerializerSettings JsonSerializerSettings { get; private set; }
+        internal static JsonSerializerSettings JsonSerializerSettings => _jsonSerializerSettings;
 
         internal class HistoricApi
         {
@@ -75,13 +76,15 @@ namespace Camunda.Api.Client
 
         static CamundaClient()
         {
-            JsonSerializerSettings = JsonSerializerSettings ?? new JsonSerializerSettings
+
+            _jsonSerializerSettings = _jsonSerializerSettings ?? new JsonSerializerSettings
             {
                 ContractResolver = new CustomCamelCasePropertyNamesContractResolver(),
                 NullValueHandling = NullValueHandling.Ignore, // not send empty fields
             };
 
-            JsonSerializerSettings.Converters.Add(new StringEnumConverter());
+            _jsonSerializerSettings.Converters.Add(new StringEnumConverter());
+
         }
 
         private void Initialize()
@@ -90,27 +93,27 @@ namespace Camunda.Api.Client
 
             _refitSettings = _refitSettings ?? new RefitSettings
             {
-                JsonSerializerSettings = JsonSerializerSettings,
-                HttpMessageHandlerFactory = () => _httpMessageHandler,
+                JsonSerializerSettings = _jsonSerializerSettings,
                 UrlParameterFormatter = new CustomUrlParameterFormatter(),
+                HttpMessageHandlerFactory = () => _httpMessageHandler
             };
+        }
+
+        private class CustomUrlParameterFormatter : DefaultUrlParameterFormatter
+        {
+            public override string Format(object parameterValue, ParameterInfo parameterInfo)
+            {
+                if (parameterValue is bool)
+                    return string.Format(CultureInfo.InvariantCulture, "{0}", parameterValue).ToLower();
+                else
+                    return base.Format(parameterValue, parameterInfo);
+            }
         }
 
         private class CustomCamelCasePropertyNamesContractResolver : CamelCasePropertyNamesContractResolver
         {
             // preserve exact dictionary key
             protected override string ResolveDictionaryKey(string dictionaryKey) => dictionaryKey;
-        }
-
-        private class CustomUrlParameterFormatter : DefaultUrlParameterFormatter
-        {
-            public override string Format(object value, ParameterInfo parameterInfo)
-            {
-                // Lower-case booleans
-                if (value != null && value is bool asBool) return value.ToString().ToLower();
-
-                return base.Format(value, parameterInfo);
-            }
         }
 
         private CamundaClient(string hostUrl)
