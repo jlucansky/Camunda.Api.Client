@@ -28,6 +28,16 @@ namespace Camunda.Api.Client.Group
 		/// </summary>
 		public Task Delete() => _api.Delete(_groupId);
 
-		public override string ToString() => _groupId;
+        /// <summary>
+        /// Adds a member to a group.
+        /// </summary>
+        public Task AddMember(string userId) => _api.AddMember(_groupId, userId);
+
+        /// <summary>
+        /// Removes a member from a group.
+        /// </summary>
+        public Task RemoveMember(string userId) => _api.RemoveMember(_groupId, userId);
+
+        public override string ToString() => _groupId;
 	}
 }
