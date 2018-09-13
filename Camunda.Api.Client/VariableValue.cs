@@ -326,20 +326,26 @@ namespace Camunda.Api.Client
 
     }
 
+    /// https://docs.camunda.org/manual/7.9/user-guide/process-engine/variables/#supported-variable-values
     public enum VariableType
     {
-        Null,
-        String,
         Boolean,
-        Integer,
+        Bytes,
         Short,
+        Integer,
         Long,
         Double,
-        Number,
         Date,
-        Bytes,
+        String,
+        Number,
+
+        Null,
+
         File,
-        Object
+        Object,
+
+        Json,
+        Xml
     }
 
     public enum BinaryVariableType
