@@ -17,7 +17,7 @@ namespace Camunda.Api.Client.Signal
         /// <summary>
         /// A JSON object containing variable key-value pairs. Each key is a variable name and each value a JSON variable value object.
         /// </summary>
-        public Dictionary<string, VariableValue> Variables { get; set; }
+        public Dictionary<string, VariableValue> Variables { get; set; } = new Dictionary<string, VariableValue>();
 
         /// <summary>
         /// Specifies a tenant to deliver the signal. The signal can only be received on executions or process definitions which belongs to the given tenant.
