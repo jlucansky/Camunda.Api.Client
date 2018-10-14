@@ -5,10 +5,10 @@ Camunda REST API Client for .NET platform
 
 ## Covered API
 Each part listed below is fully covered according to https://docs.camunda.org/manual/7.9/reference/rest specification.
-- [ ] [Case Definition](https://docs.camunda.org/manual/7.9/reference/rest/case-definition/)
-- [ ] [Case Execution](https://docs.camunda.org/manual/7.9/reference/rest/case-execution/)
+- [x] [Case Definition](https://docs.camunda.org/manual/7.9/reference/rest/case-definition/)
+- [x] [Case Execution](https://docs.camunda.org/manual/7.9/reference/rest/case-execution/)
 - [ ] [Case Instance](https://docs.camunda.org/manual/7.9/reference/rest/case-instance/)
-- [ ] [Decision Definition](https://docs.camunda.org/manual/7.9/reference/rest/decision-definition/)
+- [x] [Decision Definition](https://docs.camunda.org/manual/7.9/reference/rest/decision-definition/)
 - [ ] [Decision Requirements Definition](https://docs.camunda.org/manual/7.9/reference/rest/decision-requirements-definition/)
 - [x] [Deployment](https://docs.camunda.org/manual/7.9/reference/rest/deployment/)
 - [x] [Execution](https://docs.camunda.org/manual/7.9/reference/rest/execution/)
@@ -31,8 +31,9 @@ Each part listed below is fully covered according to https://docs.camunda.org/ma
 - [x] [Message](https://docs.camunda.org/manual/7.9/reference/rest/message/)
 - [x] [Process Definition](https://docs.camunda.org/manual/7.9/reference/rest/process-definition/)
 - [x] [Process Instance](https://docs.camunda.org/manual/7.9/reference/rest/process-instance/)
-- [ ] [Signal](https://docs.camunda.org/manual/7.9/reference/rest/signal/)
+- [x] [Signal](https://docs.camunda.org/manual/7.9/reference/rest/signal/)
 - [x] [Task](https://docs.camunda.org/manual/7.9/reference/rest/task/)
+- [x] [Tenant](https://docs.camunda.org/manual/7.9/reference/rest/tenant/)
 - [x] [User](https://docs.camunda.org/manual/7.9/reference/rest/user/)
 - [x] [Variable Instance](https://docs.camunda.org/manual/7.9/reference/rest/variable-instance/)
 
