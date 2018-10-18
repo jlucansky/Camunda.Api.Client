@@ -139,6 +139,9 @@ namespace Camunda.Api.Client.History
         /// </summary>
         public string CaseInstanceId;
 
+        /// <summary>
+        /// Restrict to instances that have an active activity with one of given ids.
+        /// </summary>
         [JsonProperty("activeActivityIdIn")]
         public List<string> ActiveActivityIds;
     }
