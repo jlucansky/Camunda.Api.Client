@@ -24,7 +24,8 @@ namespace Camunda.Api.Client.VariableInstance
         /// </summary>
         /// <param name="firstResult">Pagination of results. Specifies the index of the first result to return.</param>
         /// <param name="maxResults">Pagination of results. Specifies the maximum number of results to return. Will return less results if there are no more results left.</param>
-        public Task<List<VariableInstanceInfo>> List(int firstResult, int maxResults) => _api.GetList(_query, firstResult, maxResults);
+        /// <param name="deserializeValues">Determines whether serializable variable values (typically variables that store custom Java objects) should be deserialized on server side.</param>
+        public Task<List<VariableInstanceInfo>> List(int firstResult, int maxResults, bool deserializeValues = true) => _api.GetList(_query, firstResult, maxResults, deserializeValues);
 
         /// <summary>
         /// Get number of variable instances that fulfill given parameters.

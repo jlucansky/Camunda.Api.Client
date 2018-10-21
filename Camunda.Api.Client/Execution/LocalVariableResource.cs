@@ -18,11 +18,14 @@ namespace Camunda.Api.Client.Execution
         /// <summary>
         /// Retrieves all variables of a given execution.
         /// </summary>
-        public Task<Dictionary<string, VariableValue>> GetAll() => _api.GetLocalVariables(_executionId);
+        /// <param name="deserializeValues">Determines whether serializable variable values (typically variables that store custom Java objects) should be deserialized on server side.</param>
+        public Task<Dictionary<string, VariableValue>> GetAll(bool deserializeValues = true) => _api.GetLocalVariables(_executionId, deserializeValues);
         /// <summary>
         /// Retrieves a variable from the context of a given execution. Does not traverse the parent execution hierarchy.
         /// </summary>
-        public Task<VariableValue> Get(string variableName) => _api.GetLocalVariable(_executionId, variableName);
+        /// <param name="variableName">The name of the variable to get.</param>
+        /// <param name="deserializeValue">Determines whether serializable variable values (typically variables that store custom Java objects) should be deserialized on server side.</param>
+        public Task<VariableValue> Get(string variableName, bool deserializeValue = true) => _api.GetLocalVariable(_executionId, variableName, deserializeValue);
         /// <summary>
         /// Retrieves a binary variable from the context of a given execution. Does not traverse the parent execution hierarchy. Applicable for byte array and file variables.
         /// </summary>
