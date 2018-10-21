@@ -18,11 +18,12 @@ namespace Camunda.Api.Client.UserTask
         /// <summary>
         /// Retrieves all variables of a given task.
         /// </summary>
-        public Task<Dictionary<string, VariableValue>> GetAll() => _api.GetVariables(_taskId);
+        /// <param name="deserializeValues">Determines whether serializable variable values (typically variables that store custom Java objects) should be deserialized on server side.</param>
+        public Task<Dictionary<string, VariableValue>> GetAll(bool deserializeValues = true) => _api.GetVariables(_taskId, deserializeValues);
         /// <summary>
         /// Retrieves a variable from the context of a given task.
         /// </summary>
-        public Task<VariableValue> Get(string variableName) => _api.GetVariable(_taskId, variableName);
+        public Task<VariableValue> Get(string variableName, bool deserializeValue = true) => _api.GetVariable(_taskId, variableName, deserializeValue);
         /// <summary>
         /// Retrieves a binary variable from the context of a given task. Applicable for byte array and file variables.
         /// </summary>

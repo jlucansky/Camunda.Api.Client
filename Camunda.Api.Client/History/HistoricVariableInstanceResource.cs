@@ -17,7 +17,8 @@ namespace Camunda.Api.Client.History
         /// <summary>
         /// Retrieves a historic variable by id.
         /// </summary>
-        public Task<HistoricVariableInstance> Get() => _api.Get(_variableId);
+        /// <param name="deserializeValue">Determines whether serializable variable values (typically variables that store custom Java objects) should be deserialized on server side.</param>
+        public Task<HistoricVariableInstance> Get(bool deserializeValue = true) => _api.Get(_variableId, deserializeValue);
 
         /// <summary>
         /// Retrieves the content of a historic variable by id. Applicable for variables that are serialized as binary data.

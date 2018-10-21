@@ -94,6 +94,18 @@ namespace Camunda.Api.Client.UserTask
         /// If the query parameter is ommitted all variables are fetched. If the query parameter contains non-existent variable names, the variable names are ignored.
         /// </param>
         public Task<Dictionary<string, VariableValue>> GetFormVariables(params string[] variableNames) => _api.GetFormVariables(_taskId, variableNames.Join());
+        /// <summary>
+        /// Retrieves the form variables for a task. 
+        /// The form variables take form data specified on the task into account. 
+        /// If form fields are defined, the variable types and default values of the form fields are taken into account.
+        /// </summary>
+        /// <param name="variableNames">
+        /// Allows restricting the list of requested variables to the variable names in the list. 
+        /// It is best practice to restrict the list of variables to the variables actually required by the form in order to minimize fetching of data. 
+        /// If the query parameter is ommitted all variables are fetched. If the query parameter contains non-existent variable names, the variable names are ignored.
+        /// </param>
+        /// <param name="deserializeValues">Determines whether serializable variable values (typically variables that store custom Java objects) should be deserialized on server side.</param>
+        public Task<Dictionary<string, VariableValue>> GetFormVariables(string[] variableNames, bool deserializeValues = true) => _api.GetFormVariables(_taskId, variableNames.Join(), deserializeValues);
 
         /// <summary>
         /// Updates a task.

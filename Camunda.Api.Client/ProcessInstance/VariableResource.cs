@@ -19,14 +19,15 @@ namespace Camunda.Api.Client.ProcessInstance
         /// <summary>
         /// Retrieves all variables of a given process instance.
         /// </summary>
-        /// <returns></returns>
-        public Task<Dictionary<string, VariableValue>> GetAll() => _api.GetVariables(_processInstanceId);
+        /// <param name="deserializeValues">Determines whether serializable variable values (typically variables that store custom Java objects) should be deserialized on server side.</param>
+        public Task<Dictionary<string, VariableValue>> GetAll(bool deserializeValues = true) => _api.GetVariables(_processInstanceId, deserializeValues);
 
         /// <summary>
         /// Retrieves a variable of a given process instance.
         /// </summary>
         /// <param name="variableName">The name of the variable to get.</param>
-        public Task<VariableValue> Get(string variableName) => _api.GetVariable(_processInstanceId, variableName);
+        /// <param name="deserializeValue">Determines whether serializable variable values (typically variables that store custom Java objects) should be deserialized on server side.</param>
+        public Task<VariableValue> Get(string variableName, bool deserializeValue = true) => _api.GetVariable(_processInstanceId, variableName, deserializeValue);
 
         /// <summary>
         /// Retrieves the serialized value for a binary variable or the binary value for a file variable.

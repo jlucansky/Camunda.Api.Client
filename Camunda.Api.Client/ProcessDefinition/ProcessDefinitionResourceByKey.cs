@@ -39,6 +39,8 @@ namespace Camunda.Api.Client.ProcessDefinition
 
         public override Task<Dictionary<string, VariableValue>> GetFormVariables(params string[] variableNames) => _api.GetFormVariablesByKey(_processDefinitionKey, variableNames.Join());
 
+        public override Task<Dictionary<string, VariableValue>> GetFormVariables(string[] variableNames, bool deserializeValues = true) => _api.GetFormVariablesByKey(_processDefinitionKey, variableNames.Join(), deserializeValues);
+
         public override string ToString() => _processDefinitionKey;
     }
 }
