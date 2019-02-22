@@ -23,8 +23,13 @@ namespace Camunda.Api.Client.ExternalTask
         /// <summary>
         /// Object containing variable key-value pairs.
         /// </summary>
-        public Dictionary<string, VariableValue> Variables = new Dictionary<string, VariableValue>();
+        public Dictionary<string, VariableValue> Variables;
 
+        public ExternalTaskBpmnError SetVariable(string name, object value)
+        {
+            Variables = (Variables ?? new Dictionary<string, VariableValue>()).Set(name, value);
+            return this;
+        }
 
         public override string ToString() => ErrorCode;
     }
