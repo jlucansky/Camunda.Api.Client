@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 
 namespace Camunda.Api.Client
@@ -19,6 +20,8 @@ namespace Camunda.Api.Client
                     value = string.Join(",", item.Value.ToObject<string[]>());
                 else if (item.Value.Type == JTokenType.Boolean) // True/False convert to lowercase
                     value = item.Value.ToObject<string>().ToLower();
+                else if (item.Value.Type == JTokenType.Date)
+                    value = item.Value.Value<DateTime>().ToJavaISO8601();
                 else
                     value = item.Value.ToObject<string>();
 

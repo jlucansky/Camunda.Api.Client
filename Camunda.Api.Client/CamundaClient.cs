@@ -76,15 +76,35 @@ namespace Camunda.Api.Client
 
         static CamundaClient()
         {
-
             _jsonSerializerSettings = _jsonSerializerSettings ?? new JsonSerializerSettings
             {
                 ContractResolver = new CustomCamelCasePropertyNamesContractResolver(),
-                NullValueHandling = NullValueHandling.Ignore, // not send empty fields
+                NullValueHandling = NullValueHandling.Ignore, // do not send empty fields
             };
 
             _jsonSerializerSettings.Converters.Add(new StringEnumConverter());
+            _jsonSerializerSettings.Converters.Add(new CustomIsoDateTimeConverter());
+        }
 
+        private class CustomIsoDateTimeConverter : Newtonsoft.Json.Converters.IsoDateTimeConverter
+        {
+            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+            {
+                if (value is DateTime dateTime)
+                {
+                    if ((DateTimeStyles & DateTimeStyles.AdjustToUniversal) == DateTimeStyles.AdjustToUniversal
+                        || (DateTimeStyles & DateTimeStyles.AssumeUniversal) == DateTimeStyles.AssumeUniversal)
+                    {
+                        dateTime = dateTime.ToUniversalTime();
+                    }
+
+                    writer.WriteValue(dateTime.ToJavaISO8601());
+                }
+                else
+                {
+                    base.WriteJson(writer, value, serializer);
+                }
+            }
         }
 
         private void Initialize()
