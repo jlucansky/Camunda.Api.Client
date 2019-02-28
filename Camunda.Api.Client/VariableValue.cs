@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Reflection;
 
 namespace Camunda.Api.Client
@@ -224,6 +225,55 @@ namespace Camunda.Api.Client
             var val = new VariableValue();
             val.SetTypedValue(value);
             return val;
+        }
+
+        /// <summary>
+        /// Value instantiation. Creates file variable from <paramref name="content"/>
+        /// </summary>
+        /// <param name="mimeType">Use <see cref="MediaTypes"/></param>
+        /// <returns></returns>
+        public static VariableValue FromFile(string path, string mimeType, string charset = null)
+        {
+            return FromFile(File.ReadAllBytes(path), Path.GetFileName(path), mimeType, charset);
+        }
+
+        /// <summary>
+        /// Value instantiation. Creates file variable from <paramref name="content"/>
+        /// </summary>
+        /// <param name="mimeType">Use <see cref="MediaTypes"/></param>
+        /// <returns></returns>
+        public static VariableValue FromFile(byte[] content, string fileName, string mimeType, string charset = null)
+        {
+            var val = new VariableValue()
+            {
+                Type = VariableType.File,
+                Value = Convert.ToBase64String(content),
+                ValueInfo = new Dictionary<string, object>()
+                {
+                    [ValueInfoFileName] = fileName,
+                    [ValueInfoFileMimeType] = mimeType,
+                    [ValueInfoFileEncoding] = charset ?? "",
+                }
+            };
+
+            return val;
+        }
+
+        /// <summary>
+        /// Value instantiation. Creates text file variable.
+        /// </summary>
+        public static VariableValue FromTextFile(string path, string charset = "utf-8")
+        {
+            return FromFile(File.ReadAllBytes(path), Path.GetFileName(path), MediaTypes.Text.Plain, charset);
+        }
+
+        /// <summary>
+        /// Value instantiation. Creates binary file variable.
+        /// </summary>
+        /// <param name="mimeType">Use <see cref="MediaTypes"/></param>
+        public static VariableValue FromBinaryFile(string path, string mimeType = MediaTypes.Application.OctetStream)
+        {
+            return FromFile(File.ReadAllBytes(path), Path.GetFileName(path), mimeType, null);
         }
 
         /// <summary>
