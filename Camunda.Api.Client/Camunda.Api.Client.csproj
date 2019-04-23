@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>    
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.4.1</Version>
+    <Version>2.4.1-beta</Version>
     <Product>Camunda REST API Client</Product>
     <Title>Camunda REST API Client</Title>
     <Authors>Jan Lucansky</Authors>
