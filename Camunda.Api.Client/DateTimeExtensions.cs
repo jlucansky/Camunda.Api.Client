@@ -7,22 +7,14 @@ namespace Camunda.Api.Client
 {
     internal static class DateTimeExtensions
     {
-        const string _dateTimeFormat = "yyyy-MM-ddTHH\\:mm\\:ss.fffzzz";
+        const string _dateTimeFormat = "yyyy-MM-ddTHH':'mm':'ss.fff";
 
         public static string ToJavaISO8601(this DateTime dateTime)
         {
-            return ReplaceLastOccurrence(dateTime.ToString(_dateTimeFormat, CultureInfo.InvariantCulture), ":", "");
-        }
-
-        private static string ReplaceLastOccurrence(string Source, string Find, string Replace)
-        {
-            int place = Source.LastIndexOf(Find);
-
-            if (place == -1)
-                return Source;
-
-            return Source.Remove(place, Find.Length).Insert(place, Replace);
-
+            if (dateTime.Kind == DateTimeKind.Unspecified) // treat unspecified time as local time
+                dateTime = new DateTime(dateTime.Ticks, DateTimeKind.Local);
+            return dateTime.ToString(_dateTimeFormat, CultureInfo.InvariantCulture)
+                + dateTime.ToString("%K").Replace(":", "").Replace("Z", "+0000");
         }
     }
 }
