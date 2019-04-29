@@ -14,11 +14,24 @@ namespace Camunda.Api.Client.ExternalTask
         /// </summary>
         public Dictionary<string, VariableValue> Variables;
 
+        /// <summary>
+        /// Dictionary containing variable key-value pairs. Local variables are set only in the scope of external task.
+        /// </summary>
+        public Dictionary<string, VariableValue> LocalVariables;
+
         public CompleteExternalTask SetVariable(string name, object value)
         {
             Variables = (Variables ?? new Dictionary<string, VariableValue>()).Set(name, value);
             return this;
         }
-    }
 
+        /// <summary>
+        /// Local variables are set only in the scope of external task.
+        /// </summary>
+        public CompleteExternalTask SetLocalVariable(string name, object value)
+        {
+            LocalVariables = (LocalVariables ?? new Dictionary<string, VariableValue>()).Set(name, value);
+            return this;
+        }
+    }
 }
