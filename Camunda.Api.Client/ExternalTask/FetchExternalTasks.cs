@@ -20,6 +20,11 @@ namespace Camunda.Api.Client.ExternalTask
         public bool UsePriority;
 
         /// <summary>
+        /// Response timeout for long polling
+        /// </summary>
+        public long AsyncResponseTimeout;
+
+        /// <summary>
         /// Array of topic objects for which external tasks should be fetched. The returned tasks may be arbitrarily distributed among these topics.
         /// </summary>
         public List<FetchExternalTaskTopic> Topics;
