@@ -20,7 +20,7 @@ namespace Camunda.Api.Client.ExternalTask
         public bool UsePriority;
 
         /// <summary>
-        /// Response timeout for long polling
+        /// The Long Polling timeout in milliseconds. The value cannot be set larger than 1.800.000 milliseconds (corresponds to 30 minutes).
         /// </summary>
         public long AsyncResponseTimeout;
 
