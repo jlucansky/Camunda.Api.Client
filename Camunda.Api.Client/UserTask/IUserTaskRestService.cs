@@ -23,6 +23,9 @@ namespace Camunda.Api.Client.UserTask
         [Post("/task/{id}/complete")]
         Task CompleteTask(string id, [Body] CompleteTask completeTask);
 
+        [Post("/task/{id}/complete")]
+        Task<Dictionary<string, VariableValue>> CompleteTaskAndFetchVariables(string id, [Body] CompleteTaskAndFetchVariables completeTask);
+
         [Post("/task/{id}/resolve")]
         Task ResolveTask(string id, [Body] CompleteTask completeTask);
 

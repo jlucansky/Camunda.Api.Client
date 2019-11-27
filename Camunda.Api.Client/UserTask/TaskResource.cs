@@ -66,6 +66,11 @@ namespace Camunda.Api.Client.UserTask
         public Task Complete(CompleteTask completeTask) => _api.CompleteTask(_taskId, completeTask);
 
         /// <summary>
+        /// Complete a task and update process variables. Returns current variables of the process instance.
+        /// </summary>
+        public Task<Dictionary<string, VariableValue>> CompleteAndFetchVariables(CompleteTaskAndFetchVariables completeTask) => _api.CompleteTaskAndFetchVariables(_taskId, completeTask);
+
+        /// <summary>
         /// Resolve a task and update execution variables.
         /// </summary>
         public Task Resolve(CompleteTask completeTask) => _api.ResolveTask(_taskId, completeTask);
