@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-
-namespace Camunda.Api.Client.UserTask
+﻿namespace Camunda.Api.Client.UserTask
 {
-    public class CompleteTask: CompleteTaskBase
+    public class CompleteTask : CompleteTaskBase
     {
-        public override bool WithVariablesInReturn => false;
+        /// <summary>
+        /// Variables will return after completing the task
+        /// </summary>
+        protected override bool WithVariablesInReturn => false;
     }
 }
