@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Camunda.Api.Client.UserTask
 {
@@ -9,7 +7,7 @@ namespace Camunda.Api.Client.UserTask
         /// <summary>
         /// Variables will return after completing the task
         /// </summary>
-        public abstract bool WithVariablesInReturn { get; }
+        protected abstract bool WithVariablesInReturn { get; }
 
         /// <summary>
         /// Object containing variable key-value pairs.
@@ -18,8 +16,8 @@ namespace Camunda.Api.Client.UserTask
 
         public CompleteTaskBase SetVariable(string name, object value)
         {
-          Variables = (Variables ?? new Dictionary<string, VariableValue>()).Set(name, value);
-          return this;
+            Variables = (Variables ?? new Dictionary<string, VariableValue>()).Set(name, value);
+            return this;
         }
     }
 }
