@@ -5,6 +5,6 @@
         /// <summary>
         /// Variables will return after completing the task
         /// </summary>
-        protected override bool WithVariablesInReturn => false;
+        public override bool WithVariablesInReturn => false;
     }
 }

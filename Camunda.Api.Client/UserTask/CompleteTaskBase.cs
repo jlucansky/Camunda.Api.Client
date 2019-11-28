@@ -7,7 +7,7 @@ namespace Camunda.Api.Client.UserTask
         /// <summary>
         /// Variables will return after completing the task
         /// </summary>
-        protected abstract bool WithVariablesInReturn { get; }
+        public abstract bool WithVariablesInReturn { get; }
 
         /// <summary>
         /// Object containing variable key-value pairs.
