@@ -24,7 +24,7 @@ namespace Camunda.Api.Client.UserTask
         Task CompleteTask(string id, [Body] CompleteTask completeTask);
 
         [Post("/task/{id}/resolve")]
-        Task ResolveTask(string id, [Body] CompleteTask completeTask);
+        Task ResolveTask(string id, [Body] ResolveTask resolveTask);
 
         [Post("/task/{id}/submit-form")]
         Task SubmitFormTask(string id, [Body] CompleteTask completeTask);

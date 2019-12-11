@@ -68,7 +68,7 @@ namespace Camunda.Api.Client.UserTask
         /// <summary>
         /// Resolve a task and update execution variables.
         /// </summary>
-        public Task Resolve(CompleteTask completeTask) => _api.ResolveTask(_taskId, completeTask);
+        public Task Resolve(ResolveTask resolveTask) => _api.ResolveTask(_taskId, resolveTask);
 
         /// <summary>
         /// Delegate a task to another user.
