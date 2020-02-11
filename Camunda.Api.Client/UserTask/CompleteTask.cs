@@ -2,16 +2,16 @@
 
 namespace Camunda.Api.Client.UserTask
 {
-    public class CompleteTask
+    public class CompleteTask : ResolveTask
     {
         /// <summary>
-        /// Object containing variable key-value pairs.
+        /// if set to true, API will return variables in response. Default behaviour is "false"
         /// </summary>
-        public Dictionary<string, VariableValue> Variables = new Dictionary<string, VariableValue>();
+        public bool? WithVariablesInReturn { get; set; } = null;
 
-        public CompleteTask SetVariable(string name, object value)
+        public new CompleteTask SetVariable(string name, object value)
         {
-            Variables = (Variables ?? new Dictionary<string, VariableValue>()).Set(name, value);
+            base.SetVariable(name, value);
             return this;
         }
     }
