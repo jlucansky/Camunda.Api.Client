@@ -18,7 +18,7 @@ namespace Camunda.Api.Client
         private static readonly ConcurrentDictionary<string, Func<string, string, HttpResponseMessage, ApiException>> _knownTypes =
             new ConcurrentDictionary<string, Func<string, string, HttpResponseMessage, ApiException>>();
 
-        internal ApiException(string type, string message, HttpResponseMessage response) : base(message)
+        public ApiException(string type, string message, HttpResponseMessage response) : base(message)
         {
             ErrorType = type;
             Response = response;
@@ -49,7 +49,7 @@ namespace Camunda.Api.Client
             });
         }
 
-        internal static ApiException FromRestError(RestError restError, HttpResponseMessage response)
+        public static ApiException FromRestError(RestError restError, HttpResponseMessage response)
         {
             var ctor = GetConstructor(restError.Type);
             if (ctor != null)
@@ -73,7 +73,7 @@ namespace Camunda.Api.Client
         [JsonProperty]
         public string ResourceId { get; private set; }
 
-        internal AuthorizationException(string type, string message, HttpResponseMessage response)
+        public AuthorizationException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
@@ -82,13 +82,13 @@ namespace Camunda.Api.Client
     /// </summary>
     public class RuntimeException : ApiException
     {
-        internal RuntimeException(string type, string message, HttpResponseMessage response)
+        public RuntimeException(string type, string message, HttpResponseMessage response)
             : base(type, message, response) { }
     }
 
     public class RestException : RuntimeException
     {
-        internal RestException(string type, string message, HttpResponseMessage response)
+        public RestException(string type, string message, HttpResponseMessage response)
             : base(type, message, response) { }
     }
 
@@ -97,7 +97,7 @@ namespace Camunda.Api.Client
     /// </summary>
     public class InvalidRequestException : RestException
     {
-        internal InvalidRequestException(string type, string message, HttpResponseMessage response)
+        public InvalidRequestException(string type, string message, HttpResponseMessage response)
             : base(type, message, response) { }
     }
 
@@ -106,7 +106,7 @@ namespace Camunda.Api.Client
     /// </summary>
     public class ProcessEngineException : RuntimeException
     {
-        internal ProcessEngineException(string type, string message, HttpResponseMessage response)
+        public ProcessEngineException(string type, string message, HttpResponseMessage response)
             : base(type, message, response) { }
     }
 
@@ -115,7 +115,7 @@ namespace Camunda.Api.Client
     /// </summary>
     public class BadUserRequestException : ProcessEngineException
     {
-        internal BadUserRequestException(string type, string message, HttpResponseMessage response)
+        public BadUserRequestException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
@@ -124,7 +124,7 @@ namespace Camunda.Api.Client
     /// </summary>
     public class BpmnParseException : ProcessEngineException
     {
-        internal BpmnParseException(string type, string message, HttpResponseMessage response)
+        public BpmnParseException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
@@ -134,7 +134,7 @@ namespace Camunda.Api.Client
     public class ClassLoadingException : ProcessEngineException
     {
         [JsonProperty]
-        internal string ClassName { get; private set; }
+        public string ClassName { get; private set; }
 
         public ClassLoadingException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
@@ -145,7 +145,7 @@ namespace Camunda.Api.Client
     /// </summary>
     public class OptimisticLockingException : ProcessEngineException
     {
-        internal OptimisticLockingException(string type, string message, HttpResponseMessage response)
+        public OptimisticLockingException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
@@ -154,7 +154,7 @@ namespace Camunda.Api.Client
     /// </summary>
     public class ScriptEngineException : ProcessEngineException
     {
-        internal ScriptEngineException(string type, string message, HttpResponseMessage response)
+        public ScriptEngineException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
@@ -163,7 +163,7 @@ namespace Camunda.Api.Client
     /// </summary>
     public class TaskAlreadyClaimedException : ProcessEngineException
     {
-        internal TaskAlreadyClaimedException(string type, string message, HttpResponseMessage response)
+        public TaskAlreadyClaimedException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
@@ -172,7 +172,7 @@ namespace Camunda.Api.Client
     /// </summary>
     public class WrongDbException : ProcessEngineException
     {
-        internal WrongDbException(string type, string message, HttpResponseMessage response)
+        public WrongDbException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
@@ -188,19 +188,19 @@ namespace Camunda.Api.Client
         [JsonProperty]
         public string ErrorMessage { get; private set; }
 
-        internal BpmnError(string type, string message, HttpResponseMessage response)
+        public BpmnError(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
     public class DeploymentResourceNotFoundException : ProcessEngineException
     {
-        internal DeploymentResourceNotFoundException(string type, string message, HttpResponseMessage response)
+        public DeploymentResourceNotFoundException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
     public class NullValueException : ProcessEngineException
     {
-        internal NullValueException(string type, string message, HttpResponseMessage response)
+        public NullValueException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
@@ -209,7 +209,7 @@ namespace Camunda.Api.Client
     /// </summary>
     public class CaseException : ProcessEngineException
     {
-        internal CaseException(string type, string message, HttpResponseMessage response)
+        public CaseException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
@@ -218,13 +218,13 @@ namespace Camunda.Api.Client
     /// </summary>
     public class DecisionException : ProcessEngineException
     {
-        internal DecisionException(string type, string message, HttpResponseMessage response)
+        public DecisionException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
     public class FormException : ProcessEngineException
     {
-        internal FormException(string type, string message, HttpResponseMessage response)
+        public FormException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
@@ -233,7 +233,7 @@ namespace Camunda.Api.Client
     /// </summary>
     public class IdentityProviderException : ProcessEngineException
     {
-        internal IdentityProviderException(string type, string message, HttpResponseMessage response)
+        public IdentityProviderException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
@@ -242,13 +242,13 @@ namespace Camunda.Api.Client
     /// </summary>
     public class ELException : ProcessEngineException
     {
-        internal ELException(string type, string message, HttpResponseMessage response)
+        public ELException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
     public class PvmException : ProcessEngineException
     {
-        internal PvmException(string type, string message, HttpResponseMessage response)
+        public PvmException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
@@ -257,7 +257,7 @@ namespace Camunda.Api.Client
     /// </summary>
     public class MigratingProcessInstanceValidationException : ProcessEngineException
     {
-        internal MigratingProcessInstanceValidationException(string type, string message, HttpResponseMessage response)
+        public MigratingProcessInstanceValidationException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
@@ -266,7 +266,7 @@ namespace Camunda.Api.Client
     /// </summary>
     public class ProcessEngineCdiException : ProcessEngineException
     {
-        internal ProcessEngineCdiException(string type, string message, HttpResponseMessage response)
+        public ProcessEngineCdiException(string type, string message, HttpResponseMessage response)
             :base(type, message, response) { }
     }
 
@@ -275,7 +275,7 @@ namespace Camunda.Api.Client
     /// </summary>
     public class ServerBootstrapException : RuntimeException
     {
-        internal ServerBootstrapException(string type, string message, HttpResponseMessage response)
+        public ServerBootstrapException(string type, string message, HttpResponseMessage response)
             : base(type, message, response) { }
     }
 
@@ -284,13 +284,13 @@ namespace Camunda.Api.Client
     /// </summary>
     public class JSONException : RuntimeException
     {
-        internal JSONException(string type, string message, HttpResponseMessage response)
+        public JSONException(string type, string message, HttpResponseMessage response)
             : base(type, message, response) { }
     }
 
     public class HalRelationCacheConfigurationException : RuntimeException
     {
-        internal HalRelationCacheConfigurationException(string type, string message, HttpResponseMessage response)
+        public HalRelationCacheConfigurationException(string type, string message, HttpResponseMessage response)
             : base(type, message, response) { }
     }
 }

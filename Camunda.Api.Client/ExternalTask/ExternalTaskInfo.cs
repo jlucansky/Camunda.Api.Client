@@ -57,6 +57,10 @@ namespace Camunda.Api.Client.ExternalTask
         /// </summary>
         public string TopicName;
         /// <summary>
+        /// The business key of the process instance the external task belongs to.
+        /// </summary>
+        public string BusinessKey;
+        /// <summary>
         /// The id of the tenant the external task belongs to.
         /// </summary>
         public string TenantId;
