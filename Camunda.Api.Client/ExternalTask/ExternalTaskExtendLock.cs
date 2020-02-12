@@ -11,6 +11,6 @@ namespace Camunda.Api.Client.ExternalTask
         /// <summary>
         /// An amount of time (in milliseconds) to extend the lock by.
         /// </summary>
-        public long newDuration;
+        public long NewDuration;
     }
 }
