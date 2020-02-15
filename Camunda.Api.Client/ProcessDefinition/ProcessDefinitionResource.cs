@@ -79,6 +79,9 @@ namespace Camunda.Api.Client.ProcessDefinition
         /// Retrieves the start form variables for a process definition. The start form variables take form data specified on the start event into account.
         /// If form fields are defined, the variable types and default values of the form fields are taken into account.
         /// </summary>
+        /// <param name="variableNames">Allows restricting the list of requested variables to the variable names in the list. 
+        /// It is best practice to restrict the list of variables to the variables actually required by the form in order to minimize fetching of data.
+        /// If the query parameter is ommitted all variables are fetched. If the query parameter contains non-existent variable names, the variable names are ignored.</param>
         /// <param name="deserializeValues">Determines whether serializable variable values (typically variables that store custom Java objects) should be deserialized on server side.</param>
         public abstract Task<Dictionary<string, VariableValue>> GetFormVariables(string[] variableNames, bool deserializeValues = true);
     }

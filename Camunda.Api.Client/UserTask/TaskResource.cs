@@ -43,6 +43,15 @@ namespace Camunda.Api.Client.UserTask
         public Task SubmitForm(CompleteTask completeTask) => _api.SubmitFormTask(_taskId, completeTask);
 
         /// <summary>
+        /// Complete a task and update process variables using a form submit, retrieving variables in response
+        /// </summary>
+        /// <remarks>
+        ///  * If the task is in state PENDING - ie. has been delegated before, it is not completed but resolved. Otherwise it will be completed.
+        ///  * If the task has Form Field Metadata defined, the process engine will perform backend validation for any form fields which have validators defined.
+        /// </remarks>
+        public Task<Dictionary<string, VariableValue>> SubmitFormAndFetchVariables(CompleteTask completeTask) => _api.SubmitFormTaskAndFetchVariables(_taskId, completeTask);
+
+        /// <summary>
         /// Retrieves the rendered form for a task. This method can be used for getting the HTML rendering of a Generated Task Form.
         /// </summary>
         public Task<string> GetRenderedForm() => _api.GetRenderedForm(_taskId);
@@ -66,9 +75,14 @@ namespace Camunda.Api.Client.UserTask
         public Task Complete(CompleteTask completeTask) => _api.CompleteTask(_taskId, completeTask);
 
         /// <summary>
+        /// Complete a task and update process variables, retrieving variables in response
+        /// </summary>
+        public Task<Dictionary<string, VariableValue>> CompleteAndFetchVariables(CompleteTask completeTask) => _api.CompleteTaskAndFetchVariables(_taskId, completeTask);
+
+        /// <summary>
         /// Resolve a task and update execution variables.
         /// </summary>
-        public Task Resolve(CompleteTask completeTask) => _api.ResolveTask(_taskId, completeTask);
+        public Task Resolve(ResolveTask resolveTask) => _api.ResolveTask(_taskId, resolveTask);
 
         /// <summary>
         /// Delegate a task to another user.

@@ -17,6 +17,11 @@ namespace Camunda.Api.Client.ExternalTask
         /// </summary>
         public string ErrorMessage;
         /// <summary>
+        /// The error details submitted with the latest reported failure executing this task.
+        /// <c>null</c> if no failure was reported previously or if no error details was submitted.
+        /// </summary>
+        public string ErrorDetails;
+        /// <summary>
         /// The id of the execution that the external task belongs to.
         /// </summary>
         public string ExecutionId;
@@ -56,6 +61,10 @@ namespace Camunda.Api.Client.ExternalTask
         /// The external task's topic name.
         /// </summary>
         public string TopicName;
+        /// <summary>
+        /// The business key of the process instance the external task belongs to.
+        /// </summary>
+        public string BusinessKey;
         /// <summary>
         /// The id of the tenant the external task belongs to.
         /// </summary>
