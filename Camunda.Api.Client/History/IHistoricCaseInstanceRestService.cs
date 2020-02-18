@@ -11,5 +11,8 @@ namespace Camunda.Api.Client.History
 
         [Post("/history/case-instance")]
         Task<List<HistoricCaseInstance>> GetList([Body]HistoricCaseInstanceQuery query, int? firstResult, int? maxResults);
+
+        [Post("/history/case-instance/count")]
+        Task<CountResult> GetListCount([Body] HistoricCaseInstanceQuery query);
     }
 }

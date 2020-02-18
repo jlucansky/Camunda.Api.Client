@@ -11,7 +11,10 @@ namespace Camunda.Api.Client.ExternalTask
         internal ExternalTaskService(IExternalTaskRestService api) { _api = api; }
 
         public QueryResource<ExternalTaskQuery, ExternalTaskInfo> Query(ExternalTaskQuery query = null) =>
-            new QueryResource<ExternalTaskQuery, ExternalTaskInfo>(_api, query);
+            new QueryResource<ExternalTaskQuery, ExternalTaskInfo>(
+                query,
+                (q, f, m) => _api.GetList(q, f, m),
+                q => _api.GetListCount(q));
 
         /// <param name="externalTaskId">The id of the external task to be retrieved.</param>
         public ExternalTaskResource this[string externalTaskId] => new ExternalTaskResource(_api, externalTaskId);

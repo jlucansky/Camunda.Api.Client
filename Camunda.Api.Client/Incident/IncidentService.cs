@@ -10,6 +10,9 @@
         }
 
         public QueryResource<IncidentQuery, IncidentInfo> Query(IncidentQuery query = null) =>
-            new QueryResource<IncidentQuery, IncidentInfo>(_api, query);
+            new QueryResource<IncidentQuery, IncidentInfo>(
+                query, 
+                (q, f, m) => _api.GetList(q, f, m),
+                q => _api.GetListCount(q));
     }
 }

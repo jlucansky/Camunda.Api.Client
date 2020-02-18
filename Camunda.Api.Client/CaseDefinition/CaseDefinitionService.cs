@@ -13,6 +13,9 @@
         public CaseDefinitionResource ByKey(string caseDefinitionKey, string tenantId) => new CaseDefinitionResourceByKeyAndTenantId(_api, caseDefinitionKey, tenantId);
 
         public QueryResource<CaseDefinitionQuery, CaseDefinitionInfo> Query(CaseDefinitionQuery query = null) =>
-            new QueryResource<CaseDefinitionQuery, CaseDefinitionInfo>(_api, query);
+            new QueryResource<CaseDefinitionQuery, CaseDefinitionInfo>(
+                query, 
+                (q, f, m) => _api.GetList(q, f, m),
+                q => _api.GetListCount(q));
     }
 }

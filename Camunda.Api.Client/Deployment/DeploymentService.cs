@@ -12,7 +12,10 @@ namespace Camunda.Api.Client.Deployment
         public DeploymentResource this[string deploymentId] => new DeploymentResource(_api, deploymentId);
 
         public QueryResource<DeploymentQuery, DeploymentInfo> Query(DeploymentQuery query = null) =>
-            new QueryResource<DeploymentQuery, DeploymentInfo>(_api, query);
+            new QueryResource<DeploymentQuery, DeploymentInfo>(
+                query,
+                (q, f, m) => _api.GetList(q, f, m),
+                q => _api.GetListCount(q));
 
         /// <summary>
         /// Create a deployment.

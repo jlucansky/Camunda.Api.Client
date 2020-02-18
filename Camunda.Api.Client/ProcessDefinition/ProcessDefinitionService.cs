@@ -15,8 +15,12 @@ namespace Camunda.Api.Client.ProcessDefinition
 
         public ProcessDefinitionResource ByKey(string processDefinitionKey, string tenantId) => new ProcessDefinitionResourceByKeyAndTenantId(_api, processDefinitionKey, tenantId);
 
-        public QueryResource<ProcessDefinitionQuery, ProcessDefinitionInfo> Query(ProcessDefinitionQuery query = null) => 
-            new QueryResource<ProcessDefinitionQuery, ProcessDefinitionInfo>(_api, query);
+        public QueryResource<ProcessDefinitionQuery, ProcessDefinitionInfo>
+            Query(ProcessDefinitionQuery query = null) =>
+            new QueryResource<ProcessDefinitionQuery, ProcessDefinitionInfo>(
+                query, 
+                (q, f, m) => _api.GetList(q, f, m),
+                q => _api.GetListCount(q));
 
         /// <summary>
         /// Retrieves runtime statistics of the process engine grouped by process definitions. These statistics include the number of running process instances, optionally the number of failed jobs and also optionally the number of incidents either grouped by incident types or for a specific incident type.

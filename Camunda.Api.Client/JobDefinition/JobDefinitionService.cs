@@ -12,7 +12,10 @@ namespace Camunda.Api.Client.JobDefinition
         }
 
         public QueryResource<JobDefinitionQuery, JobDefinitionInfo> Query(JobDefinitionQuery query = null) =>
-            new QueryResource<JobDefinitionQuery, JobDefinitionInfo>(_api, query);
+            new QueryResource<JobDefinitionQuery, JobDefinitionInfo>(
+                query, 
+                (q, f, m) => _api.GetList(q, f, m),
+                q => _api.GetListCount(q));
 
         /// <param name="jobDefinitionId">The id of the job to be retrieved.</param>
         public JobDefinitionResource this[string jobDefinitionId] => new JobDefinitionResource(_api, jobDefinitionId);
