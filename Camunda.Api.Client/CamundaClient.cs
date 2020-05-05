@@ -2,8 +2,6 @@
 using System.Net.Http;
 using System.Reflection;
 using System.Globalization;
-using System.Text.Encodings.Web;
-using System.Text.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Refit;
