@@ -18,6 +18,7 @@ using Camunda.Api.Client.Incident;
 using Camunda.Api.Client.Job;
 using Camunda.Api.Client.JobDefinition;
 using Camunda.Api.Client.Message;
+using Camunda.Api.Client.Migration;
 using Camunda.Api.Client.ProcessDefinition;
 using Camunda.Api.Client.ProcessInstance;
 using Camunda.Api.Client.Signal;
@@ -41,6 +42,7 @@ namespace Camunda.Api.Client
         private Lazy<IIncidentRestService> _incidentApi;
         private Lazy<IJobDefinitionRestService> _jobDefinitionApi;
         private Lazy<IJobRestService> _jobApi;
+        private Lazy<IMigrationRestService> _migrationRestService;
         private Lazy<IMessageRestService> _messageApi;
         private Lazy<IProcessDefinitionRestService> _processDefinitionApi;
         private Lazy<IProcessInstanceRestService> _processInstanceApi;
@@ -199,6 +201,7 @@ namespace Camunda.Api.Client
             _jobApi = CreateService<IJobRestService>();
             _jobDefinitionApi = CreateService<IJobDefinitionRestService>();
             _messageApi = CreateService<IMessageRestService>();
+            _migrationRestService = CreateService<IMigrationRestService>();
             _processDefinitionApi = CreateService<IProcessDefinitionRestService>();
             _processInstanceApi = CreateService<IProcessInstanceRestService>();
             _signalApi = CreateService<ISignalRestService>();
@@ -280,6 +283,9 @@ namespace Camunda.Api.Client
 
         /// <see href="https://docs.camunda.org/manual/7.9/reference/rest/message/"/>
         public MessageService Messages => new MessageService(_messageApi.Value);
+
+        /// <see href="https://docs.camunda.org/manual/7.13/reference/rest/migration/"/>
+        public MigrationService Migrations => new MigrationService(_migrationRestService.Value);
 
         /// <see href="https://docs.camunda.org/manual/7.9/reference/rest/process-definition/"/>
         public ProcessDefinitionService ProcessDefinitions => new ProcessDefinitionService(_processDefinitionApi.Value);
