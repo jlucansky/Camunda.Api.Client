@@ -85,7 +85,7 @@ namespace Camunda.Api.Client
             JsonSerializerSettings.Converters.Add(new StringEnumConverter());
             JsonSerializerSettings.Converters.Add(new CustomIsoDateTimeConverter());
 
-            JsonContentSerializer = JsonContentSerializer ?? new NewtonsoftJsonContentSerializer(JsonSerializerSettings);
+            JsonContentSerializer = JsonContentSerializer ?? new JsonContentSerializer(JsonSerializerSettings);
         }
 
         private class CustomIsoDateTimeConverter : Newtonsoft.Json.Converters.IsoDateTimeConverter

@@ -18,20 +18,17 @@
     <RepositoryType></RepositoryType>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Refit" Version="5.1.67" />
+    <PackageReference Include="Refit" Version="5.0.23" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\LICENSE" Pack="true" PackagePath="" />
     <None Include="icon.png" Pack="true" PackagePath="" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net452'">
-    <Reference Include="Microsoft.CSharp.dll" />
   </ItemGroup>
 
 </Project>
