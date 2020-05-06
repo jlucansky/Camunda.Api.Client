@@ -11,7 +11,7 @@ namespace Camunda.Api.Client.Migration
         Task<MigrationPlan> Generate([Body] MigrationPlanRequest request);
 
         [Post("/migration/validate")]
-        Task<List<MigrationInstructionReport>> Validate([Body] MigrationPlan plan);
+        Task<MigrationInstructionReports> Validate([Body] MigrationPlan plan);
 
         [Post("/migration/execute")]
         Task Execute([Body] MigrationExecutionRequest request);
