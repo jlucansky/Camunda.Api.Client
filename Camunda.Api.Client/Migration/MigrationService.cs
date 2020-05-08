@@ -20,27 +20,27 @@ namespace Camunda.Api.Client.Migration
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public Task<MigrationPlan> Generate(MigrationPlanRequest request) => _api.Generate(request);
+        public Task<MigrationPlan> Generate(MigrationPlanGeneration request) => _api.Generate(request);
 
         /// <summary>
         /// Validates a migration plan statically without executing it.
         /// </summary>
         /// <param name="plan"></param>
         /// <returns></returns>
-        public Task<MigrationInstructionReports> Validate(MigrationPlan plan) => _api.Validate(plan);
+        public Task<MigrationPlanReport> Validate(MigrationPlan plan) => _api.Validate(plan);
 
         /// <summary>
         /// Executes a migration plan synchronously for multiple process instances.
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public Task Execute(MigrationExecutionRequest request) => _api.Execute(request);
+        public Task Execute(MigrationExecution request) => _api.Execute(request);
 
         /// <summary>
         /// Executes a migration plan asynchronously (batch) for multiple process instances.
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public Task<BatchInfo> ExecuteAsync(MigrationExecutionRequest request) => _api.ExecuteAsync(request);
+        public Task<BatchInfo> ExecuteAsync(MigrationExecution request) => _api.ExecuteAsync(request);
     }
 }

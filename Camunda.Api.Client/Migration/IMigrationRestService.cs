@@ -8,15 +8,15 @@ namespace Camunda.Api.Client.Migration
     internal interface IMigrationRestService
     {
         [Post("/migration/generate")]
-        Task<MigrationPlan> Generate([Body] MigrationPlanRequest request);
+        Task<MigrationPlan> Generate([Body] MigrationPlanGeneration request);
 
         [Post("/migration/validate")]
-        Task<MigrationInstructionReports> Validate([Body] MigrationPlan plan);
+        Task<MigrationPlanReport> Validate([Body] MigrationPlan plan);
 
         [Post("/migration/execute")]
-        Task Execute([Body] MigrationExecutionRequest request);
+        Task Execute([Body] MigrationExecution request);
 
         [Post("/migration/executeAsync")]
-        Task<BatchInfo> ExecuteAsync([Body] MigrationExecutionRequest request);
+        Task<BatchInfo> ExecuteAsync([Body] MigrationExecution request);
     }
 }

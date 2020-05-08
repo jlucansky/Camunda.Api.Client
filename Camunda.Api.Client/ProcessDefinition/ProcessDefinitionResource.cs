@@ -13,6 +13,12 @@ namespace Camunda.Api.Client.ProcessDefinition
         public abstract Task<ProcessDefinitionInfo> Get();
 
         /// <summary>
+        /// Deletes process definition(s).
+        /// </summary>
+        /// <returns></returns>
+        public abstract Task Delete(bool cascade, bool skipCustomListeners, bool skipIoMappings);
+
+        /// <summary>
         /// Retrieves the BPMN 2.0 XML of this process definition.
         /// </summary>
         public abstract Task<ProcessDefinitionDiagram> GetXml();

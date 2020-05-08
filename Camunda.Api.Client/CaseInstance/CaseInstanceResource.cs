@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 #endregion
@@ -47,7 +48,7 @@ namespace Camunda.Api.Client.CaseInstance
         /// </summary>
         /// <param name="varName">The name of the variable to get.</param>
         /// <returns></returns>
-        public Task<HttpWebResponse> GetVariableValueBinary(string varName) =>
+        public Task<HttpResponseMessage> GetVariableValueBinary(string varName) =>
             _api.GetVariableValueBinary(_caseInstanceId, varName);
 
         /// <summary>

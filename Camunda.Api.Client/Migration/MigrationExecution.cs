@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Camunda.Api.Client.Migration
 {
-    public class MigrationExecutionRequest
+    public class MigrationExecution
     {
         /// <summary>
         /// The migration plan to execute.
@@ -22,7 +22,7 @@ namespace Camunda.Api.Client.Migration
         /// A process instance query.
         /// </summary>
         [JsonProperty("processInstanceQuery")]
-        public ProcessInstanceQuery processInstanceQuery;
+        public ProcessInstanceQuery ProcessInstanceQuery;
 
         /// <summary>
         /// A boolean value to control whether execution listeners should be invoked during migration.

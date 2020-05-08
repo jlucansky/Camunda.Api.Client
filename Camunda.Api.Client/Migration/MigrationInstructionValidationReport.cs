@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Camunda.Api.Client.Migration
 {
-    public class MigrationInstructionReport
+    public class MigrationInstructionValidationReport
     {
         /// <summary>
         /// A migration instruction object.

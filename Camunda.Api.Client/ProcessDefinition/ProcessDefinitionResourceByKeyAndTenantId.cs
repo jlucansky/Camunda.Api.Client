@@ -21,6 +21,9 @@ namespace Camunda.Api.Client.ProcessDefinition
 
         public override Task<ProcessDefinitionInfo> Get() => _api.GetByKeyAndTenantId(_processDefinitionKey, _tenantId);
 
+        public override Task Delete(bool cascade, bool skipCustomListeners, bool skipIoMappings) =>
+            _api.DeleteByKeyAndTenantId(_processDefinitionKey, _tenantId, cascade, skipCustomListeners, skipIoMappings);
+
         public override Task<ProcessDefinitionDiagram> GetXml() => _api.GetXmlByKeyAndTenantId(_processDefinitionKey, _tenantId);
 
         public override async Task<HttpContent> GetDiagram() => (await _api.GetDiagramByKeyAndTenantId(_processDefinitionKey, _tenantId)).Content;

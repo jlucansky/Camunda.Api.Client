@@ -2,7 +2,7 @@
 
 namespace Camunda.Api.Client.Migration
 {
-    public class MigrationPlanRequest
+    public class MigrationPlanGeneration
     {
         /// <summary>
         /// The id of the source process definition for the migration.

@@ -6,12 +6,12 @@ using Newtonsoft.Json.Serialization;
 
 namespace Camunda.Api.Client.Migration
 {
-    public class MigrationInstructionReports
+    public class MigrationPlanReport
     {
         /// <summary>
         /// The list of instruction validation reports. If no validation errors are detected it is an empty list.
         /// </summary>
         [JsonProperty("instructionReports")]
-        public List<MigrationInstructionReport> InstructionReports;
+        public List<MigrationInstructionValidationReport> InstructionReports;
     }
 }

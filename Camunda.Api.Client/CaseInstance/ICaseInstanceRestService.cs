@@ -1,7 +1,7 @@
 ﻿#region Usings
 
 using System.Collections.Generic;
-using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Refit;
 
@@ -19,7 +19,7 @@ namespace Camunda.Api.Client.CaseInstance
 
         // TODO: check if HttpWebResponse is indeed the correct return type
         [Get("/case-instance/{id}/variables/{varName}/data")]
-        Task<HttpWebResponse> GetVariableValueBinary(string id, string varName);
+        Task<HttpResponseMessage> GetVariableValueBinary(string id, string varName);
 
         [Post("/case-instance/{id}/variables")]
         Task ModifyVariables(string id, [Body] CaseInstanceModifications modifications);

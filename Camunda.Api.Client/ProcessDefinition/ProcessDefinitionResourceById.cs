@@ -19,6 +19,8 @@ namespace Camunda.Api.Client.ProcessDefinition
 
         public override Task<ProcessDefinitionInfo> Get() => _api.GetById(_processDefinitionId);
 
+        public override Task Delete(bool cascade, bool skipCustomListeners, bool skipIoMappings = true) => _api.Delete(_processDefinitionId, cascade, skipCustomListeners, skipIoMappings);
+
         public override Task<ProcessDefinitionDiagram> GetXml() => _api.GetXmlById(_processDefinitionId);
 
         public override async Task<HttpContent> GetDiagram() => (await _api.GetDiagramById(_processDefinitionId)).Content;
@@ -39,7 +41,7 @@ namespace Camunda.Api.Client.ProcessDefinition
         public override Task<Dictionary<string, VariableValue>> GetFormVariables(params string[] variableNames) => _api.GetFormVariablesById(_processDefinitionId, variableNames.Join());
 
         public override Task<Dictionary<string, VariableValue>> GetFormVariables(string[] variableNames, bool deserializeValues = true) => _api.GetFormVariablesById(_processDefinitionId, variableNames.Join(), deserializeValues);
-        
+
         public override string ToString() => _processDefinitionId;
     }
 }
