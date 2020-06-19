@@ -2,23 +2,27 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
-    <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>    
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.5.1-prerelease02</Version>
+    <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
+    <VersionSuffix></VersionSuffix>
+    <VersionPrefix>2.5.1</VersionPrefix>
     <FileVersion>2.5.1.0</FileVersion>
     <Product>Camunda REST API Client</Product>
     <Title>Camunda REST API Client</Title>
     <Authors>Jan Lucansky</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/jlucansky/Camunda.Api.Client</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <Description>Camunda REST API Client for .NET platform</Description>
     <PackageTags>camunda rest refit bpmn bpm</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <RepositoryType></RepositoryType>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <!-- Don't increment AssemblyVersion -->
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\Key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,5 +34,11 @@
     <None Include="..\LICENSE" Pack="true" PackagePath="" />
     <None Include="icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
+
+  
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <!-- wait for manually signing to complete -->
+    <Exec Condition="$(SIGNTOOL_WAIT) != ''" Command="start cmd /c pause" />
+  </Target>
 
 </Project>
