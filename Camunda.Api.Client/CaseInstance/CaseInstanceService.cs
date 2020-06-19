@@ -1,6 +1,6 @@
 ﻿namespace Camunda.Api.Client.CaseInstance
 {
-    public class CaseInstanceService : ICaseInstanceService
+    public class CaseInstanceService
     {
         private ICaseInstanceRestService _api;
 

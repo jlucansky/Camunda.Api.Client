@@ -8,6 +8,7 @@ using Refit;
 
 using Camunda.Api.Client.CaseDefinition;
 using Camunda.Api.Client.CaseExecution;
+using Camunda.Api.Client.CaseInstance;
 using Camunda.Api.Client.DecisionDefinition;
 using Camunda.Api.Client.Deployment;
 using Camunda.Api.Client.Execution;
@@ -26,6 +27,7 @@ using Camunda.Api.Client.Tenant;
 using Camunda.Api.Client.User;
 using Camunda.Api.Client.UserTask;
 using Camunda.Api.Client.VariableInstance;
+
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 namespace Camunda.Api.Client
@@ -34,6 +36,7 @@ namespace Camunda.Api.Client
     {
         private Lazy<ICaseDefinitionRestService> _caseDefinitionRestService;
         private Lazy<ICaseExecutionRestService> _caseExecutionRestService;
+        private Lazy<ICaseInstanceRestService> _caseInstanceRestService;
         private Lazy<IDecisionDefinitionRestService> _decisionDefinitionRestService;
         private Lazy<IDeploymentRestService> _deploymentApi;
         private Lazy<IExecutionRestService> _executionApi;
@@ -253,6 +256,9 @@ namespace Camunda.Api.Client
 
         /// <see href="https://docs.camunda.org/manual/7.9/reference/rest/case-execution/"/>
         public CaseExecutionService CaseExecutions => new CaseExecutionService(_caseExecutionRestService.Value);
+
+        /// <see href="https://docs.camunda.org/manual/7.9/reference/rest/case-instance/"/>
+        public CaseInstanceService CaseInstances => new CaseInstanceService(_caseInstanceRestService.Value);
 
         /// <see href="https://docs.camunda.org/manual/7.9/reference/rest/decision-definition/"/>
         public DecisionDefinitionService DecisionDefinitions => new DecisionDefinitionService(_decisionDefinitionRestService.Value);
