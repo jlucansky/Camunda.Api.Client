@@ -5,6 +5,7 @@
     <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>    
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>2.5.1-prerelease02</Version>
+    <FileVersion>2.5.1.0</FileVersion>
     <Product>Camunda REST API Client</Product>
     <Title>Camunda REST API Client</Title>
     <Authors>Jan Lucansky</Authors>
@@ -13,8 +14,7 @@
     <Description>Camunda REST API Client for .NET platform</Description>
     <PackageTags>camunda rest refit bpmn bpm</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <AssemblyVersion>2.5.1.0</AssemblyVersion>
-    <FileVersion>2.5.1.0</FileVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <RepositoryType></RepositoryType>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
