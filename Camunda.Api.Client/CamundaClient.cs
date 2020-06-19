@@ -2,7 +2,6 @@
 using System.Net.Http;
 using System.Reflection;
 using System.Globalization;
-
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Refit;
@@ -26,6 +25,7 @@ using Camunda.Api.Client.Tenant;
 using Camunda.Api.Client.User;
 using Camunda.Api.Client.UserTask;
 using Camunda.Api.Client.VariableInstance;
+using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 namespace Camunda.Api.Client
 {
@@ -56,9 +56,9 @@ namespace Camunda.Api.Client
         private HttpClient _httpClient;
 
         private RefitSettings _refitSettings;
-        private static JsonSerializerSettings _jsonSerializerSettings;
         private HttpMessageHandler _httpMessageHandler;
-        internal static JsonSerializerSettings JsonSerializerSettings => _jsonSerializerSettings;
+        internal static JsonSerializerSettings JsonSerializerSettings { get; private set; }
+        internal static IContentSerializer JsonContentSerializer { get; private set; }
 
         internal class HistoricApi
         {
@@ -76,14 +76,16 @@ namespace Camunda.Api.Client
 
         static CamundaClient()
         {
-            _jsonSerializerSettings = _jsonSerializerSettings ?? new JsonSerializerSettings
+            JsonSerializerSettings = JsonSerializerSettings ?? new JsonSerializerSettings
             {
                 ContractResolver = new CustomCamelCasePropertyNamesContractResolver(),
                 NullValueHandling = NullValueHandling.Ignore, // do not send empty fields
             };
 
-            _jsonSerializerSettings.Converters.Add(new StringEnumConverter());
-            _jsonSerializerSettings.Converters.Add(new CustomIsoDateTimeConverter());
+            JsonSerializerSettings.Converters.Add(new StringEnumConverter());
+            JsonSerializerSettings.Converters.Add(new CustomIsoDateTimeConverter());
+
+            JsonContentSerializer = JsonContentSerializer ?? new JsonContentSerializer(JsonSerializerSettings);
         }
 
         private class CustomIsoDateTimeConverter : Newtonsoft.Json.Converters.IsoDateTimeConverter
@@ -139,7 +141,7 @@ namespace Camunda.Api.Client
 
             _refitSettings = _refitSettings ?? new RefitSettings
             {
-                JsonSerializerSettings = _jsonSerializerSettings,
+                ContentSerializer = JsonContentSerializer,
                 UrlParameterFormatter = new CustomUrlParameterFormatter(),
                 HttpMessageHandlerFactory = () => _httpMessageHandler
             };
@@ -147,12 +149,12 @@ namespace Camunda.Api.Client
 
         private class CustomUrlParameterFormatter : DefaultUrlParameterFormatter
         {
-            public override string Format(object parameterValue, ParameterInfo parameterInfo)
+            public override string Format(object parameterValue, ICustomAttributeProvider attributeProvider, Type type)
             {
                 if (parameterValue is bool)
-                    return string.Format(CultureInfo.InvariantCulture, "{0}", parameterValue).ToLower();
-                else
-                    return base.Format(parameterValue, parameterInfo);
+                    return string.Format(CultureInfo.InvariantCulture, "{0}", parameterValue).ToLowerInvariant();
+
+                return base.Format(parameterValue, attributeProvider, type);
             }
         }
 

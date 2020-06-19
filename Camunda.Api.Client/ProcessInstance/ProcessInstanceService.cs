@@ -10,7 +10,10 @@ namespace Camunda.Api.Client.ProcessInstance
         internal ProcessInstanceService(IProcessInstanceRestService api) { _api = api; }
 
         public QueryResource<ProcessInstanceQuery, ProcessInstanceInfo> Query(ProcessInstanceQuery query = null) =>
-            new QueryResource<ProcessInstanceQuery, ProcessInstanceInfo>(_api, query);
+            new QueryResource<ProcessInstanceQuery, ProcessInstanceInfo>(
+                query, 
+                (q, f, m) => _api.GetList(q, f, m),
+                q => _api.GetListCount(q));
 
         /// <param name="processInstanceId">The id of the process instance to be retrieved.</param>
         public ProcessInstanceResource this[string processInstanceId] => new ProcessInstanceResource(_api, processInstanceId);

@@ -13,8 +13,12 @@ namespace Camunda.Api.Client.History
             _api = api;
         }
 
-        public QueryResource<HistoricProcessInstanceQuery, HistoricProcessInstance> Query(HistoricProcessInstanceQuery query = null) =>
-            new QueryResource<HistoricProcessInstanceQuery, HistoricProcessInstance>(_api, query);
+        public QueryResource<HistoricProcessInstanceQuery, HistoricProcessInstance> Query(
+            HistoricProcessInstanceQuery query = null) =>
+            new QueryResource<HistoricProcessInstanceQuery, HistoricProcessInstance>(
+                query,
+                (q, f, m) => _api.GetList(q, f, m), 
+                q => _api.GetListCount(q));
 
         /// <param name="processInstanceId">The id of the historic process instance to be retrieved.</param>
         public HistoricProcessInstanceResource this[string processInstanceId] => new HistoricProcessInstanceResource(_api, processInstanceId);

@@ -10,7 +10,9 @@
         }
 
         public QueryResource<HistoricIncidentQuery, HistoricIncident> Query(HistoricIncidentQuery query = null) =>
-            new QueryResource<HistoricIncidentQuery, HistoricIncident>(_api, query);
-
+            new QueryResource<HistoricIncidentQuery, HistoricIncident>(
+                query, 
+                (q, f, m) => _api.GetList(q, f, m),
+                q => _api.GetListCount(q));
     }
 }
