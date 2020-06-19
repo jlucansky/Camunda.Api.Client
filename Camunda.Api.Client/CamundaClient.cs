@@ -195,6 +195,7 @@ namespace Camunda.Api.Client
         {
             _caseDefinitionRestService = CreateService<ICaseDefinitionRestService>();
             _caseExecutionRestService = CreateService<ICaseExecutionRestService>();
+            _caseInstanceRestService = CreateService<ICaseInstanceRestService>();
             _decisionDefinitionRestService = CreateService<IDecisionDefinitionRestService>();
             _deploymentApi = CreateService<IDeploymentRestService>();
             _executionApi = CreateService<IExecutionRestService>();
