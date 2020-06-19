@@ -19,16 +19,16 @@ namespace Camunda.Api.Client.CaseInstance
 
         // TODO: check if HttpWebResponse is indeed the correct return type
         [Get("/case-instance/{id}/variables/{varName}/data")]
-        Task<HttpResponseMessage> GetVariableValueBinary(string id, string varName);
+        Task<HttpResponseMessage> GetBinaryVariable(string id, string varName);
 
         [Post("/case-instance/{id}/variables")]
-        Task ModifyVariables(string id, [Body] CaseInstanceModifications modifications);
+        Task ModifyVariables(string id, [Body] PatchVariables patch);
 
         [Put("/case-instance/{id}/variables/{varName}")]
         Task UpdateVariable(string id, string varName, [Body] VariableValue value);
 
         [Post("/case-instance/{id}/variables/{varName}/data")]
-        Task SetVariableBinary(string id, string varName, [Body] CaseInstanceBinaryVariableValue value);
+        Task SetBinaryVariable(string id, string varName, BinaryDataContent data, ValueTypeContent valueType);
 
         [Delete("/case-instance/{id}/variables/{varName}")]
         Task DeleteVariable(string id, string varName);
