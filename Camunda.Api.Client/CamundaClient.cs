@@ -8,6 +8,7 @@ using Refit;
 
 using Camunda.Api.Client.CaseDefinition;
 using Camunda.Api.Client.CaseExecution;
+using Camunda.Api.Client.CaseInstance;
 using Camunda.Api.Client.DecisionDefinition;
 using Camunda.Api.Client.Deployment;
 using Camunda.Api.Client.Execution;
@@ -18,6 +19,7 @@ using Camunda.Api.Client.Incident;
 using Camunda.Api.Client.Job;
 using Camunda.Api.Client.JobDefinition;
 using Camunda.Api.Client.Message;
+using Camunda.Api.Client.Migration;
 using Camunda.Api.Client.ProcessDefinition;
 using Camunda.Api.Client.ProcessInstance;
 using Camunda.Api.Client.Signal;
@@ -25,6 +27,7 @@ using Camunda.Api.Client.Tenant;
 using Camunda.Api.Client.User;
 using Camunda.Api.Client.UserTask;
 using Camunda.Api.Client.VariableInstance;
+
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 namespace Camunda.Api.Client
@@ -33,6 +36,7 @@ namespace Camunda.Api.Client
     {
         private Lazy<ICaseDefinitionRestService> _caseDefinitionRestService;
         private Lazy<ICaseExecutionRestService> _caseExecutionRestService;
+        private Lazy<ICaseInstanceRestService> _caseInstanceRestService;
         private Lazy<IDecisionDefinitionRestService> _decisionDefinitionRestService;
         private Lazy<IDeploymentRestService> _deploymentApi;
         private Lazy<IExecutionRestService> _executionApi;
@@ -41,6 +45,7 @@ namespace Camunda.Api.Client
         private Lazy<IIncidentRestService> _incidentApi;
         private Lazy<IJobDefinitionRestService> _jobDefinitionApi;
         private Lazy<IJobRestService> _jobApi;
+        private Lazy<IMigrationRestService> _migrationRestService;
         private Lazy<IMessageRestService> _messageApi;
         private Lazy<IProcessDefinitionRestService> _processDefinitionApi;
         private Lazy<IProcessInstanceRestService> _processInstanceApi;
@@ -190,6 +195,7 @@ namespace Camunda.Api.Client
         {
             _caseDefinitionRestService = CreateService<ICaseDefinitionRestService>();
             _caseExecutionRestService = CreateService<ICaseExecutionRestService>();
+            _caseInstanceRestService = CreateService<ICaseInstanceRestService>();
             _decisionDefinitionRestService = CreateService<IDecisionDefinitionRestService>();
             _deploymentApi = CreateService<IDeploymentRestService>();
             _executionApi = CreateService<IExecutionRestService>();
@@ -199,6 +205,7 @@ namespace Camunda.Api.Client
             _jobApi = CreateService<IJobRestService>();
             _jobDefinitionApi = CreateService<IJobDefinitionRestService>();
             _messageApi = CreateService<IMessageRestService>();
+            _migrationRestService = CreateService<IMigrationRestService>();
             _processDefinitionApi = CreateService<IProcessDefinitionRestService>();
             _processInstanceApi = CreateService<IProcessInstanceRestService>();
             _signalApi = CreateService<ISignalRestService>();
@@ -251,6 +258,9 @@ namespace Camunda.Api.Client
         /// <see href="https://docs.camunda.org/manual/7.9/reference/rest/case-execution/"/>
         public CaseExecutionService CaseExecutions => new CaseExecutionService(_caseExecutionRestService.Value);
 
+        /// <see href="https://docs.camunda.org/manual/7.9/reference/rest/case-instance/"/>
+        public CaseInstanceService CaseInstances => new CaseInstanceService(_caseInstanceRestService.Value);
+
         /// <see href="https://docs.camunda.org/manual/7.9/reference/rest/decision-definition/"/>
         public DecisionDefinitionService DecisionDefinitions => new DecisionDefinitionService(_decisionDefinitionRestService.Value);
 
@@ -280,6 +290,9 @@ namespace Camunda.Api.Client
 
         /// <see href="https://docs.camunda.org/manual/7.9/reference/rest/message/"/>
         public MessageService Messages => new MessageService(_messageApi.Value);
+
+        /// <see href="https://docs.camunda.org/manual/7.13/reference/rest/migration/"/>
+        public MigrationService Migrations => new MigrationService(_migrationRestService.Value);
 
         /// <see href="https://docs.camunda.org/manual/7.9/reference/rest/process-definition/"/>
         public ProcessDefinitionService ProcessDefinitions => new ProcessDefinitionService(_processDefinitionApi.Value);

@@ -44,5 +44,9 @@
         /// The tenant id of the batch.
         /// </summary>
         public string TenantId;
+        /// <summary>
+        /// The id of the user that created the batch.
+        /// </summary>
+        public string CreateUserId;
     }
 }

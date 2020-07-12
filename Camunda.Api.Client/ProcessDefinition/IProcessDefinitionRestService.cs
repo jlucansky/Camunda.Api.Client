@@ -18,7 +18,11 @@ namespace Camunda.Api.Client.ProcessDefinition
         Task<List<ProcessDefinitionStatisticsResult>> GetProcessInstanceStatistics(bool failedJobs, bool? incidents, string incidentsForType);
 
         [Delete("/process-definition/{id}")]
-        Task Delete(string id, bool cascade, bool skipCustomListeners);
+        Task Delete(string id, bool cascade, bool skipCustomListeners, bool skipIoMappings);
+        [Delete("/process-definition/key/{key}/delete")]
+        Task DeleteByKey(string key, bool cascade, bool skipCustomListeners, bool skipIoMappings);
+        [Delete("/process-definition/key/{key}/tenant-id/{tenantId}/delete")]
+        Task DeleteByKeyAndTenantId(string key, string tenantId, bool cascade, bool skipCustomListeners, bool skipIoMappings);
 
         [Put("/process-definition/{id}/suspended")]
         Task UpdateSuspensionStateById(string id, [Body] ProcessDefinitionSuspensionState state);

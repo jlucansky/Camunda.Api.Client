@@ -16,7 +16,7 @@ namespace Camunda.Api.Client.JobDefinition
         Task<CountResult> GetListCount([Body] JobDefinitionQuery query);
 
         [Put("/job-definition/suspended")]
-        Task UpdateSuspensionState(JobDefinitionSuspensionState state);
+        Task UpdateSuspensionState([Body]JobDefinitionSuspensionState state);
 
         [Put("/job-definition/{jobDefinitionId}/suspended")]
         Task UpdateSuspensionStateForId(string jobDefinitionId, [Body] SuspensionState suspensionState);
