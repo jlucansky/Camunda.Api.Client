@@ -53,6 +53,12 @@ namespace Camunda.Api.Client.Message
             ProcessVariables = (ProcessVariables ?? new Dictionary<string, VariableValue>()).Set(name, value);
             return this;
         }
+        
+        public CorrelationMessage SetCorrelationKey(string name, object value)
+        {
+            CorrelationKeys = (CorrelationKeys ?? new Dictionary<string, VariableValue>()).Set(name, value);
+            return this;
+        }
 
     }
 }
