@@ -149,37 +149,37 @@ namespace Camunda.Api.Client.History
         /// <summary>
         /// Restrict to tasks that have the given priority.
         /// </summary>
-        public long TaskPriority;
+        public long? TaskPriority;
 
         /// <summary>
         /// If set to true, restricts the query to all tasks that are assigned.
         /// </summary>
-        public bool Assigned;
+        public bool? Assigned;
 
         /// <summary>
         /// If set to true, restricts the query to all tasks that are unassigned.
         /// </summary>
-        public bool Unassigned;
+        public bool? Unassigned;
 
         /// <summary>
         /// Only include finished tasks.Value may only be true, as false is the default behavior.
         /// </summary>
-        public bool Finished;
+        public bool? Finished;
 
         /// <summary>
         /// Only include unfinished tasks.Value may only be true, as false is the default behavior.
         /// </summary>
-        public bool Unfinished;
+        public bool? Unfinished;
 
         /// <summary>
         /// Only include tasks of finished processes.Value may only be true, as false is the default behavior.
         /// </summary>
-        public bool ProcessFinished;
+        public bool? ProcessFinished;
 
         /// <summary>
         /// Only include tasks of unfinished processes.Value may only be true, as false is the default behavior.
         /// </summary>
-        public bool ProcessUnfinished;
+        public bool? ProcessUnfinished;
 
         /// <summary>
         /// Restrict to tasks that are due on the given date.By default*, the date must have the format yyyy-MM-dd'T'HH:mm:ss.SSSZ, e.g., 2013-01-23T14:42:45.000+0200.
@@ -275,12 +275,12 @@ namespace Camunda.Api.Client.History
         /// <summary>
         /// Only include tasks which have a candidate group.Value may only be true, as false is the default behavior.
         /// </summary>
-        public bool WithCandidateGroups;
+        public bool? WithCandidateGroups;
 
         /// <summary>
         /// Only include tasks which have no candidate group.Value may only be true, as false is the default behavior.esults if there are no more results left.
         /// </summary>
-        public bool WithoutCandidateGroups;
+        public bool? WithoutCandidateGroups;
     }
 
     public enum HistoricTaskQuerySorting
