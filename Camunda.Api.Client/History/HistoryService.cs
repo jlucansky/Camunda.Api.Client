@@ -35,6 +35,11 @@
         public HistoricProcessInstanceService ProcessInstances => new HistoricProcessInstanceService(_api.ProcessInstanceApi.Value);
 
         /// <summary>
+        /// Task
+        /// </summary>
+        public HistoricTaskService Tasks => new HistoricTaskService(_api.TaskApi.Value);
+
+        /// <summary>
         /// Activity Instance
         /// </summary>
         public HistoricActivityInstanceService ActivityInstances => new HistoricActivityInstanceService(_api.ActivityInstanceApi.Value);
