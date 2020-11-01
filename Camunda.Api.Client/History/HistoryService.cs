@@ -59,5 +59,10 @@
         /// </summary>
         public HistoricDetailService Detail => new HistoricDetailService(_api.DetailApi.Value);
 
+        /// <summary>
+        /// Process Instance
+        /// </summary>
+        public HistoricUserTaskService UserTasks => new HistoricUserTaskService(_api.UserTaskApi.Value);
+
     }
 }
