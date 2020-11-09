@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Camunda.Api.Client.ExternalTask
@@ -23,5 +22,10 @@ namespace Camunda.Api.Client.ExternalTask
         /// Fetches and locks a specific number of external tasks for execution by a worker. Query can be restricted to specific task topics and for each task topic an individual lock time can be provided.
         /// </summary>
         public Task<List<LockedExternalTask>> FetchAndLock(FetchExternalTasks fetching) => _api.FetchAndLock(fetching);
+
+        /// <summary>
+        /// Completes an external task.
+        /// </summary>
+        public Task Complete(string externalTaskId, CompleteExternalTask completeExternalTask) => _api.Complete(externalTaskId, completeExternalTask);
     }
 }
