@@ -68,5 +68,10 @@
         /// Process Definition
         /// </summary>
         public HistoricProcessDefinitionService ProcessDefinitions => new HistoricProcessDefinitionService(_api.ProcessDefinitionApi.Value);
+
+        /// <summary>
+        /// External Tas kLog
+        /// </summary>
+        public HistoricExternalTaskLogService ExternalTaskLogs => new HistoricExternalTaskLogService(_api.externalTaskLogApi.Value);
     }
 }
