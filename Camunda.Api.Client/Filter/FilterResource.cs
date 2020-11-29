@@ -45,13 +45,13 @@ namespace Camunda.Api.Client.Filter
         /// <param name="firstResult"></param>
         /// <param name="maxResults"></param>
         /// <returns></returns>
-        public Task<List<UserTaskInfo>> ExecuteList(int firstResult, int maxResults, TaskQuery query) => _api.ExecuteList(_filterId, firstResult, maxResults, query);
+        public Task<List<UserTaskInfo>> ExecuteList(int firstResult, int maxResults, TaskQuery query = null) => _api.ExecuteList(_filterId, firstResult, maxResults, query);
 
         /// <summary>
         /// Executes the saved query of the filter by id and returns the count.
         /// </summary>
         /// <returns></returns>
-        public async Task<int> ExecuteCount(TaskQuery query) => (await _api.ExecuteCount(_filterId, query)).Count;
+        public async Task<int> ExecuteCount(TaskQuery query = null) => (await _api.ExecuteCount(_filterId, query)).Count;
 
         public override string ToString() => _filterId;
     }
