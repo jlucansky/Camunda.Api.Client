@@ -6,6 +6,11 @@ namespace Camunda.Api.Client.Filter
     {
         public class Request
         {
+            public Request()
+            {
+                ResourceType = "Task";
+            }
+            
             /// <summary>
             /// The resource type of the filter.
             /// </summary>

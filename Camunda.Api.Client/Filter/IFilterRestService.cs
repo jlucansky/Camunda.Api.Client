@@ -29,10 +29,10 @@ namespace Camunda.Api.Client.Filter
         [Get("/filter/{id}/singleResult")]
         Task<UserTaskInfo> Execute(string id);
 
-        [Get("/filter/{id}/list")]
-        Task<List<UserTaskInfo>> ExecuteList(string id, int firstResult, int maxResults);
+        [Post("/filter/{id}/list")]
+        Task<List<UserTaskInfo>> ExecuteList(string id, int firstResult, int maxResults, [Body] TaskQuery query);
 
-        [Get("/filter/{id}/count")]
-        Task<CountResult> ExecuteCount(string id);
+        [Post("/filter/{id}/count")]
+        Task<CountResult> ExecuteCount(string id, [Body] TaskQuery query);
     }
 }
