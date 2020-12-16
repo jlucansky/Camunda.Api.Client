@@ -160,7 +160,7 @@ namespace Camunda.Api.Client.History
         /// <summary>
         /// If set to true, restricts the query to all tasks that are assigned.
         /// </summary>
-        public bool Assigned;
+        public bool? Assigned;
 
         /// <summary>
         /// If set to true, restricts the query to all tasks that are unassigned.
