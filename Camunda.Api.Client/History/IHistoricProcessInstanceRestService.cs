@@ -20,7 +20,7 @@ namespace Camunda.Api.Client.History
         Task Delete(string id);
 
         [Get("/history/process-instance/report")]
-        Task<List<DurationReportResult>> GetDurationReport(HistoricProcessInstanceReport historicProcessInstanceReport);
+        Task<List<DurationReportResult>> GetDurationReport(QueryDictionary query);
 
         [Post("/history/process-instance/delete")]
         Task<BatchInfo> DeleteAsync([Body] DeleteHistoricProcessInstances deleteHistoricProcessInstances);

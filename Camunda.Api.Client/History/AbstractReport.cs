@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
+using System.Runtime.Serialization;
 
 namespace Camunda.Api.Client.History
 {
@@ -36,5 +37,14 @@ namespace Camunda.Api.Client.History
 
         [EnumMember(Value = "count")]
         Count
+    }
+
+    public enum GroupBy
+    {
+        [EnumMember(Value = "taskName")]
+        TaskName,
+
+        [EnumMember(Value = "processDefinition")]
+        ProcessDefinition
     }
 }

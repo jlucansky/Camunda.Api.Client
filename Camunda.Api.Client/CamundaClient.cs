@@ -29,6 +29,7 @@ using Camunda.Api.Client.UserTask;
 using Camunda.Api.Client.VariableInstance;
 
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
+using Camunda.Api.Client.Filter;
 
 namespace Camunda.Api.Client
 {
@@ -54,6 +55,7 @@ namespace Camunda.Api.Client
         private Lazy<IUserRestService> _userApi;
         private Lazy<IUserTaskRestService> _userTaskApi;
         private Lazy<IVariableInstanceRestService> _variableInstanceApi;
+        private Lazy<IFilterRestService> _filterApi;
 
         private HistoricApi _historicApi;
 
@@ -77,6 +79,9 @@ namespace Camunda.Api.Client
             public Lazy<IHistoricJobLogRestService> JobLogApi;
             public Lazy<IHistoricProcessInstanceRestService> ProcessInstanceApi;
             public Lazy<IHistoricVariableInstanceRestService> VariableInstanceApi;
+            public Lazy<IHistoricUserTaskRestService> UserTaskApi;
+            public Lazy<IHistoricProcessDefinitionRestService> ProcessDefinitionApi;
+            public Lazy<IHistoricExternalTaskLogRestService> ExternalTaskLogApi;
         }
 
         static CamundaClient()
@@ -213,6 +218,7 @@ namespace Camunda.Api.Client
             _userApi = CreateService<IUserRestService>();
             _userTaskApi = CreateService<IUserTaskRestService>();
             _variableInstanceApi = CreateService<IVariableInstanceRestService>();
+            _filterApi = CreateService<IFilterRestService>();
 
             _historicApi = new HistoricApi()
             {
@@ -226,6 +232,9 @@ namespace Camunda.Api.Client
                 JobLogApi = CreateService<IHistoricJobLogRestService>(),
                 ProcessInstanceApi = CreateService<IHistoricProcessInstanceRestService>(),
                 VariableInstanceApi = CreateService<IHistoricVariableInstanceRestService>(),
+                UserTaskApi = CreateService<IHistoricUserTaskRestService>(),
+                ProcessDefinitionApi = CreateService<IHistoricProcessDefinitionRestService>(),
+                ExternalTaskLogApi = CreateService<IHistoricExternalTaskLogRestService>(),
             };
         }
 
@@ -314,5 +323,8 @@ namespace Camunda.Api.Client
 
         /// <see href="https://docs.camunda.org/manual/7.9/reference/rest/variable-instance/"/>
         public VariableInstanceService VariableInstances => new VariableInstanceService(_variableInstanceApi.Value);
+
+        /// <see href="https://docs.camunda.org/manual/7.9/reference/rest/filter/"/>
+        public FilterService Filters => new FilterService(_filterApi.Value);
     }
 }
