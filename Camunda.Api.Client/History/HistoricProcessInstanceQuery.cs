@@ -144,6 +144,11 @@ namespace Camunda.Api.Client.History
         /// </summary>
         [JsonProperty("activeActivityIdIn")]
         public List<string> ActiveActivityIds;
+        
+        /// <summary>
+        /// Array to only include process instances that have/had variables with certain values.
+        /// </summary>
+        public List<VariableQueryParameter> Variables = new List<VariableQueryParameter>();
     }
 
     public enum HistoricProcessInstanceQuerySorting
