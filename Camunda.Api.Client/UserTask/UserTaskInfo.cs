@@ -11,7 +11,7 @@ namespace Camunda.Api.Client.UserTask
         /// <summary>
         /// The time the task was created.
         /// </summary>
-        public DateTime? Created;
+        public DateTime Created;
         /// <summary>
         /// The id of the execution the task belongs to.
         /// </summary>
