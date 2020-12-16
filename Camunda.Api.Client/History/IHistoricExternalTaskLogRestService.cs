@@ -18,6 +18,6 @@ namespace Camunda.Api.Client.History
         Task<HistoricExternalTaskLog> Get(string id);
 
         [Get("/history/external-task-log/{id}/error-details")]
-        Task<HttpResponseMessage> GetErrorDetails(string id);
+        Task<string> GetErrorDetails(string id);
     }
 }

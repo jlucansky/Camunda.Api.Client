@@ -109,18 +109,18 @@ namespace Camunda.Api.Client.History
 
     public enum HistoricExternalTaskTaskSorting
     {
-        timestamp,
-        taskId,
-        topicName,
-        workerId,
-        retries,
-        priority,
-        activityId,
-        activityInstanceId,
-        executionId,
-        processInstanceId,
-        processDefinitionId,
-        processDefinitionKey,
-        tenantId
+        Timestamp,
+        TaskId,
+        TopicName,
+        WorkerId,
+        Retries,
+        Priority,
+        ActivityId,
+        ActivityInstanceId,
+        ExecutionId,
+        ProcessInstanceId,
+        ProcessDefinitionId,
+        ProcessDefinitionKey,
+        TenantId
     }
 }

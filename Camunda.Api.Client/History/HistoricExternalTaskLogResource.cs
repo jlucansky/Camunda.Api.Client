@@ -22,6 +22,6 @@ namespace Camunda.Api.Client.History
         /// <summary>
         /// Retrieves the corresponding exception stacktrace to the passed historic job log by id.
         /// </summary>
-        public async Task<string> GetErrorDetails() => await (await _api.GetErrorDetails(_logId)).Content.ReadAsStringAsync();
+        public Task<string> GetErrorDetails() => _api.GetErrorDetails(_logId);
     }
 }
