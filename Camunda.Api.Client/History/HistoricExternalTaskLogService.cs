@@ -13,10 +13,7 @@ namespace Camunda.Api.Client.History
         }
 
         public QueryResource<HistoricExternalTaskLogQuery, HistoricExternalTaskLog> Query(HistoricExternalTaskLogQuery query = null) =>
-            new QueryResource<HistoricExternalTaskLogQuery, HistoricExternalTaskLog>(
-                query,
-                (q, f, m) => _api.GetList(q, f, m), 
-                q => _api.GetListCount(q));
+            new QueryResource<HistoricExternalTaskLogQuery, HistoricExternalTaskLog>(query, _api.GetList, _api.GetListCount);
 
         public HistoricExternalTaskLogResource this[string logId] => new HistoricExternalTaskLogResource(_api, logId);
     }
