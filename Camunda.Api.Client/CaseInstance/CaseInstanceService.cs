@@ -10,10 +10,7 @@
         }
 
         public QueryResource<CaseInstanceQuery, CaseInstanceInfo> Query(CaseInstanceQuery query = null) =>
-            new QueryResource<CaseInstanceQuery, CaseInstanceInfo>(
-                query,
-                (q, f, m) => _api.GetList(q, f, m),
-                q => _api.GetListCount(q));
+            new QueryResource<CaseInstanceQuery, CaseInstanceInfo>(query, _api.GetList, _api.GetListCount);
 
         /// <param name="caseInstanceId">Id of specific case instance</param>
         public CaseInstanceResource this[string caseInstanceId] => new CaseInstanceResource(_api, caseInstanceId);

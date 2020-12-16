@@ -20,7 +20,7 @@ namespace Camunda.Api.Client.UserTask
         public Task<List<TaskCountByCandidateGroupResult>> GetTaskCountByCandidateGroup() => _api.GetTaskCountByCandidateGroup();
 
         public QueryResource<TaskQuery, UserTaskInfo> Query(TaskQuery query = null) =>
-            new QueryResource<TaskQuery, UserTaskInfo>(query, (q, f, m) => _api.GetList(q, f, m), q => _api.GetListCount(q));
+            new QueryResource<TaskQuery, UserTaskInfo>(query, _api.GetList, _api.GetListCount);
 
         public Task Create(UserTask task) => _api.CreateTask(task);
     }
