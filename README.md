@@ -4,7 +4,7 @@ Camunda REST API Client for .NET platform
 - [x] .NET Standard 2.0
 
 ## Covered API
-Each part listed below is fully covered according to https://docs.camunda.org/manual/7.9/reference/rest specification.
+Each part listed below is fully covered according to https://docs.camunda.org/manual/latest/reference/rest specification.
 - [x] [Case Definition](https://docs.camunda.org/manual/latest/reference/rest/case-definition/)
 - [x] [Case Execution](https://docs.camunda.org/manual/latest/reference/rest/case-execution/)
 - [x] [Case Instance](https://docs.camunda.org/manual/latest/reference/rest/case-instance/)
@@ -13,6 +13,7 @@ Each part listed below is fully covered according to https://docs.camunda.org/ma
 - [x] [Deployment](https://docs.camunda.org/manual/latest/reference/rest/deployment/)
 - [x] [Execution](https://docs.camunda.org/manual/latest/reference/rest/execution/)
 - [x] [External Task](https://docs.camunda.org/manual/latest/reference/rest/external-task/)
+- [x] [Filter](https://docs.camunda.org/manual/latest/reference/rest/filter/)
 - [x] [Group](https://docs.camunda.org/manual/latest/reference/rest/group/)
 - [x] [History / Activity Instance](https://docs.camunda.org/manual/latest/reference/rest/history/activity-instance/)
 - [x] [History / Case Definition](https://docs.camunda.org/manual/latest/reference/rest/history/case-definition/)
@@ -32,6 +33,7 @@ Each part listed below is fully covered according to https://docs.camunda.org/ma
 - [X] [Job](https://docs.camunda.org/manual/latest/reference/rest/job/)
 - [x] [Job Definition](https://docs.camunda.org/manual/latest/reference/rest/job-definition/)
 - [x] [Message](https://docs.camunda.org/manual/latest/reference/rest/message/)
+- [x] [Migration](https://docs.camunda.org/manual/latest/reference/rest/migration/)
 - [x] [Process Definition](https://docs.camunda.org/manual/latest/reference/rest/process-definition/)
 - [x] [Process Instance](https://docs.camunda.org/manual/latest/reference/rest/process-instance/)
 - [x] [Signal](https://docs.camunda.org/manual/latest/reference/rest/signal/)
