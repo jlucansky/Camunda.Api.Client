@@ -49,9 +49,9 @@ namespace Camunda.Api.Client.Filter
 
     public enum FilterSorting
     {
-        filterId, 
-        firstName, 
-        lastName, 
-        email
+        FilterId, 
+        FirstName, 
+        LastName, 
+        Email
     }
 }
