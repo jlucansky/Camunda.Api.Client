@@ -24,5 +24,10 @@ namespace Camunda.Api.Client.Group
 		/// Create a new group.
 		/// </summary>
 		public Task Create(GroupInfo group) => _api.Create(group);
+
+		/// <summary>
+		/// Adds a user to an existing group
+		/// </summary>
+		public Task AddMember(string groupId, string userId) => _api.AddMember(groupId, userId);
 	}
 }
