@@ -70,8 +70,13 @@
         public HistoricProcessDefinitionService ProcessDefinitions => new HistoricProcessDefinitionService(_api.ProcessDefinitionApi.Value);
 
         /// <summary>
-        /// External Tas kLog
+        /// External Task Log
         /// </summary>
-        public HistoricExternalTaskLogService ExternalTaskLogs => new HistoricExternalTaskLogService(_api.ExternalTaskLogApi.Value);
+        public HistoricExternalTaskLogService ExternalTaskLogs => new HistoricExternalTaskLogService(_api.externalTaskLogApi.Value);
+
+        /// <summary>
+        /// User Operation Log
+        /// </summary>
+        public HistoricUserOperationLogService UserOperationLogs => new HistoricUserOperationLogService(_api.userOperationLogApi.Value);
     }
 }
