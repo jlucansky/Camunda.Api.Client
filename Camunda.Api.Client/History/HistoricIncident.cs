@@ -41,6 +41,10 @@ namespace Camunda.Api.Client.History
         /// </summary>
         public string ActivityId;
         /// <summary>
+        /// The id of the activity on which the last exception occurred.
+        /// </summary>
+        public string FailedActivityId;
+        /// <summary>
         /// The id of the associated cause incident which has been triggered.
         /// </summary>
         public string CauseIncidentId;
