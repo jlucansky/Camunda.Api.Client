@@ -49,6 +49,10 @@ namespace Camunda.Api.Client.History
         /// The provided delete reason in case the process instance was canceled during execution./// </summary>
         public string DeleteReason;
         /// <summary>
+        /// The process instance id of the root process instance that initiated the process.
+        /// </summary>
+        public string RootProcessInstanceId;
+        /// <summary>
         /// The id of the parent process instance, if it exists.
         /// </summary>
         public string SuperProcessInstanceId;
