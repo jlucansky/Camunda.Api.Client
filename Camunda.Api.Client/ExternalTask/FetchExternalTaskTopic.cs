@@ -82,6 +82,11 @@ namespace Camunda.Api.Client.ExternalTask
         /// </summary>
         public bool WithoutTenantId;
 
+        /// <summary>
+        /// Include extension properties define in BMPN activity.
+        /// </summary>
+        public bool IncludeExtensionProperties;
+
         public override string ToString() => TopicName;
     }
 }
