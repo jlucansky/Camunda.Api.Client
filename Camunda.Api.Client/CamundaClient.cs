@@ -330,7 +330,7 @@ namespace Camunda.Api.Client
         /// <see href="https://docs.camunda.org/manual/7.9/reference/rest/filter/"/>
         public FilterService Filters => new FilterService(_filterApi.Value);
 
-        /// <see href="https://docs.camunda.org/manual/7.9/reference/rest/filter/"/>
+        /// <see href="https://docs.camunda.org/manual/7.9/reference/rest/version/"/>
         public VersionService Version => new VersionService(_versionApi.Value);
     }
 }
