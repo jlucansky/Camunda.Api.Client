@@ -41,6 +41,7 @@ Each part listed below is fully covered according to https://docs.camunda.org/ma
 - [x] [Tenant](https://docs.camunda.org/manual/latest/reference/rest/tenant/)
 - [x] [User](https://docs.camunda.org/manual/latest/reference/rest/user/)
 - [x] [Variable Instance](https://docs.camunda.org/manual/latest/reference/rest/variable-instance/)
+- [x] [Version](https://docs.camunda.org/manual/latest/reference/rest/version/)
 
 ## Install
 The Camunda REST API Client is available on [nuget.org](https://www.nuget.org/packages/Camunda.Api.Client)
