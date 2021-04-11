@@ -14,5 +14,11 @@ namespace Camunda.Api.Client.History
 
         [Get("/history/decision-instance/count")]
         Task<CountResult> GetListCount(QueryDictionary query);
+
+        [Post("/history/decision-instance/delete")]
+        Task<HistoricDeleteDecisionInstanceResult> Delete([Body] HistoricDeleteDecisionInstance historicDeleteDecisionInstance);
+
+        [Post("/history/decision-instance/set-removal-time")]
+        Task<HistoricDeleteDecisionInstanceResult> SetRemovalTime([Body] HistoricSetRemovalTimeDecisionInstance historicSetRemovalTimeDecisionInstance);
     }
 }
