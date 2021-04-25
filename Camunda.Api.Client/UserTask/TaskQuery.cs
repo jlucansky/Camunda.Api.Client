@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Camunda.Api.Client.UserTask
 {
-    public class TaskQuery
+    public class TaskQuery : QueryParameters
     {
         /// <summary>
         /// Restrict to tasks that belong to process instances with the given business key.
@@ -325,44 +325,15 @@ namespace Camunda.Api.Client.UserTask
         public bool? WithoutCandidateGroups;
 
         /// <summary>
-        /// Array of criteria to sort the result by. The position in the array identifies the rank of an ordering, i.e. whether it is primary, secondary, etc.
+        /// Sort the results lexicographically by a given criterion. Must be used in conjunction with the <see cref="SortOrder"/> parameter.
         /// </summary>
-        public List<SortingInfo<TaskSorting>> Sorting = new List<SortingInfo<TaskSorting>>();
+        public TaskSorting SortBy;
+        
+        /// <summary>
+        /// Sort the results in a given order. Must be used in conjunction with the <see cref="SortBy"/> parameter.
+        /// </summary>
+        public SortOrder SortOrder;
 
-        /// <param name="sortBy"></param>
-        /// <param name="sortOrder"></param>
-        /// <param name="variable">
-        /// Mandatory when <paramref name="sortBy" /> is either 
-        /// <see cref="TaskSorting.ProcessVariable"/>, <see cref="TaskSorting.ExecutionVariable"/>, <see cref="TaskSorting.TaskVariable"/>, <see cref="TaskSorting.CaseExecutionVariable"/> or <see cref="TaskSorting.CaseInstanceVariable"/>
-        /// </param>
-        public TaskQuery Sort(TaskSorting sortBy, SortOrder sortOrder = SortOrder.Ascending, VariableOrder variable = null)
-        {
-            Dictionary<string, object> parameters = null;
-
-            TaskSorting[] variableSorting = new[] {
-                TaskSorting.ProcessVariable,
-                TaskSorting.ExecutionVariable,
-                TaskSorting.TaskVariable,
-                TaskSorting.CaseExecutionVariable,
-                TaskSorting.CaseInstanceVariable
-            };
-
-            bool isVariableSorting = variableSorting.Contains(sortBy);
-
-            if (isVariableSorting ^ variable != null)
-                throw new ArgumentException("Variable is mandatory when sortBy is either processVariable, executionVariable, taskVariable, caseExecutionVariable or caseInstanceVariable.", nameof(variable));
-
-            if (variable != null) {
-                parameters = new Dictionary<string, object>() {
-                    ["variable"] = variable.VariableName,
-                    ["type"] = variable.Type.ToString(),
-                };
-            }
-
-            Sorting.Add(new SortingInfo<TaskSorting>() { SortBy = sortBy, SortOrder = sortOrder, Parameters = parameters });
-
-            return this;
-        }
     }
 
     public enum TaskSorting
@@ -379,12 +350,10 @@ namespace Camunda.Api.Client.UserTask
         Name,
         NameCaseInsensitive,
         Priority,
-
         ProcessVariable,
         ExecutionVariable,
         TaskVariable,
         CaseExecutionVariable,
         CaseInstanceVariable
     }
-
 }
