@@ -36,6 +36,14 @@ namespace Camunda.Api.Client.ProcessDefinition
         /// </summary>
         public string DeploymentId;
         /// <summary>
+        /// History time to live value of the process definition. Is used within History cleanup.
+        /// </summary>
+        public int HistoryTimeToLive;
+        /// <summary>
+        /// A flag indicating whether the process definition is startable in Tasklist or not.
+        /// </summary>
+        public bool StartableInTasklist;
+        /// <summary>
         /// The file name of the process definition diagram, if it exists.
         /// </summary>
         public string Diagram;
