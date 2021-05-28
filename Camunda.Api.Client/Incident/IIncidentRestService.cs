@@ -11,5 +11,11 @@ namespace Camunda.Api.Client.Incident
 
         [Get("/incident/count")]
         Task<CountResult> GetListCount(QueryDictionary query);
+
+        [Get("/incident/{id}")]
+        Task<IncidentInfo> Get(string id);
+
+        [Delete("/incident/{id}")]
+        Task Resolve(string id);
     }
 }

@@ -8,7 +8,6 @@ namespace Camunda.Api.Client.CaseInstance
 {
     public class CaseInstanceDeleteVariable
     {
-        [JsonProperty("name")]
         public string Name;
     }
 }

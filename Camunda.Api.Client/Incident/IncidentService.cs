@@ -14,5 +14,7 @@
                 query, 
                 (q, f, m) => _api.GetList(q, f, m),
                 q => _api.GetListCount(q));
+
+        public IncidentResource this[string incidentId] => new IncidentResource(_api, incidentId);
     }
 }
