@@ -40,5 +40,16 @@
     <!-- wait for manually signing to complete -->
     <Exec Condition="$(SIGNTOOL_WAIT) != ''" Command="start cmd /c pause" />
   </Target>
-
+  
+  <PropertyGroup Label="NuGet generation">
+    <IsPackable>true</IsPackable>
+    <PackageTags>Komsa</PackageTags>
+    <PackageId>Komsa.Camunda.Api.Client</PackageId>
+    <Authors>KOMSA AG</Authors>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <DevelopmentDependency>false</DevelopmentDependency>
+    <VersionPrefix>$(VersionPrefix)</VersionPrefix>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>  
 </Project>
