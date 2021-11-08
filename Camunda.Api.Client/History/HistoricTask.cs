@@ -1,6 +1,5 @@
 ﻿using Camunda.Api.Client.UserTask;
 using System;
-using System.Runtime.Serialization;
 
 namespace Camunda.Api.Client.History
 {
@@ -10,5 +9,9 @@ namespace Camunda.Api.Client.History
         /// Whether the task belongs to a process instance that is suspended.
         /// </summary>
         public bool Suspended;
+
+        public DateTime? StartTime;
+
+        public DateTime? EndTime;
     }
 }
