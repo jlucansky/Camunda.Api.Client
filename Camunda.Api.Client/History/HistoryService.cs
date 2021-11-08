@@ -73,5 +73,9 @@
         /// External Tas kLog
         /// </summary>
         public HistoricExternalTaskLogService ExternalTaskLogs => new HistoricExternalTaskLogService(_api.ExternalTaskLogApi.Value);
+        /// <summary>
+        /// User Operation Logs
+        /// </summary>
+        public HistoricUserOperationService UserOperations => new HistoricUserOperationService(_api.UserOperationApi.Value);
     }
 }
