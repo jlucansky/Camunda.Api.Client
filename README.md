@@ -1,4 +1,4 @@
-# Maintained Fork of [[Camunda.Api.Client](https://github.com/jlucansky/Camunda.Api.Client)]
+# Maintained Fork of [Camunda.Api.Client](https://github.com/jlucansky/Camunda.Api.Client)
 After [Jan Lucansky](https://github.com/jlucansky) stopped maintaining the orginal version we started maintaining our own fork.
 It is a drop-in-replacement for the original version.
 Just use Komsa.Camunda.Api.Client nuget package instead of Camunda.Api.Client.
