@@ -3,7 +3,7 @@ After [Jan Lucansky](https://github.com/jlucansky) stopped maintaining the orgin
 It is a drop-in-replacement for the original version.
 Just use Komsa.Camunda.Api.Client nuget package instead of Camunda.Api.Client.
 
-# Camunda REST API Client [![Build status](https://ci.appveyor.com/api/projects/status/l2ct8th9hwuwlqvf?svg=true)](https://ci.appveyor.com/project/jlucansky/camunda-api-client) [![NuGet](https://img.shields.io/nuget/v/Camunda.Api.Client.svg)](https://www.nuget.org/packages/Komsa.Camunda.Api.Client)
+# Camunda REST API Client [![NuGet](https://img.shields.io/nuget/v/Camunda.Api.Client.svg)](https://www.nuget.org/packages/Komsa.Camunda.Api.Client)
 Camunda REST API Client for .NET platform
 - [x] .NET Framework 4.6.1
 - [x] .NET Standard 2.0
