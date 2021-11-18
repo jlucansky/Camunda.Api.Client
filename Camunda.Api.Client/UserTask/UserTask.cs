@@ -49,6 +49,10 @@ namespace Camunda.Api.Client.UserTask
         /// </summary>
         /// <remarks>The tenant id cannot be changed; only the existing tenant id can be passed.</remarks>
         public string TenantId;
+        /// <summary>
+        /// Indicates if the task is suspended
+        /// </summary>
+        public Bool Suspended;
 
         public override string ToString() => Name;
     }
