@@ -13,8 +13,16 @@ namespace Camunda.Api.Client.History
             _api = api;
         }
         
+        /// <summary>
+        /// Get all the user assignments that were made for the processInstanceId
+        /// It can also be done with the Query method.
+        /// </summary>
         public Task<List<HistoricUserOperationLog>> GetHistoricAssignmentsOfProcess(string processInstanceId) => _api.GetHistoricAssignmentsOfProcess(processInstanceId);
 
+        /// <summary>
+        /// Get all the user assignments that were made for the taskInstanceId
+        /// It can also be done with the Query method.
+        /// </summary>
         public Task<List<HistoricUserOperationLog>> GetHistoricAssignmentsOfTask(string taskInstanceId) => _api.GetHistoricAssignmentsOfTask(taskInstanceId);
 
         public QueryResource<HistoricUserOperationLogQuery, HistoricUserOperationLog> Query(HistoricUserOperationLogQuery query = null) =>

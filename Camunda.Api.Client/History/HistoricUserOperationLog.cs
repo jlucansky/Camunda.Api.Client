@@ -41,7 +41,6 @@ namespace Camunda.Api.Client.History
         /// The id of the instance of the case definition the operation belongs to.
         /// </summary>
         public string CaseInstanceId;
-
         /// <summary>
         /// The id of the task that is associated to this user operation. 
         /// </summary>
@@ -50,7 +49,6 @@ namespace Camunda.Api.Client.History
         /// The id of the Job that is associated to this user operation. 
         /// </summary>
         public string JobId;
-
         /// <summary>
         /// The id of the JobDefinition that is associated to this user operation. 
         /// </summary>
@@ -103,9 +101,13 @@ namespace Camunda.Api.Client.History
          /// The process instance id of the root process instance that initiated the process containing this task.
          /// </summary>
         public string RootProcessInstanceId;
-
+         /// <summary>
+         /// The name of the category this operation was associated with, e.g., TaskWorker or Admin.
+         /// </summary>
         public string Category;
-
+         /// <summary>
+         /// An arbitrary annotation set by a user for auditing reasons.
+         /// </summary>
         public string Annotation;
 
     }
