@@ -43,11 +43,11 @@ Each part listed below is fully covered according to https://docs.camunda.org/ma
 - [x] [Variable Instance](https://docs.camunda.org/manual/latest/reference/rest/variable-instance/)
 
 ## Install
-The Camunda REST API Client is available on [nuget.org](https://www.nuget.org/packages/Camunda.Api.Client)
+The Camunda REST API Client is available on [nuget.org](https://www.nuget.org/packages/Komsa.Camunda.Api.Client)
 
 To install Camunda REST API Client, run the following command in the Package Manager Console
 ```
-PM> Install-Package Camunda.Api.Client
+PM> Install-Package Komsa.Camunda.Api.Client
 ```
 
 ## Usage
