@@ -78,5 +78,6 @@
         /// User Operation Logs
         /// </summary>
         public HistoricUserOperationLogService UserOperationLogs => new HistoricUserOperationLogService(_api.UserOperationLogApi.Value);
+
     }
 }

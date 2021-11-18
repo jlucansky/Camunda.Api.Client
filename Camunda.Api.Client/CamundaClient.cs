@@ -83,6 +83,7 @@ namespace Camunda.Api.Client
             public Lazy<IHistoricProcessDefinitionRestService> ProcessDefinitionApi;
             public Lazy<IHistoricExternalTaskLogRestService> ExternalTaskLogApi;
             public Lazy<IHistoricUserOperationLogRestService> UserOperationLogApi;
+
         }
 
         static CamundaClient()
