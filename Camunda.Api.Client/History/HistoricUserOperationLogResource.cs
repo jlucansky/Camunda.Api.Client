@@ -7,19 +7,19 @@ namespace Camunda.Api.Client.History
     {
         private IHistoricUserOperationLogRestService _api;
 
-        private string _userOperationId;
+        private string _operationId;
 
 
-        internal HistoricUserOperationResource(IHistoricUserOperationLogRestService api, string userOperationId)
+        internal HistoricUserOperationLogResource(IHistoricUserOperationLogRestService api, string operationId)
         {
             _api = api;
-            _userOperationId = userOperationId;
+            _operationId = operationId;
         }
 
         /// <summary>
         /// Retrieves a single task by its id.
         /// </summary>
-        public Task<HistoricUserOperationLog> Get() => _api.Get(_userOperationId);
+        public Task<HistoricUserOperationLog> Get() => _api.Get(_operationId);
 
         /// <summary>
          /// Set an annotation for auditing reasons.

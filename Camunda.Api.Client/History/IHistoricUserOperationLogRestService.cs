@@ -16,10 +16,10 @@ namespace Camunda.Api.Client.History
         Task<List<HistoricUserOperationLog>> GetHistoricAssignmentsOfTask(string taskInstanceId);
 
         [Get("/history/user-operation")]
-        Task<List<HistoricUserOperationLog>> GetList(QueryDictionary query, int? firstResult, int? maxResults);
+        Task<List<HistoricUserOperationLog>> GetList(HistoricUserOperationLogQuery query, int? firstResult, int? maxResults);
 
         [Get("/history/user-operation/count")]
-        Task<CountResult> GetListCount(QueryDictionary query);
+        Task<CountResult> GetListCount(HistoricUserOperationLogQuery query);
 
         [Put("/history/user-operation/{operationId}/set-annotation")]
         Task SetAnnotation(string operationId, [Body] HistoricUserOperationLogAnnotation historicUserOperationLogAnnotation);

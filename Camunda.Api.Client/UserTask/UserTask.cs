@@ -52,7 +52,7 @@ namespace Camunda.Api.Client.UserTask
         /// <summary>
         /// Indicates if the task is suspended
         /// </summary>
-        public Bool Suspended;
+        public bool Suspended;
 
         public override string ToString() => Name;
     }

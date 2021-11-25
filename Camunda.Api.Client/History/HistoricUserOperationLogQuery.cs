@@ -1,6 +1,6 @@
 namespace Camunda.Api.Client.History
 {
-    public class HistoricUserOperationLogQuery : SortableQuery<HistoricUserOperationLogSorting, HistoricUserOperationLogQuery>
+    public class HistoricUserOperationLogQuery : QueryParameters
     {
         /// <summary>
         /// Filter by the process definition the instances run on.
