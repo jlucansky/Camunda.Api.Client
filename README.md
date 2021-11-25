@@ -1,4 +1,9 @@
-# Camunda REST API Client [![Build status](https://ci.appveyor.com/api/projects/status/l2ct8th9hwuwlqvf?svg=true)](https://ci.appveyor.com/project/jlucansky/camunda-api-client) [![NuGet](https://img.shields.io/nuget/v/Camunda.Api.Client.svg)](https://www.nuget.org/packages/Camunda.Api.Client)
+# Maintained Fork of [Camunda.Api.Client](https://github.com/jlucansky/Camunda.Api.Client)
+After [Jan Lucansky](https://github.com/jlucansky) stopped maintaining the orginal version we started maintaining our own fork.
+It is a drop-in-replacement for the original version.
+Just use Komsa.Camunda.Api.Client nuget package instead of Camunda.Api.Client.
+
+# Camunda REST API Client [![NuGet](https://img.shields.io/nuget/v/Camunda.Api.Client.svg)](https://www.nuget.org/packages/Komsa.Camunda.Api.Client)
 Camunda REST API Client for .NET platform
 - [x] .NET Framework 4.6.1
 - [x] .NET Standard 2.0
@@ -29,6 +34,7 @@ Each part listed below is fully covered according to https://docs.camunda.org/ma
 - [x] [History / Process Instance](https://docs.camunda.org/manual/latest/reference/rest/history/process-instance/)
 - [x] [History / Task](https://docs.camunda.org/manual/latest/reference/rest/history/task/)
 - [x] [History / Variable Instance](https://docs.camunda.org/manual/latest/reference/rest/history/variable-instance/)
+- [x] [History / User Operation Log](https://docs.camunda.org/manual/latest/reference/rest/history/user-operation-log/)
 - [x] [Incident](https://docs.camunda.org/manual/latest/reference/rest/incident/)
 - [X] [Job](https://docs.camunda.org/manual/latest/reference/rest/job/)
 - [x] [Job Definition](https://docs.camunda.org/manual/latest/reference/rest/job-definition/)
@@ -43,11 +49,11 @@ Each part listed below is fully covered according to https://docs.camunda.org/ma
 - [x] [Variable Instance](https://docs.camunda.org/manual/latest/reference/rest/variable-instance/)
 
 ## Install
-The Camunda REST API Client is available on [nuget.org](https://www.nuget.org/packages/Camunda.Api.Client)
+The Camunda REST API Client is available on [nuget.org](https://www.nuget.org/packages/Komsa.Camunda.Api.Client)
 
 To install Camunda REST API Client, run the following command in the Package Manager Console
 ```
-PM> Install-Package Camunda.Api.Client
+PM> Install-Package Komsa.Camunda.Api.Client
 ```
 
 ## Usage
