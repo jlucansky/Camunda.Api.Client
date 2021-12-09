@@ -34,6 +34,7 @@ Each part listed below is fully covered according to https://docs.camunda.org/ma
 - [x] [History / Process Instance](https://docs.camunda.org/manual/latest/reference/rest/history/process-instance/)
 - [x] [History / Task](https://docs.camunda.org/manual/latest/reference/rest/history/task/)
 - [x] [History / Variable Instance](https://docs.camunda.org/manual/latest/reference/rest/history/variable-instance/)
+- [x] [History / User Operation Log](https://docs.camunda.org/manual/latest/reference/rest/history/user-operation-log/)
 - [x] [Incident](https://docs.camunda.org/manual/latest/reference/rest/incident/)
 - [X] [Job](https://docs.camunda.org/manual/latest/reference/rest/job/)
 - [x] [Job Definition](https://docs.camunda.org/manual/latest/reference/rest/job-definition/)
