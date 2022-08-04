@@ -52,16 +52,6 @@ namespace Camunda.Api.Client.ProcessDefinition
         /// </summary>
         public string VersionTag;
 
-        /// <summary>
-        /// History time to live value of the process definition. Is used within History cleanup.
-        /// </summary>
-        public int historyTimeToLive;
-
-        /// <summary>
-        /// A flag indicating whether the process definition is startable in Tasklist or not.
-        /// </summary>
-        public bool startableInTasklist;
-
         public override string ToString() => Id;
     }
 }

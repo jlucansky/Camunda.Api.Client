@@ -4,16 +4,16 @@
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
     <VersionSuffix></VersionSuffix>
-    <VersionPrefix>2.6.3</VersionPrefix>
-    <FileVersion>2.6.3.0</FileVersion>
+    <VersionPrefix>2.7.0</VersionPrefix>
+    <FileVersion>2.7.0.0</FileVersion>
     <Product>Camunda REST API Client</Product>
     <Title>Camunda REST API Client</Title>
-    <Authors>Jan Lucansky</Authors>
+    <Authors>Jan Lucansky;KOMSA AG</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://github.com/jlucansky/Camunda.Api.Client</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/komsa-ag/Camunda.Api.Client</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
-    <Description>Camunda REST API Client for .NET Core platform</Description>
-    <PackageTags>camunda rest refit bpmn bpm</PackageTags>
+    <Description>Camunda REST API Client for .NET platform</Description>
+    <PackageTags>camunda rest refit bpmn bpm komsa</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
     <RepositoryType></RepositoryType>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -40,18 +40,14 @@
     <!-- wait for manually signing to complete -->
     <Exec Condition="$(SIGNTOOL_WAIT) != ''" Command="start cmd /c pause" />
   </Target>
-
-
-	<PropertyGroup Label="NuGet generation">
-		<IsPackable>true</IsPackable>
-		<PackageTags>Amir133</PackageTags>
-		<PackageId>Amir133.Camunda.Api.Client</PackageId>
-		<Authors>Amir Kazemi</Authors>
-		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-		<NoPackageAnalysis>true</NoPackageAnalysis>
-		<DevelopmentDependency>false</DevelopmentDependency>
-		<VersionPrefix>$(VersionPrefix)</VersionPrefix>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	</PropertyGroup>
-
+  
+  <PropertyGroup Label="NuGet generation">
+    <IsPackable>true</IsPackable>
+    <PackageId>Komsa.Camunda.Api.Client</PackageId>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <DevelopmentDependency>false</DevelopmentDependency>
+    <VersionPrefix>$(VersionPrefix)</VersionPrefix>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>  
 </Project>

@@ -30,7 +30,6 @@ using Camunda.Api.Client.VariableInstance;
 
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 using Camunda.Api.Client.Filter;
-using Camunda.Api.Client.Authorization;
 
 namespace Camunda.Api.Client
 {
@@ -57,7 +56,6 @@ namespace Camunda.Api.Client
         private Lazy<IUserTaskRestService> _userTaskApi;
         private Lazy<IVariableInstanceRestService> _variableInstanceApi;
         private Lazy<IFilterRestService> _filterApi;
-        private Lazy<IAuthorizationRestService> _authorizationApi;
 
         private HistoricApi _historicApi;
 
@@ -84,6 +82,8 @@ namespace Camunda.Api.Client
             public Lazy<IHistoricUserTaskRestService> UserTaskApi;
             public Lazy<IHistoricProcessDefinitionRestService> ProcessDefinitionApi;
             public Lazy<IHistoricExternalTaskLogRestService> ExternalTaskLogApi;
+            public Lazy<IHistoricUserOperationLogRestService> UserOperationLogApi;
+
         }
 
         static CamundaClient()
@@ -221,7 +221,6 @@ namespace Camunda.Api.Client
             _userTaskApi = CreateService<IUserTaskRestService>();
             _variableInstanceApi = CreateService<IVariableInstanceRestService>();
             _filterApi = CreateService<IFilterRestService>();
-            _authorizationApi = CreateService<IAuthorizationRestService>();
 
             _historicApi = new HistoricApi()
             {
@@ -233,6 +232,7 @@ namespace Camunda.Api.Client
                 DetailApi = CreateService<IHistoricDetailRestService>(),
                 IncidentApi = CreateService<IHistoricIncidentRestService>(),
                 JobLogApi = CreateService<IHistoricJobLogRestService>(),
+                UserOperationLogApi = CreateService<IHistoricUserOperationLogRestService>(),
                 ProcessInstanceApi = CreateService<IHistoricProcessInstanceRestService>(),
                 VariableInstanceApi = CreateService<IHistoricVariableInstanceRestService>(),
                 UserTaskApi = CreateService<IHistoricUserTaskRestService>(),
@@ -329,9 +329,5 @@ namespace Camunda.Api.Client
 
         /// <see href="https://docs.camunda.org/manual/7.9/reference/rest/filter/"/>
         public FilterService Filters => new FilterService(_filterApi.Value);
-
-
-        public AuthorizationService Authorizations => new AuthorizationService(_authorizationApi.Value);
-
     }
 }
