@@ -371,6 +371,7 @@ namespace Camunda.Api.Client.UserTask
         InstanceId,
         CaseInstanceId,
         DueDate,
+        followUpDate,
         ExecutionId,
         CaseExecutionId,
         Assignee,
